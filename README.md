@@ -10,7 +10,7 @@ Portfolio de projets et stages en réseaux, infrastructure et cybersécurité. L
 | --- | --- | --- |
 | Honeypot sur mesure et interface CTI | [README](projects/honeypot-cti/README.md) | [Étapes](projects/honeypot-cti/METHODOLOGIE.md) |
 | Datacenter virtualisé (en cours) | [README](projects/datacenter-virtualise/README.md) | [Plan et validations à venir](projects/datacenter-virtualise/METHODOLOGIE.md) |
-| Architecture réseau segmentée | [README du dépôt](https://github.com/ihssanezaoui19-star/Architecture-R-seau-S-curis-e-) | [Étapes](https://github.com/ihssanezaoui19-star/Architecture-R-seau-S-curis-e-/blob/main/METHODOLOGIE.md) |
+| Architecture réseau / démarche Zero Trust | [README du dépôt](https://github.com/ihssanezaoui19-star/Architecture-R-seau-S-curis-e-) | [Étapes](https://github.com/ihssanezaoui19-star/Architecture-R-seau-S-curis-e-/blob/main/METHODOLOGIE.md) |
 | WAN hybride MPLS/SD-WAN | [README du dépôt](https://github.com/ihssanezaoui19-star/Hybrid-SD-WAN-MPLS-Architecture-Deployment) | [Étapes](https://github.com/ihssanezaoui19-star/Hybrid-SD-WAN-MPLS-Architecture-Deployment/blob/main/METHODOLOGIE.md) |
 | Audit et durcissement Active Directory | [README](projects/audit-active-directory/README.md) | [Étapes](projects/audit-active-directory/METHODOLOGIE.md) |
 | Investigation DFIR WeatherZero | [README du dépôt](https://github.com/ihssanezaoui19-star/DFIR-Compromised-System-Analysis-WeatherZero-Malware) | [Étapes](https://github.com/ihssanezaoui19-star/DFIR-Compromised-System-Analysis-WeatherZero-Malware/blob/main/METHODOLOGIE.md) |
