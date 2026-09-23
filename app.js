@@ -53,13 +53,13 @@ const projects = [
     number: '05', title: 'Audit AD d’un cas client simulé', short: 'Stage : auditer, superviser et durcir un domaine de laboratoire ; score PingCastle 95 → 20.',
     type: 'Stage · 2025', status: 'Travail réalisé', categories: ['Blue Team', 'SOC', 'Infrastructure'], color: 'mint',
     tags: ['Active Directory', 'PingCastle', 'Wazuh'],
-    problem: 'Pour simuler le cas d’un client, nous avons monté un domaine Active Directory présentant des faiblesses de configuration et de sécurité. Sans état initial, il était difficile de savoir quels écarts corriger en priorité et de vérifier l’effet réel des changements.',
-    objective: 'Reproduire le contexte en laboratoire, prioriser les écarts avec PingCastle, observer des scénarios contrôlés dans Wazuh, corriger les faiblesses et comparer les résultats avant et après.',
+    problem: 'Pour simuler le cas d’un client, nous avons monté un domaine Active Directory présentant des faiblesses de configuration. Il fallait montrer leurs conséquences, détecter les activités suspectes et réduire les risques tout en évaluant l’impact possible des changements sur les services.',
+    objective: 'Auditer avec PingCastle, tester des scénarios d’intrusion autorisés dans la maquette, vérifier les alertes Wazuh/Sysmon, puis corriger après analyse des dépendances et comparer l’état avant et après.',
     architecture: ['Cas client simulé sur Proxmox', 'AD et audit PingCastle', 'Postes de test, Sysmon et Wazuh', 'Durcissement, GPO et nouvel audit'],
     tools: 'Proxmox, Windows Server 2022, Active Directory, DNS/DHCP, PingCastle, GPO, Wazuh, Sysmon.',
-    work: 'J’ai travaillé sur la maquette du domaine, l’administration des utilisateurs, groupes et GPO, le choix et l’analyse de l’outil d’audit, la supervision Wazuh/Sysmon et la vérification de scénarios de test. Nous avons ensuite restreint des droits excessifs, renforcé les comptes et la journalisation, désactivé des protocoles hérités et relancé PingCastle pour comparer l’état du laboratoire.',
+    work: 'J’ai travaillé sur la maquette AD, le choix de PingCastle et l’analyse des écarts. Nous avons installé les composants Wazuh, ses agents et Sysmon pour observer les journaux, configuré des règles, puis vérifié les alertes lors de tests contrôlés. Avant de durcir NTLM/SMB, les droits et les GPO, nous avons étudié les usages et les effets possibles ; les corrections ont été faites par PowerShell ou dans les consoles AD/GPO, avec des contrôles après changement.',
     outcome: 'Le rapport de stage montre un score de risque PingCastle passé de 95/100 à 20/100 dans cette maquette. Des écarts demeurent ; ce résultat n’est ni un pourcentage de sécurité ni la mesure d’un annuaire de production.',
-    evidence: 'Le README, la méthodologie pas à pas et les schémas anonymisés sont publiés sur GitHub. Aucun rapport brut, identifiant ni détail du domaine n’est diffusé.',
+    evidence: 'Le README, la méthodologie pas à pas, les commandes administratives et des captures de mitigation recadrées sont publiés sur GitHub. Le rapport brut, les noms, les comptes et les adresses restent privés.',
     url: 'https://github.com/ihssanezaoui19-star/ihssanezaoui19-star.github.io/tree/main/projects/audit-active-directory'
   },
   {
