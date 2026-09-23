@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071521">
+  <meta name="description" content="Portfolio d'Ihssane Zaoui, ingénieure réseaux et cybersécurité : projets SOC, Blue Team, sécurité réseau et infrastructure.">
+  <title>Ihssane Zaoui — Réseaux & Cybersécurité</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#accueil" aria-label="Ihssane Zaoui, accueil"><span class="brand-mark">IZ<span class="mark-dot">.</span></span><span class="brand-name">Ihssane Zaoui</span></a>
+      <nav aria-label="Navigation principale"><a href="#projets">Projets</a><a href="#stages">Stages</a><a href="#profil">Profil</a><a class="nav-contact" href="mailto:ihssanezaoui19@gmail.com?subject=Opportunit%C3%A9%20r%C3%A9seaux%20ou%20cybers%C3%A9curit%C3%A9">Me contacter <span aria-hidden="true">↗</span></a></nav>
+    </header>
+
+    <main>
+      <section class="hero" id="accueil" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="live-dot"></span> PORTFOLIO / INGÉNIEURE JUNIOR</div>
+          <h1 id="hero-title">Des réseaux fiables.<br><span>Une sécurité observable.</span></h1>
+          <p class="intro">Je suis Ihssane Zaoui, ingénieure diplômée de l’ENSA Kénitra. Chez IVENTEQ, j’ai travaillé sur l’infrastructure virtualisée, l’audit Active Directory et un projet de honeypot sur mesure avec interface CTI. J’aime relier l’architecture réseau aux traces qui permettent de comprendre une attaque.</p>
+          <div class="hero-actions"><a class="button-primary" href="mailto:ihssanezaoui19@gmail.com?subject=Opportunit%C3%A9%20r%C3%A9seaux%20ou%20cybers%C3%A9curit%C3%A9">Me contacter <span aria-hidden="true">↗</span></a><a class="button-text" href="#projets">Explorer mes projets <span aria-hidden="true">↓</span></a></div>
+          <p class="hero-meta">Basée au Maroc · Mobile · Ouverte aux opportunités junior</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-grid"></div><div class="art-glow"></div>
+          <div class="diagram-card">
+            <div class="diagram-top"><span class="tiny-label">SECURITY OPERATIONS / LAB</span><span class="signal-bars"><i></i><i></i><i></i><i></i></span></div>
+            <div class="diagram-orbit"><div class="orbit orbit-outer"></div><div class="orbit orbit-inner"></div><div class="center-node"><span>IZ</span><small>BLUE TEAM</small></div><span class="satellite s1"></span><span class="satellite s2"></span><span class="satellite s3"></span><span class="satellite s4"></span></div>
+            <div class="diagram-bottom"><span><b class="square mint"></b> DÉTECTION</span><span><b class="square blue"></b> RÉSEAUX</span><span><b class="square gold"></b> INFRASTRUCTURE</span></div>
+          </div>
+          <div class="vertical-note">SEGMENTER <span>·</span> OBSERVER <span>·</span> ANALYSER</div>
+        </div>
+      </section>
+
+      <section class="projects section-pad" id="projets" aria-labelledby="projects-title">
+        <div class="section-heading"><div><div class="section-kicker"><span>01 /</span> TRAVAUX SÉLECTIONNÉS</div><h2 id="projects-title">Projets & études de cas<span class="heading-dot">.</span></h2><p>Des réalisations en laboratoire et en stage, avec leur périmètre réel et leur état d’avancement.</p></div><div class="project-count" id="project-count" aria-live="polite"></div></div>
+        <div class="filters" role="group" aria-label="Filtrer les projets"><button class="filter active" type="button" data-filter="Tous" aria-pressed="true">Tous</button><button class="filter" type="button" data-filter="SOC" aria-pressed="false">SOC</button><button class="filter" type="button" data-filter="Blue Team" aria-pressed="false">Blue Team</button><button class="filter" type="button" data-filter="Sécurité réseau" aria-pressed="false">Sécurité réseau</button><button class="filter" type="button" data-filter="Infrastructure" aria-pressed="false">Infrastructure</button></div>
+        <div class="project-grid" id="project-grid"></div>
+      </section>
+
+      <section class="profile section-pad" id="profil" aria-labelledby="profile-title">
+        <div class="profile-main"><div class="section-kicker"><span>02 /</span> PROFIL & CONTACT</div><h2 id="profile-title">À la croisée du réseau<br>et de la défense<span class="heading-dot">.</span></h2><p>Mon expérience ne se limite pas aux projets présentés : j’ai installé un serveur Proxmox, configuré des accès VPN, analysé du trafic et des PCAP, dessiné des architectures et étudié les outils avant leur déploiement. Je recherche un premier poste en SOC, Blue Team, sécurité réseau ou infrastructure où je pourrai poursuivre ce travail concret.</p><a class="button-primary light" href="mailto:ihssanezaoui19@gmail.com?subject=Opportunit%C3%A9%20r%C3%A9seaux%20ou%20cybers%C3%A9curit%C3%A9">Parlons de votre équipe <span aria-hidden="true">↗</span></a></div>
+        <div class="profile-side"><div class="skill-group"><h3>Détection & analyse</h3><p>T-Pot, Wazuh, ELK, Suricata, Wireshark, OpenCTI, MITRE ATT&CK</p></div><div class="skill-group"><h3>Réseaux & sécurité</h3><p>TCP/IP, VLAN, OSPF, BGP, VPN IPsec, OPNsense, FortiGate, Cisco</p></div><div class="skill-group"><h3>Systèmes & virtualisation</h3><p>Linux, Windows Server, Active Directory, VMware, Proxmox, Docker</p></div><a class="github-link" href="https://github.com/ihssanezaoui19-star" target="_blank" rel="noopener noreferrer">Profil GitHub <span aria-hidden="true">↗</span></a></div>
+        <div class="experience" id="stages">
+          <div class="experience-intro"><div class="section-kicker"><span>03 /</span> EXPÉRIENCE PRATIQUE</div><h2>Ce que je peux apporter<span class="heading-dot">.</span></h2><p>Des compétences mises en pratique en stage et en laboratoire, à développer au sein d’une équipe réseaux ou sécurité.</p></div>
+          <div class="capabilities" aria-label="Compétences mises en pratique">
+            <div class="capability"><span class="capability-num">01</span><div><h3>Administrer des systèmes</h3><p>Configurer Windows Server, Active Directory, GPO, DNS/DHCP et Linux ; gérer les accès et diagnostiquer les incidents courants.</p></div></div>
+            <div class="capability"><span class="capability-num">02</span><div><h3>Sécuriser les flux réseau</h3><p>Segmenter des réseaux, configurer des règles OPNsense et des accès VPN, puis vérifier les communications autorisées.</p></div></div>
+            <div class="capability"><span class="capability-num">03</span><div><h3>Observer et investiguer</h3><p>Lire des PCAP et des journaux, rapprocher trafic et alertes avec Wireshark, Wazuh et ELK, puis présenter les observations dans une interface CTI.</p></div></div>
+            <div class="capability"><span class="capability-num">04</span><div><h3>Concevoir avant de déployer</h3><p>Étudier les outils, dessiner une architecture, installer Proxmox et les machines virtuelles, puis tester et documenter la maquette.</p></div></div>
+          </div>
+          <div class="shared-work"><span>CHEZ IVENTEQ · TRAVAUX TRANSVERSES AUX DEUX STAGES</span><p>Installation et administration d’un serveur Proxmox, configuration de VPN, analyse de trafic et de fichiers PCAP, réalisation de schémas d’architecture et états de l’art comparant les outils avant leur installation.</p></div>
+          <div class="internships" aria-labelledby="internships-title"><div class="internships-head"><h3 id="internships-title">Stages sélectionnés</h3><p>Interventions et résultats documentés</p></div>
+            <ol class="internship-list">
+              <li><div class="internship-date">FÉV. — JUIN 2026</div><div class="internship-content"><h4>Ingénieure stagiaire PFE · Réseaux & sécurité</h4><p class="internship-place">IVENTEQ · Mohammedia</p><p><strong>Enjeu.</strong> Observer les attaques au Maroc sur des services représentatifs d’un client, suivre les étapes après un premier accès et étudier les tentatives visant des vulnérabilités connues.</p><p><strong>Intervention.</strong> Étude initiale des outils, essai de T-Pot puis création d’un honeypot adapté au cas d’usage ; simulation de services et d’un réseau interne derrière un pare-feu ; analyse des traces et PCAP ; développement d’une interface CTI et automatisation avec n8n.</p><p><strong>Résultat.</strong> Un environnement de test plus adapté à la question de recherche que T-Pot seul, avec collecte d’événements et visualisation de la chaîne observée. Les délais liés aux CVE étudiées concernent uniquement les tentatives vues dans ce dispositif.</p></div></li>
+              <li><div class="internship-date">JUIL. — AOÛT 2025</div><div class="internship-content"><h4>Stagiaire · Sécurité Active Directory & systèmes</h4><p class="internship-place">IVENTEQ · Mohammedia</p><p><strong>Enjeu.</strong> Reproduire le cas d’un client dans un domaine Active Directory de laboratoire afin de comprendre ses faiblesses et de prioriser les corrections.</p><p><strong>Intervention.</strong> Conception de la maquette, administration Windows Server et AD, audit PingCastle, correction des configurations et droits identifiés, application de GPO et suivi des journaux avec Wazuh.</p><p><strong>Résultat.</strong> Le nouvel audit PingCastle a montré une baisse du score de risque de 95 à 15 dans cette simulation ; les corrections et la réévaluation ont été documentées.</p></div></li>
+              <li><div class="internship-date">JUIL. — AOÛT 2024</div><div class="internship-content"><h4>Stagiaire · Administration systèmes & réseaux</h4><p class="internship-place">Province de Taounate · Taounate</p><p><strong>Enjeu.</strong> Assurer le suivi du réseau local, des postes Windows et des incidents de connectivité au quotidien.</p><p><strong>Intervention.</strong> Maintenance des postes, gestion de services réseau et d’un environnement Active Directory, diagnostic des problèmes de connexion.</p><p><strong>Résultat.</strong> Participation à la maintenance de l’infrastructure et au traitement des incidents réseau, sans métrique de disponibilité revendiquée.</p></div></li>
+            </ol>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer><span>© <span id="year">2026</span> Ihssane Zaoui</span><span>Réseaux · Cybersécurité · Maroc</span><a href="#accueil">Retour en haut ↑</a></footer>
+  </div>
+
+  <dialog id="project-dialog" aria-labelledby="dialog-title"><div class="dialog-inner"><div class="dialog-header"><span id="dialog-index" class="dialog-index"></span><button class="close-dialog" type="button" aria-label="Fermer la fiche projet">×</button></div><div id="dialog-content"></div></div></dialog>
+</body>
+</html>
