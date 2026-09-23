@@ -50,16 +50,17 @@ const projects = [
     evidence: 'Projet mentionné dans mon CV. Voir mon profil GitHub pour les travaux publiés ; aucun dépôt précis n’est associé ici sans vérification.'
   },
   {
-    number: '05', title: 'Audit AD d’un cas client simulé', short: 'Stage : recréer un contexte client, auditer les faiblesses et vérifier les corrections.',
-    type: 'Stage · 2025', status: 'Travail réalisé', categories: ['Blue Team', 'Infrastructure'], color: 'mint',
-    tags: ['Active Directory', 'PingCastle', 'GPO'],
+    number: '05', title: 'Audit AD d’un cas client simulé', short: 'Stage : auditer, superviser et durcir un domaine de laboratoire ; score PingCastle 95 → 20.',
+    type: 'Stage · 2025', status: 'Travail réalisé', categories: ['Blue Team', 'SOC', 'Infrastructure'], color: 'mint',
+    tags: ['Active Directory', 'PingCastle', 'Wazuh'],
     problem: 'Pour simuler le cas d’un client, nous avons monté un domaine Active Directory présentant des faiblesses de configuration et de sécurité. Sans état initial, il était difficile de savoir quels écarts corriger en priorité et de vérifier l’effet réel des changements.',
-    objective: 'Reproduire le contexte du client en laboratoire, analyser les risques avec PingCastle, corriger les faiblesses identifiées et comparer les résultats avant et après intervention.',
-    architecture: ['Cas client simulé sur Proxmox', 'AD et audit PingCastle', 'Corrections, GPO et journalisation', 'Nouvel audit et comparaison'],
-    tools: 'Windows Server, Active Directory, PingCastle, GPO, Proxmox, Wazuh.',
-    work: 'J’ai participé à la conception de l’architecture et à la création du domaine simulé, administré Windows Server, les utilisateurs, groupes, permissions, DNS/DHCP et GPO, puis analysé le rapport PingCastle. J’ai appliqué des corrections de configuration et de droits, déployé Wazuh pour les journaux et relancé l’audit pour vérifier les changements.',
-    outcome: 'Dans ce cas client simulé, le score PingCastle documenté dans mon CV est passé de 95 à 15 après remédiation. Le nouvel audit a confirmé une baisse du risque mesuré dans la maquette ; le score restant ne signifie pas que tout risque avait disparu.',
-    evidence: 'Résultat issu du stage et repris dans mon CV ; les détails du domaine et les rapports d’audit ne sont pas publiés.'
+    objective: 'Reproduire le contexte en laboratoire, prioriser les écarts avec PingCastle, observer des scénarios contrôlés dans Wazuh, corriger les faiblesses et comparer les résultats avant et après.',
+    architecture: ['Cas client simulé sur Proxmox', 'AD et audit PingCastle', 'Postes de test, Sysmon et Wazuh', 'Durcissement, GPO et nouvel audit'],
+    tools: 'Proxmox, Windows Server 2022, Active Directory, DNS/DHCP, PingCastle, GPO, Wazuh, Sysmon.',
+    work: 'J’ai travaillé sur la maquette du domaine, l’administration des utilisateurs, groupes et GPO, le choix et l’analyse de l’outil d’audit, la supervision Wazuh/Sysmon et la vérification de scénarios de test. Nous avons ensuite restreint des droits excessifs, renforcé les comptes et la journalisation, désactivé des protocoles hérités et relancé PingCastle pour comparer l’état du laboratoire.',
+    outcome: 'Le rapport de stage montre un score de risque PingCastle passé de 95/100 à 20/100 dans cette maquette. Des écarts demeurent ; ce résultat n’est ni un pourcentage de sécurité ni la mesure d’un annuaire de production.',
+    evidence: 'Le README, la méthodologie pas à pas et les schémas anonymisés sont publiés sur GitHub. Aucun rapport brut, identifiant ni détail du domaine n’est diffusé.',
+    url: 'https://github.com/ihssanezaoui19-star/ihssanezaoui19-star.github.io/tree/main/projects/audit-active-directory'
   },
   {
     number: '06', title: 'Investigation d’un poste Windows', short: 'Étude DFIR : comprendre une activité anormale et choisir une remédiation prudente.',
@@ -108,7 +109,7 @@ function openProject(number, trigger) {
     <div class="detail-block"><h3>Architecture</h3><ol class="architecture">${project.architecture.map(step => `<li>${step}</li>`).join('')}</ol></div>
     <div class="detail-columns"><div class="detail-block"><h3>Outils</h3><p>${project.tools}</p></div><div class="detail-block"><h3>Travail réalisé</h3><p>${project.work}</p></div></div>
     <div class="detail-result"><h3>Résultat observé</h3><p>${project.outcome}</p></div>
-    <div class="detail-evidence"><div><h3>Preuves & liens</h3><p>${project.evidence}</p></div><a href="${github}" target="_blank" rel="noopener noreferrer">Profil GitHub ↗</a></div>`;
+    <div class="detail-evidence"><div><h3>Preuves & liens</h3><p>${project.evidence}</p></div><a href="${project.url || github}" target="_blank" rel="noopener noreferrer">${project.url ? 'Voir le projet GitHub' : 'Profil GitHub'} ↗</a></div>`;
   dialog.showModal();
   document.body.classList.add('modal-open');
 }
