@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 510" role="img" aria-labelledby="title desc">
+  <title id="title">Chaîne de supervision des événements de laboratoire</title>
+  <desc id="desc">Des scénarios contrôlés dans le laboratoire Active Directory produisent des événements Windows et Sysmon, collectés par Wazuh Agent puis traités par Wazuh Manager, Indexer et Dashboard. Les alertes ont été examinées, sans métrique de temps de détection.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#70dec0"/></marker>
+    <style>text{font-family:Arial,Helvetica,sans-serif;fill:#edf7f3}.eyebrow{fill:#7de2c6;font-size:19px;font-weight:bold;letter-spacing:2px}.title{font-size:39px;font-weight:bold}.label{font-size:23px;font-weight:bold}.detail{font-size:19px;fill:#b6cbd0}.box{fill:#15303d;stroke:#638e99;stroke-width:2}.path{stroke:#70dec0;stroke-width:4;fill:none;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1200" height="510" fill="#091923"/>
+  <text class="eyebrow" x="62" y="61">BLUE TEAM · JOURNALISATION</text>
+  <text class="title" x="62" y="111">Observer les tests du laboratoire</text>
+  <rect class="box" x="53" y="174" width="250" height="174" rx="16"/>
+  <text class="label" x="77" y="220">Tests contrôlés</text>
+  <text class="detail" x="77" y="256">Comptes et accès</text>
+  <text class="detail" x="77" y="288">Activités réseau</text>
+  <text class="detail" x="77" y="320">Accès distants</text>
+  <rect class="box" x="351" y="174" width="250" height="174" rx="16"/>
+  <text class="label" x="375" y="220">Sources Windows</text>
+  <text class="detail" x="375" y="256">Événements AD</text>
+  <text class="detail" x="375" y="288">Sysmon</text>
+  <text class="detail" x="375" y="320">Wazuh Agent</text>
+  <rect class="box" x="649" y="174" width="250" height="174" rx="16"/>
+  <text class="label" x="673" y="220">Wazuh</text>
+  <text class="detail" x="673" y="256">Manager · Indexer</text>
+  <text class="detail" x="673" y="288">Règles configurées</text>
+  <text class="detail" x="673" y="320">Dashboard</text>
+  <rect x="947" y="174" width="200" height="174" rx="16" fill="#163f47" stroke="#70dec0" stroke-width="2"/>
+  <text class="label" x="971" y="220">Analyse</text>
+  <text class="detail" x="971" y="256">Alertes liées</text>
+  <text class="detail" x="971" y="288">aux scénarios</text>
+  <text class="detail" x="971" y="320">de la maquette</text>
+  <path class="path" d="M305 261H339"/><path class="path" d="M603 261H637"/><path class="path" d="M901 261H935"/>
+  <text class="detail" x="62" y="419">Exemples observés : authentifications répétées · accès distant · activité LDAP/SMB</text>
+  <text class="detail" x="62" y="452">Schéma recréé et anonymisé · aucune capture brute ni clé d'agent publiée</text>
+</svg>
