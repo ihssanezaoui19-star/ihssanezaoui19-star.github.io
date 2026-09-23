@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+  <title id="title">Architecture du laboratoire Active Directory</title>
+  <desc id="desc">Sous Proxmox, des postes Windows et un poste de test communiquent avec le contrôleur de domaine. Les événements Windows et Sysmon sont envoyés vers Wazuh. Aucun nom de domaine, d'entreprise, d'hôte ou adresse IP n'est représenté.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#6ce1c2"/></marker>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif;fill:#e9f5f1} .muted{fill:#a8bec0}.eyebrow{fill:#6ce1c2;font-size:19px;font-weight:bold;letter-spacing:2px}.title{font-size:38px;font-weight:bold}.label{font-size:24px;font-weight:bold}.detail{font-size:20px;fill:#b9ced0}.tiny{font-size:17px;fill:#8fa8ad}.box{fill:#142b38;stroke:#5a8390;stroke-width:2}.path{stroke:#6ce1c2;stroke-width:4;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1200" height="600" fill="#091923"/>
+  <text class="eyebrow" x="62" y="56">ÉTUDE DE CAS · ENVIRONNEMENT VIRTUEL</text>
+  <text class="title" x="62" y="103">Laboratoire Active Directory</text>
+  <rect x="47" y="128" width="1106" height="411" rx="22" fill="#0f2330" stroke="#426979" stroke-width="2"/>
+  <text class="muted" x="70" y="159" font-size="18">Hôte Proxmox · machines et réseau de test isolés</text>
+  <rect class="box" x="78" y="195" width="272" height="134" rx="15"/>
+  <text class="label" x="101" y="233">Postes Windows</text>
+  <text class="detail" x="101" y="266">2 × Windows 10</text>
+  <text class="detail" x="101" y="295">1 × Windows 7 (hérité)</text>
+  <rect class="box" x="78" y="371" width="272" height="126" rx="15"/>
+  <text class="label" x="101" y="410">Poste de test</text>
+  <text class="detail" x="101" y="442">Kali Linux</text>
+  <text class="tiny" x="101" y="471">Scénarios contrôlés</text>
+  <rect x="450" y="207" width="310" height="250" rx="15" fill="#153d48" stroke="#6ce1c2" stroke-width="2"/>
+  <text class="label" x="474" y="249">Contrôleur de domaine</text>
+  <text class="detail" x="474" y="284">Windows Server 2022</text>
+  <text class="detail" x="474" y="318">AD DS · DNS · DHCP</text>
+  <path d="M474 345H730" stroke="#4d7981" stroke-width="2"/>
+  <text class="detail" x="474" y="381">Wazuh Agent · Sysmon</text>
+  <text class="tiny" x="474" y="416">Journaux et événements</text>
+  <rect class="box" x="850" y="248" width="276" height="163" rx="15"/>
+  <text class="label" x="874" y="289">Plateforme Wazuh</text>
+  <text class="detail" x="874" y="322">Ubuntu · Manager</text>
+  <text class="detail" x="874" y="351">Indexer · Dashboard</text>
+  <text class="tiny" x="874" y="382">Alertes du laboratoire</text>
+  <path class="path" d="M352 262H438"/>
+  <path class="path" d="M352 431H438"/>
+  <path class="path" d="M762 329H837"/>
+  <text class="tiny" x="770" y="305">logs</text>
+  <text class="tiny" x="62" y="573">Schéma reconstruit à partir du rapport · noms, adresses et identifiants omis</text>
+</svg>
