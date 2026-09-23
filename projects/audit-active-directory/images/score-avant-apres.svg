@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Résultat PingCastle avant et après durcissement</title>
+  <desc id="desc">Le score de risque PingCastle du laboratoire est passé de 95 sur 100 avant les corrections à 20 sur 100 après les corrections. Un score faible indique moins de risques détectés par l'outil, sans garantir l'absence de risques.</desc>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif;fill:#edf6f3}.eyebrow{fill:#80e5c7;font-size:19px;font-weight:bold;letter-spacing:2px}.title{font-size:39px;font-weight:bold}.label{font-size:24px;font-weight:bold}.value{font-size:34px;font-weight:bold}.note{font-size:19px;fill:#aec5c7}.tick{font-size:18px;fill:#a7bfc3}
+  </style>
+  <rect width="1200" height="520" fill="#091923"/>
+  <text class="eyebrow" x="62" y="64">AUDIT ET RÉÉVALUATION · MAQUETTE AD</text>
+  <text class="title" x="62" y="116">Score de risque PingCastle</text>
+  <text class="note" x="62" y="154">Comparaison du même laboratoire avant et après les corrections documentées</text>
+  <text class="label" x="64" y="236">Avant</text>
+  <rect x="221" y="200" width="770" height="52" rx="10" fill="#24404a"/>
+  <rect x="221" y="200" width="731.5" height="52" rx="10" fill="#ef826d"/>
+  <text class="value" x="1006" y="239">95/100</text>
+  <text class="label" x="64" y="334">Après</text>
+  <rect x="221" y="299" width="770" height="52" rx="10" fill="#24404a"/>
+  <rect x="221" y="299" width="154" height="52" rx="10" fill="#74d9bb"/>
+  <text class="value" x="1006" y="338">20/100</text>
+  <path d="M221 381H991" stroke="#56727b" stroke-width="2"/>
+  <text class="tick" x="213" y="408">0</text><text class="tick" x="953" y="408">100</text>
+  <text class="note" x="62" y="458">Score de l'outil, pas un pourcentage de sécurité · des écarts subsistent après l'audit.</text>
+  <text class="note" x="62" y="487">Graphique recréé, sans capture ni rapport brut du domaine.</text>
+</svg>
