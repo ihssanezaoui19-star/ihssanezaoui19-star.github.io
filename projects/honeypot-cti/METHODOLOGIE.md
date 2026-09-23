@@ -1,33 +1,53 @@
-# Méthodologie — observation des attaques par honeypot et CTI
+# Méthodologie — honeypot sur mesure et analyse CTI
 
-> Synthèse fondée sur la description du PFE par son auteure, sans rapport ni dépôt du code source accessibles dans les GitHub connectés. Le schéma est une reconstruction, pas une capture de l'environnement réel.
+> Cette reconstruction publique s'appuie sur la description du PFE par son auteure. Aucun code, rapport interne ni jeu de PCAP du PFE n'est accessible dans les dépôts GitHub connectés. Elle explique la démarche sans attribuer au projet des mesures ou déploiements non vérifiables.
 
-## 1. Poser une question d'observation
+## 1. Formuler la question de recherche
 
-Étudier les attaques reçues par des services simulés en contexte marocain, avec deux usages distincts : reproduire un service proche d'un client et rapprocher une CVE publique de la première tentative observée sur **notre propre capteur**. L'objectif est exploratoire ; une seule infrastructure ne mesure pas l'ensemble des attaques d'un pays.
+**Ce que nous cherchions :** observer les attaques sur des services simulés proches de ceux d'une entreprise au Maroc, suivre la chaîne après une première interaction, et examiner le délai entre une référence publique à une CVE et la première tentative visible sur un capteur du projet.
 
-## 2. Évaluer les honeypots existants
+**Pourquoi :** compter des connexions seules ne dit pas ce que l'attaquant a tenté, quel service était concerné ni si une vulnérabilité précise était visée. Une observation depuis un capteur ne décrit pas, à elle seule, toutes les attaques au Maroc.
 
-Comparer les capteurs T-Pot/Cowrie aux besoins de personnalisation, aux traces recherchées et à la possibilité de simuler le parcours après un accès initial. Les écarts observés dans ce contexte ont conduit à définir un capteur sur mesure. T-Pot reste une étape d'étude, pas la description de tout le produit final.
+## 2. Étudier les outils avant l'installation définitive
 
-## 3. Concevoir le service et son environnement
+Nous avons examiné et testé T-Pot et ses capteurs, notamment Cowrie. Nous avons confronté leurs services simulables et les traces produites à nos scénarios : service spécifique d'un client, vulnérabilités connues et visibilité sur le parcours après le point d'entrée. Les limites rencontrées pour ce besoin ont motivé le développement d'un honeypot propre au projet.
 
-Placer le service simulé derrière un pare-feu, puis représenter un réseau interne de laboratoire afin d'observer plusieurs étapes d'une séquence. Les vulnérabilités connues servent à construire et tester des scénarios dans un périmètre isolé. Les règles de filtrage doivent éviter qu'un service exposé devienne un point de rebond vers une infrastructure réelle.
+**Pourquoi :** une solution connue peut fournir beaucoup de données sans représenter correctement la question posée. Le choix du capteur doit suivre les services à observer et les événements nécessaires à l'analyse ; T-Pot était une étape d'évaluation, pas le nom du produit final.
+
+## 3. Dessiner le périmètre contrôlé
+
+Nous avons représenté un service exposé derrière un pare-feu et un réseau interne simulé. L'intention était de suivre, dans la maquette, les étapes entre la première interaction avec le service, les événements au pare-feu et les traces produites à l'intérieur. Des CVE connues servaient à construire des scénarios de test pour les services simulés.
+
+**Pourquoi :** le seul journal d'un service exposé n'explique pas nécessairement ce qui arrive ensuite. Le réseau interne de laboratoire donne du contexte ; le filtrage et l'isolation évitent de transformer la maquette en point de rebond vers un vrai système. Le schéma suivant illustre le raisonnement, sans reproduire une topologie ou des adresses de l'entreprise.
 
 ![Parcours d'observation conceptuel](images/parcours-observation.svg)
 
-## 4. Collecter et rapprocher les observations
+## 4. Construire le capteur adapté au cas d'usage
 
-Rassembler journaux applicatifs et traces réseau/PCAP, synchroniser les horodatages, puis rapprocher un événement du service visé et du contexte de vulnérabilité connu. La plateforme CTI rend ce parcours lisible sans imposer qu'une alerte corresponde automatiquement à une attaque attribuée ou réussie.
+Le honeypot développé pour le projet visait à simuler le service retenu et à recueillir les interactions utiles à ce scénario. Nous l'avons intégré dans le parcours d'observation de la maquette, au lieu d'utiliser uniquement les comportements standards des capteurs évalués.
 
-## 5. Organiser les traitements avec n8n
+**Pourquoi :** maîtriser la représentation du service permet de comparer une tentative observée aux conditions du scénario. Le dépôt public ne contient pas le code ni une spécification complète : les protocoles émulés, les vulnérabilités implémentées et la fidélité de la simulation ne sont donc pas détaillés ni revendiqués ici.
 
-Automatiser les tâches répétitives de transfert, enrichissement et présentation des observations dans l'interface. Les détails des workflows et leurs secrets d'intégration ne sont pas disponibles pour la version publique ; aucun connecteur ou indicateur de performance n'est inventé ici.
+## 5. Rassembler trafic, journaux et contexte CTI
 
-## 6. Examiner la question du délai CVE
+Nous avons travaillé sur les traces réseau/PCAP, les événements du service et leur présentation dans une interface CTI. Le rapprochement recherché est : **service visé → événement horodaté → trafic associé → éventuelle CVE pertinente → suite observable dans le laboratoire**.
 
-Pour chaque CVE étudiée, il faudrait consigner la date de référence retenue (publication ou première observation externe), la première tentative effectivement vue sur le service simulé, vérifier le fuseau horaire et calculer la différence. Un événement non reçu peut signifier absence de visibilité plutôt qu'absence d'attaquants. **Le chiffre final n'est pas fourni dans les sources accessibles et n'est donc pas annoncé.**
+**Pourquoi :** une alerte isolée peut être mal interprétée. Recouper les sources aide à reconstruire l'ordre des faits ; il faut vérifier les horloges et distinguer une connexion, une tentative et un succès. Une adresse source ne suffit pas pour attribuer avec certitude l'attaquant ou son pays.
 
-## 7. Valider et préserver les limites
+## 6. Automatiser les traitements récurrents avec n8n
 
-Vérifier les journaux pour un scénario autorisé, la séparation du réseau simulé et la cohérence entre trafic, événement et affichage CTI. Une maquette et un capteur sur mesure rendent certains parcours plus observables ; ils ne prouvent ni attribution géographique certaine ni couverture complète. Les PCAP, adresses d'entreprise, secrets et vulnérabilités exploitées dans l'environnement interne restent hors de cette publication.
+Des flux n8n ont été utilisés pour automatiser des parties répétitives de la collecte, du rapprochement et de la présentation dans l'interface. L'objectif était de garder une chaîne plus régulière lorsque plusieurs événements sont observés.
+
+**Pourquoi :** déplacer manuellement des traces entre composants ralentit l'analyse et crée des oublis. Les workflows, connecteurs, secrets et mesures de fiabilité n'étant pas publics, je ne décris pas un déclencheur précis ou un taux d'automatisation non vérifié.
+
+## 7. Examiner le délai relatif à une CVE
+
+La question de recherche imposait de choisir une date de référence pour chaque CVE (par exemple publication ou première observation externe), d'identifier la première tentative **effectivement vue sur notre service simulé**, de normaliser les horodatages et de comparer ces instants.
+
+**Pourquoi :** « première attaque » ne peut signifier ici que « première tentative observée par notre dispositif », avec la date de référence explicitée. Une CVE non observée n'établit pas qu'aucun attaquant ne l'a utilisée. Aucun délai chiffré n'est publié dans les sources accessibles.
+
+## 8. Vérifier et exposer les limites
+
+Un essai autorisé devrait montrer que le service génère bien un événement, que la trace réseau peut être reliée au même instant, que l'interface restitue le parcours et que l'isolation demeure effective. Les données brutes, adresses, secrets et détails des vulnérabilités exposées dans l'environnement interne restent hors de cette publication.
+
+**Résultat présenté honnêtement :** conception d'un capteur et d'une maquette propres au scénario, interface CTI et automatisation décrites par l'auteure ; pas de statistiques d'attaque, de délai CVE mesuré, de couverture nationale ou de performance démontrée ici.
