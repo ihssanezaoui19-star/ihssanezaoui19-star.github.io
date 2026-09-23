@@ -1,25 +1,47 @@
-# Méthodologie — datacenter virtualisé en cours
+# Méthodologie — datacenter virtualisé (travail en cours)
 
-> Cette page est un journal de démarche, pas un compte rendu de résultats. Elle se fonde sur la description du laboratoire personnel ; aucun dépôt ni rapport de déploiement n'a été trouvé sur le GitHub connecté.
+> Journal de conception fondé sur la description du laboratoire personnel. Aucun rapport de déploiement ou résultat de bascule n'est disponible sur le GitHub connecté. Chaque étape indique ce qui est engagé et ce qui reste à vérifier.
 
-## 1. Définir les services critiques du scénario
+## 1. Décrire l'entreprise fictive et les services attendus
 
-Identifier les services de l'entreprise fictive, leurs utilisateurs et leurs dépendances réseau/système. Dessiner quelles ressources deviennent indisponibles si l'hôte virtuel, le réseau ou l'identité centralisée tombe.
+**Engagé :** poser le scénario de l'entreprise, les services à héberger et les dépendances entre réseau, machines et administration. Dessiner les premiers schémas avant de multiplier les VMs.
 
-## 2. Concevoir les segments et machines
+**Pourquoi :** sans service à protéger ni utilisateur défini, une « haute disponibilité » resterait un mot sur un dessin. Une panne d'identité, de réseau ou d'hôte n'a pas le même effet selon l'application.
 
-Séparer les rôles et interfaces dans VMware Workstation Pro ; noter les flux qui doivent traverser les zones. Les premiers schémas et le montage progressif des VMs constituent l'étape en cours. La présence d'une VM ne démontre pas une redondance.
+**À vérifier ensuite :** dresser une liste finale des services critiques et des conditions de fonctionnement normal observables.
 
-![Architecture de travail avec statut des validations](images/architecture-en-cours.svg)
+## 2. Séparer les réseaux et les rôles sous VMware Workstation Pro
 
-## 3. Définir les contrôles de sécurité
+**Engagé :** préparer progressivement machines virtuelles, interfaces et réseaux virtuels correspondant aux zones du schéma. Noter quel flux doit traverser quelle zone et quels composants partagent le même hôte physique.
 
-Lister les règles réseau, accès d'administration, sauvegardes et journaux nécessaires à une récupération. Avant toute restriction, vérifier quelles applications dépendent d'un flux, afin de ne pas créer une panne avec une règle de sécurité.
+**Pourquoi :** la segmentation permet d'étudier les autorisations et les dépendances. Plusieurs VMs sur un seul ordinateur restent exposées à la panne de cet ordinateur ; elles ne suffisent pas à prouver une tolérance aux pannes matérielles.
 
-## 4. Préparer les essais de panne et de reprise
+![Schéma de travail : conception et validations futures](images/architecture-en-cours.svg)
 
-Pour chaque scénario : relever un état fonctionnel initial, interrompre un seul composant, observer l'effet sur les services, restaurer ou basculer selon l'architecture installée, puis mesurer l'interruption et vérifier l'intégrité des données. Documenter aussi les échecs. **Cette matrice décrit les tests à réaliser, pas des résultats déjà obtenus.**
+**À vérifier ensuite :** comparer le diagramme à la topologie réellement installée et tester un flux autorisé et un flux refusé pour chaque séparation importante.
 
-## 5. Publier ensuite des preuves vérifiables
+## 3. Définir supervision, accès et sauvegardes avant les pannes
 
-Après exécution, conserver un diagramme de la version réellement déployée, des captures de configuration sans secrets, un tableau des incidents simulés et les mesures de reprise. Les distinguer du schéma de conception initial et des objectifs de disponibilité.
+**Prévu dans le plan :** identifier les accès d'administration, journaux, sauvegardes et services nécessaires à une reprise, sans présumer de leur déploiement complet.
+
+**Pourquoi :** une panne est difficile à expliquer sans état initial et sans journaux. Une restriction réseau mal choisie peut elle-même provoquer une interruption ; chaque règle doit être examinée au regard des services qui en dépendent.
+
+**À vérifier ensuite :** conserver une configuration de référence et tester une restauration sur la maquette avant de la présenter comme fonctionnelle.
+
+## 4. Préparer une matrice d'essais de panne
+
+Pour chaque scénario retenu, la méthode prévue est : relever l'état du service et les journaux, couper **un seul composant**, observer ce qui reste accessible, rétablir ou basculer selon les mécanismes effectivement installés, puis mesurer le temps d'interruption et vérifier les données.
+
+| Scénario à tester | Question posée | Preuve à conserver |
+| --- | --- | --- |
+| Arrêt d'une VM de service | Existe-t-il une instance ou un chemin de secours opérationnel ? | Heure de coupure, accessibilité du service, heure de retour |
+| Perte d'un réseau virtuel | Quel service dépend de cette liaison ? | Traces des deux zones et du routage après coupure |
+| Restauration d'une sauvegarde | Les données et permissions reviennent-elles correctement ? | Procédure suivie et contrôle fonctionnel après restauration |
+
+**État :** ces lignes sont un protocole d'essai, pas des pannes simulées avec succès ni une mesure de PRA déjà obtenue.
+
+## 5. Rendre les résultats vérifiables après exécution
+
+Publier le diagramme de la version installée, les captures de configuration dépourvues de secrets, les conditions du test, les heures relevées, les erreurs rencontrées et le contrôle du service après retour. Comparer le résultat aux objectifs initialement définis.
+
+**Résultat disponible aujourd'hui :** scénario, schéma de travail et plan de validation. Le déploiement complet, la bascule et la reprise restent à démontrer ; aucun taux de disponibilité ni temps de restauration n'est annoncé.
