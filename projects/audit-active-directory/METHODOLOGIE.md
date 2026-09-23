@@ -2,6 +2,14 @@
 
 > Cas de laboratoire réalisé pendant un stage en 2025. Les noms, identifiants et adresses du rapport d'origine ont été retirés. Les captures sont de vrais extraits **recadrés** du rapport ; les commandes administratives reproduites ci-dessous n'incluent aucune valeur propre à l'entreprise. Les résultats concernent la maquette, sans validation en production.
 
+## Fil conducteur
+
+| Action | Pourquoi nous l'avons faite | Ce qu'elle a permis de vérifier |
+| --- | --- | --- |
+| Construire un domaine de test et auditer avec PingCastle | Reproduire un cas client sans toucher à un annuaire de production | Écarts initiaux et score de risque de la maquette |
+| Effectuer des scénarios autorisés et réunir les journaux dans Wazuh | Relier les faiblesses à des activités observables | Alertes sur plusieurs tests, avec limites de couverture |
+| Étudier l'impact puis appliquer les corrections | Éviter qu'un durcissement coupe l'authentification, les partages ou les services | État après changement, contrôles fonctionnels et nouvel audit |
+
 ## 1. Définir le périmètre et la question à résoudre
 
 **Question :** dans un domaine AD de test qui présente des paramètres peu restrictifs, quels écarts facilitent les abus, quelles traces permettent de les détecter et comment réduire les risques sans casser les usages légitimes ? Le projet simule une situation client dans une maquette isolée. Les scénarios offensifs autorisés servent à vérifier un risque et la visibilité sur celui-ci ; ils ne visent pas un système tiers.
@@ -20,6 +28,8 @@ Sur Proxmox, nous avons préparé un contrôleur de domaine Windows Server 2022 
 
 **Vérification :** services du domaine accessibles dans la maquette, postes joints et plateforme de supervision opérationnelle. Le schéma représente les rôles sans révéler le plan d'adressage original.
 
+**Pourquoi cette maquette :** les droits, GPO et protocoles hérités peuvent être testés et modifiés sans affecter des utilisateurs réels. Le poste ancien permet d'examiner les dépendances qui rendraient certaines corrections risquées sur un domaine de production.
+
 ![Architecture du laboratoire sans noms ni adresses](images/architecture-laboratoire.svg)
 
 ## 4. Mesurer l'état initial avec PingCastle
@@ -27,6 +37,8 @@ Sur Proxmox, nous avons préparé un contrôleur de domaine Windows Server 2022 
 J'ai lancé un Health Check sur le domaine simulé et examiné les recommandations plutôt que de m'arrêter au chiffre global. Le score initial était **95/100** (un chiffre élevé indique davantage de risque selon l'outil). Les écarts retenus pour le travail comprenaient notamment des droits trop larges sur des objets ou GPO, des comptes privilégiés mal protégés, SMBv1 ou LM/NTLMv1, des objets anciens, une politique de mots de passe faible, l'absence de LAPS et une politique d'audit insuffisante.
 
 **Livrable :** une liste de corrections priorisées et des vérifications à refaire après chaque famille de changements. Les rapports HTML/XML bruts de PingCastle restent privés.
+
+**Pourquoi lire les familles d'écarts :** le score global classe le risque, mais n'indique pas quelles applications utilisent encore NTLM ou SMBv1 ni quels comptes dépendent d'une délégation. Les décisions de mitigation se prennent à partir des objets et usages concernés.
 
 ## 5. Tester les faiblesses pour comprendre leur impact
 
