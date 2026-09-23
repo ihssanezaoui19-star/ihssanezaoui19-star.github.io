@@ -19,20 +19,26 @@
     <main>
       <section class="hero" id="accueil" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <div class="eyebrow"><span class="live-dot"></span> PORTFOLIO / INGÉNIEURE JUNIOR</div>
-          <h1 id="hero-title">Des réseaux fiables.<br><span>Une sécurité observable.</span></h1>
-          <p class="intro">Je suis Ihssane Zaoui, ingénieure diplômée de l’ENSA Kénitra. Chez IVENTEQ, j’ai travaillé sur l’infrastructure virtualisée, l’audit Active Directory et un projet de honeypot sur mesure avec interface CTI. J’aime relier l’architecture réseau aux traces qui permettent de comprendre une attaque.</p>
+          <div class="eyebrow"><span class="live-dot"></span> INGÉNIEURE DIPLÔMÉE · ENSA KÉNITRA</div>
+          <h1 id="hero-title">Ihssane Zaoui<span class="name-dot">.</span><br><span>Réseaux & cybersécurité.</span></h1>
+          <p class="intro">Je conçois des architectures réseau, sécurise les accès et analyse les événements de sécurité. Mes stages et projets m’ont amenée à travailler avec Proxmox, les pare-feux et VPN, Active Directory, Wazuh et les traces PCAP. Je cherche un premier poste en sécurité réseau, SOC / Blue Team ou infrastructure.</p>
           <div class="hero-actions"><a class="button-primary" href="mailto:ihssanezaoui19@gmail.com?subject=Opportunit%C3%A9%20r%C3%A9seaux%20ou%20cybers%C3%A9curit%C3%A9">Me contacter <span aria-hidden="true">↗</span></a><a class="button-text" href="#projets">Explorer mes projets <span aria-hidden="true">↓</span></a></div>
           <p class="hero-meta">Basée au Maroc · Mobile · Ouverte aux opportunités junior</p>
         </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="art-grid"></div><div class="art-glow"></div>
-          <div class="diagram-card">
-            <div class="diagram-top"><span class="tiny-label">SECURITY OPERATIONS / LAB</span><span class="signal-bars"><i></i><i></i><i></i><i></i></span></div>
-            <div class="diagram-orbit"><div class="orbit orbit-outer"></div><div class="orbit orbit-inner"></div><div class="center-node"><span>IZ</span><small>BLUE TEAM</small></div><span class="satellite s1"></span><span class="satellite s2"></span><span class="satellite s3"></span><span class="satellite s4"></span></div>
-            <div class="diagram-bottom"><span><b class="square mint"></b> DÉTECTION</span><span><b class="square blue"></b> RÉSEAUX</span><span><b class="square gold"></b> INFRASTRUCTURE</span></div>
+        <div class="hero-art" role="img" aria-label="Schéma conceptuel des compétences : accès réseau et VPN, pare-feu, zones segmentées puis analyse des journaux et du trafic.">
+          <div class="topology-panel">
+            <div class="topology-head"><span>RÉSEAUX <b>/</b> CYBERSÉCURITÉ</span><span class="topology-head-mark">IZ · 01</span></div>
+            <div class="topology-flow">
+              <div class="topology-node topology-access"><span class="topology-icon" aria-hidden="true">↔</span><div><span class="node-step">01 · ACCÈS & TRANSPORT</span><strong>Routage · VPN · SD-WAN</strong></div></div>
+              <div class="topology-link" aria-hidden="true"></div>
+              <div class="topology-node topology-firewall"><span class="topology-icon" aria-hidden="true">▤</span><div><span class="node-step">02 · CONTRÔLE DES FLUX</span><strong>Pare-feu · règles · MFA</strong></div><span class="node-status">FILTRER</span></div>
+              <div class="topology-branch" aria-hidden="true"></div>
+              <div class="topology-zones"><div class="topology-node topology-zone"><span class="node-step">03 · INFRASTRUCTURE</span><strong>VLAN · AD · Proxmox</strong></div><div class="topology-node topology-zone"><span class="node-step">04 · SERVICES</span><strong>DMZ · honeypot · proxy</strong></div></div>
+              <div class="topology-converge" aria-hidden="true"></div>
+              <div class="topology-node topology-detection"><span class="topology-icon" aria-hidden="true">⌁</span><div><span class="node-step">05 · VISIBILITÉ</span><strong>Wazuh · Suricata · PCAP</strong></div><span class="node-status">ANALYSER</span></div>
+            </div>
+            <div class="topology-foot"><span class="topology-pulse" aria-hidden="true"></span> COMPÉTENCES PRATIQUÉES EN STAGE ET EN LABORATOIRE <span>↗</span></div>
           </div>
-          <div class="vertical-note">SEGMENTER <span>·</span> OBSERVER <span>·</span> ANALYSER</div>
         </div>
       </section>
 
@@ -44,16 +50,17 @@
 
       <section class="profile section-pad" id="profil" aria-labelledby="profile-title">
         <div class="profile-main"><div class="section-kicker"><span>02 /</span> PROFIL & CONTACT</div><h2 id="profile-title">À la croisée du réseau<br>et de la défense<span class="heading-dot">.</span></h2><p>Mon expérience ne se limite pas aux projets présentés : j’ai installé un serveur Proxmox, configuré des accès VPN, analysé du trafic et des PCAP, dessiné des architectures et étudié les outils avant leur déploiement. Je recherche un premier poste en SOC, Blue Team, sécurité réseau ou infrastructure où je pourrai poursuivre ce travail concret.</p><a class="button-primary light" href="mailto:ihssanezaoui19@gmail.com?subject=Opportunit%C3%A9%20r%C3%A9seaux%20ou%20cybers%C3%A9curit%C3%A9">Parlons de votre équipe <span aria-hidden="true">↗</span></a></div>
-        <div class="profile-side"><div class="skill-group"><h3>Détection & analyse</h3><p>T-Pot, Wazuh, ELK, Suricata, Wireshark, OpenCTI, MITRE ATT&CK</p></div><div class="skill-group"><h3>Réseaux & sécurité</h3><p>TCP/IP, VLAN, OSPF, BGP, VPN IPsec, OPNsense, FortiGate, Cisco</p></div><div class="skill-group"><h3>Systèmes & virtualisation</h3><p>Linux, Windows Server, Active Directory, VMware, Proxmox, Docker</p></div><a class="github-link" href="https://github.com/ihssanezaoui19-star" target="_blank" rel="noopener noreferrer">Profil GitHub <span aria-hidden="true">↗</span></a></div>
+        <div class="profile-side"><div class="skill-group"><h3>Détection & investigation</h3><p>Wazuh, Sysmon, Suricata, Wireshark, PCAP, interface CTI</p></div><div class="skill-group"><h3>Réseaux & sécurité</h3><p>TCP/IP, VLAN, BGP, MPLS, VPN IPsec / OpenVPN, OPNsense, FortiGate</p></div><div class="skill-group"><h3>Systèmes & virtualisation</h3><p>Windows Server, Active Directory, GPO, Linux, Proxmox, VMware, PowerShell</p></div><a class="github-link" href="https://github.com/ihssanezaoui19-star" target="_blank" rel="noopener noreferrer">Profil GitHub <span aria-hidden="true">↗</span></a></div>
         <div class="experience" id="stages">
           <div class="experience-intro"><div class="section-kicker"><span>03 /</span> EXPÉRIENCE PRATIQUE</div><h2>Ce que je peux apporter<span class="heading-dot">.</span></h2><p>Des compétences mises en pratique en stage et en laboratoire, à développer au sein d’une équipe réseaux ou sécurité.</p></div>
           <div class="capabilities" aria-label="Compétences mises en pratique">
-            <div class="capability"><span class="capability-num">01</span><div><h3>Administrer des systèmes</h3><p>Configurer Windows Server, Active Directory, GPO, DNS/DHCP et Linux ; gérer les accès et diagnostiquer les incidents courants.</p></div></div>
-            <div class="capability"><span class="capability-num">02</span><div><h3>Sécuriser les flux réseau</h3><p>Segmenter des réseaux, configurer des règles OPNsense et des accès VPN, puis vérifier les communications autorisées.</p></div></div>
-            <div class="capability"><span class="capability-num">03</span><div><h3>Observer et investiguer</h3><p>Lire des PCAP et des journaux, rapprocher trafic et alertes avec Wireshark, Wazuh et ELK, puis présenter les observations dans une interface CTI.</p></div></div>
-            <div class="capability"><span class="capability-num">04</span><div><h3>Concevoir avant de déployer</h3><p>Étudier les outils, dessiner une architecture, installer Proxmox et les machines virtuelles, puis tester et documenter la maquette.</p></div></div>
+            <div class="capability"><span class="capability-num">01</span><div><h3>Concevoir et segmenter un réseau</h3><p>Dessiner les zones, préparer les VLAN et les flux, puis vérifier les règles de pare-feu OPNsense ou FortiGate.</p></div></div>
+            <div class="capability"><span class="capability-num">02</span><div><h3>Déployer une infrastructure virtualisée</h3><p>Installer Proxmox, préparer des VMs Windows et Linux, configurer AD DS, DNS et DHCP dans une maquette.</p></div></div>
+            <div class="capability"><span class="capability-num">03</span><div><h3>Sécuriser les accès distants</h3><p>Configurer des VPN, des certificats et des autorisations ciblées ; tester les effets des règles sur les accès utiles.</p></div></div>
+            <div class="capability"><span class="capability-num">04</span><div><h3>Auditer et durcir Active Directory</h3><p>Lire les écarts PingCastle, tester leur impact, puis corriger avec PowerShell ou GPO après analyse des dépendances.</p></div></div>
+            <div class="capability"><span class="capability-num">05</span><div><h3>Détecter et investiguer</h3><p>Recouper événements Wazuh / Sysmon, alertes Suricata et PCAP Wireshark pour expliquer une activité suspecte.</p></div></div>
+            <div class="capability"><span class="capability-num">06</span><div><h3>Documenter et automatiser</h3><p>Comparer les outils avant installation, produire des schémas, consigner les tests et automatiser des traitements CTI avec n8n.</p></div></div>
           </div>
-          <div class="shared-work"><span>CHEZ IVENTEQ · TRAVAUX TRANSVERSES AUX DEUX STAGES</span><p>Installation et administration d’un serveur Proxmox, configuration de VPN, analyse de trafic et de fichiers PCAP, réalisation de schémas d’architecture et états de l’art comparant les outils avant leur installation.</p></div>
           <div class="internships" aria-labelledby="internships-title"><div class="internships-head"><h3 id="internships-title">Stages sélectionnés</h3><p>Interventions et résultats documentés</p></div>
             <ol class="internship-list">
               <li><div class="internship-date">FÉV. — JUIN 2026</div><div class="internship-content"><h4>Ingénieure stagiaire PFE · Réseaux & sécurité</h4><p class="internship-place">IVENTEQ · Mohammedia</p><p><strong>Enjeu.</strong> Observer les attaques au Maroc sur des services représentatifs d’un client, suivre les étapes après un premier accès et étudier les tentatives visant des vulnérabilités connues.</p><p><strong>Intervention.</strong> Étude initiale des outils, essai de T-Pot puis création d’un honeypot adapté au cas d’usage ; simulation de services et d’un réseau interne derrière un pare-feu ; analyse des traces et PCAP ; développement d’une interface CTI et automatisation avec n8n.</p><p><strong>Résultat.</strong> Un environnement de test plus adapté à la question de recherche que T-Pot seul, avec collecte d’événements et visualisation de la chaîne observée. Les délais liés aux CVE étudiées concernent uniquement les tentatives vues dans ce dispositif.</p></div></li>
