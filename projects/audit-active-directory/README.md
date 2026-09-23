@@ -2,9 +2,19 @@
 
 **Projet de stage (2025) - maquette de laboratoire simulant un cas client.** Ce dépôt présente mon travail sur la sécurité d'un domaine Active Directory, de l'état initial à la vérification des corrections. Il ne décrit pas une intervention sur l'annuaire de production d'un client.
 
+## But du projet
+
+Auditer un domaine de test volontairement vulnérable, vérifier par des scénarios autorisés ce que ces faiblesses permettent et ce que Wazuh peut observer, puis durcir l'annuaire **après analyse des effets possibles sur les services**. Un nouvel audit devait montrer ce qui avait changé et les risques encore présents.
+
 ## Problématique
 
 Une configuration AD insuffisamment contrôlée peut cumuler des droits excessifs, des protocoles hérités, une politique de comptes trop permissive et une journalisation incomplète. Comment montrer l'effet concret de ces faiblesses, détecter les actions suspectes et corriger **sans interrompre les services qui dépendent de l'annuaire** ?
+
+## Résultat observé
+
+Dans la maquette, le score de risque PingCastle est passé de **95/100 à 20/100** après corrections ; des écarts demeurent. Plusieurs scénarios contrôlés ont produit des alertes Wazuh. Ce score est l'indicateur de l'outil sur le laboratoire : **ce n'est ni un pourcentage de sécurité ni un résultat obtenu dans l'annuaire d'un client**. Le rapport ne mesure pas le délai de détection ou les faux positifs.
+
+![Comparaison anonymisée des scores PingCastle](images/score-avant-apres.svg)
 
 ## Ce que j'ai réalisé
 
@@ -32,12 +42,6 @@ PingCastle signalait des écarts de configuration, mais ce diagnostic ne montrai
 Une recommandation de sécurité peut aussi perturber un système : désactiver NTLMv1 ou SMBv1 peut casser une application ancienne ; changer des droits GPO ou des comptes de service peut bloquer une tâche ; supprimer le spooler empêche l'impression locale. La méthode documentée est donc **constat → vérification des usages et de l'impact → sauvegarde/retour arrière si nécessaire → correction contrôlée → validation fonctionnelle et nouvel audit**. Les changements effectués dans cette maquette ne sont pas des consignes à appliquer tels quels à un domaine de production.
 
 Les corrections et leurs contrôles sont détaillés dans la [méthodologie pas à pas](METHODOLOGIE.md), avec des extraits des commandes employées et des captures de la maquette.
-
-## Résultat et limites
-
-Le score de risque PingCastle du laboratoire est passé de **95/100 à 20/100**. Ce score est un indicateur de l'outil sur l'environnement audité, pas un pourcentage de sécurité ni une preuve que tous les risques ont disparu. Les tests de supervision ont produit des alertes sur plusieurs scénarios simulés. Le rapport ne mesure pas le délai de détection, le taux de faux positifs ou la performance en production ; certaines corrections restent des recommandations pour un environnement réel.
-
-![Comparaison anonymisée des scores PingCastle](images/score-avant-apres.svg)
 
 ## Documentation
 
