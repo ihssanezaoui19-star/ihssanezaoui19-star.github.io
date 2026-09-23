@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Parcours d'observation du honeypot sur mesure</title><desc id="desc">Des tentatives atteignent un pare-feu et un service simulé ; des traces du réseau interne de laboratoire alimentent l'interface CTI, avec automatisation n8n.</desc>
+  <rect width="960" height="420" rx="22" fill="#0b1727"/>
+  <text x="34" y="48" fill="#f5f9ff" font-family="Arial,sans-serif" font-size="24" font-weight="700">Honeypot et CTI · parcours de laboratoire</text>
+  <text x="34" y="78" fill="#aec5d3" font-family="Arial,sans-serif" font-size="15">Schéma reconstruit depuis la description du projet · aucun trafic réel reproduit</text>
+  <g fill="none" stroke="#61c7ba" stroke-width="3"><path d="M247 195 H283 M493 195 H529 M739 195 H775 M635 243 V296 H457"/></g>
+  <g fill="#1b344a" stroke="#65bed3" stroke-width="2"><rect x="31" y="144" width="216" height="102" rx="13"/><rect x="283" y="144" width="210" height="102" rx="13"/><rect x="529" y="144" width="210" height="102" rx="13"/><rect x="775" y="144" width="155" height="102" rx="13"/></g>
+  <g fill="#f4f8ff" font-family="Arial,sans-serif" font-size="18" font-weight="700" text-anchor="middle"><text x="139" y="185">Tentatives</text><text x="388" y="185">Pare-feu</text><text x="634" y="185">Service simulé</text><text x="851" y="185">CTI</text></g>
+  <g fill="#b8d1df" font-family="Arial,sans-serif" font-size="13" text-anchor="middle"><text x="139" y="213">Sur les services exposés</text><text x="388" y="213">Périmètre de test</text><text x="634" y="213">Honeypot sur mesure</text><text x="851" y="213">Analyse</text></g>
+  <rect x="240" y="296" width="369" height="84" rx="12" fill="#26374e" stroke="#8dacf0" stroke-width="2"/>
+  <text x="425" y="328" text-anchor="middle" fill="#f5f9ff" font-family="Arial,sans-serif" font-size="17" font-weight="700">Réseau interne simulé · traces</text>
+  <text x="425" y="355" text-anchor="middle" fill="#bed0e8" font-family="Arial,sans-serif" font-size="14">Journaux et PCAP · traitements n8n</text>
+</svg>

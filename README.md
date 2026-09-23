@@ -2,14 +2,17 @@
 
 [Voir le portfolio en ligne](https://ihssanezaoui19-star.github.io/)
 
-Portfolio professionnel en français consacré aux projets et stages en réseaux, infrastructure et cybersécurité.
+Portfolio de projets et stages en réseaux, infrastructure et cybersécurité. Les fiches sont filtrables par SOC, Blue Team, sécurité réseau et infrastructure.
 
-## Contenu
+## Projets et documentation
 
-- Projets filtrables par SOC, Blue Team, sécurité réseau et infrastructure.
-- Fiches de projets : problématique, architecture, outils, travail réalisé, résultats et liens disponibles.
-- Présentation des stages et des compétences.
+| Projet | Synthèse | Méthodologie |
+| --- | --- | --- |
+| Honeypot sur mesure et interface CTI | [README](projects/honeypot-cti/README.md) | [Étapes](projects/honeypot-cti/METHODOLOGIE.md) |
+| Datacenter virtualisé (en cours) | [README](projects/datacenter-virtualise/README.md) | [Plan et validations à venir](projects/datacenter-virtualise/METHODOLOGIE.md) |
+| Architecture réseau segmentée | [README du dépôt](https://github.com/ihssanezaoui19-star/Architecture-R-seau-S-curis-e-) | [Étapes](https://github.com/ihssanezaoui19-star/Architecture-R-seau-S-curis-e-/blob/main/METHODOLOGIE.md) |
+| WAN hybride MPLS/SD-WAN | [README du dépôt](https://github.com/ihssanezaoui19-star/Hybrid-SD-WAN-MPLS-Architecture-Deployment) | [Étapes](https://github.com/ihssanezaoui19-star/Hybrid-SD-WAN-MPLS-Architecture-Deployment/blob/main/METHODOLOGIE.md) |
+| Audit et durcissement Active Directory | [README](projects/audit-active-directory/README.md) | [Étapes](projects/audit-active-directory/METHODOLOGIE.md) |
+| Investigation DFIR WeatherZero | [README du dépôt](https://github.com/ihssanezaoui19-star/DFIR-Compromised-System-Analysis-WeatherZero-Malware) | [Étapes](https://github.com/ihssanezaoui19-star/DFIR-Compromised-System-Analysis-WeatherZero-Malware/blob/main/METHODOLOGIE.md) |
 
-## Projet documenté
-
-- [Audit et durcissement d'Active Directory](projects/audit-active-directory/README.md) : maquette anonymisée, score PingCastle 95/100 → 20/100, [méthodologie détaillée](projects/audit-active-directory/METHODOLOGIE.md) et trois schémas.
+Les résultats sont distingués des objectifs et des travaux encore en cours. Le rapport AD d'origine n'est pas publié ; les rapports déjà présents dans les autres dépôts demandent une revue de confidentialité avant toute diffusion supplémentaire.

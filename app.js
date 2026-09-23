@@ -10,8 +10,9 @@ const projects = [
     architecture: ['Services et réseau d’entreprise simulés', 'Pare-feu et honeypot sur mesure', 'Traces réseau, PCAP et journaux', 'Interface CTI et automatisation n8n'],
     tools: 'Proxmox, Linux, pare-feu, T-Pot / Cowrie évalués au départ, honeypot développé pour le cas d’usage, analyse PCAP, Elasticsearch / Kibana, interface CTI et n8n.',
     work: 'Nous avons commencé par étudier les outils et déployer T-Pot, puis identifié ses limites pour notre question de recherche. Nous avons créé notre propre honeypot capable de simuler un service client, préparé une maquette avec pare-feu et réseau interne, et utilisé des scénarios contrôlés autour de vulnérabilités connues pour observer les étapes d’une attaque. J’ai contribué à l’architecture, au déploiement, à l’analyse du trafic et des PCAP, au développement de l’interface CTI et à l’automatisation des traitements avec n8n.',
-    outcome: 'Cette approche a donné une vue plus adaptée que T-Pot seul : attaques collectées sur des services simulés, étapes observables dans la maquette et événements regroupés dans l’interface CTI. Nous avons pu comparer la date de publication de CVE connues aux premières tentatives observées dans notre dispositif ; ce délai mesuré localement ne représente pas toutes les attaques sur Internet.',
-    evidence: 'Projet de stage : les données d’attaque et la documentation interne ne sont pas publiées. Mon profil GitHub est disponible ci-dessous, sans dépôt spécifique vérifié pour ce projet.'
+    outcome: 'Cette approche a donné une vue adaptée aux services simulés : des événements collectés et rapprochés dans une interface CTI. Le rapprochement entre une CVE et la première tentative visible sur le capteur était une question étudiée ; aucun délai chiffré ni mesure représentative de toutes les attaques au Maroc n’est publié.',
+    evidence: 'Synthèse et méthodologie publiques ; données d’attaque, code du PFE et rapport interne non disponibles dans les dépôts accessibles.',
+    url: 'https://github.com/ihssanezaoui19-star/ihssanezaoui19-star.github.io/tree/main/projects/honeypot-cti'
   },
   {
     number: '02', title: 'Datacenter virtualisé & haute disponibilité', short: 'Laboratoire en cours : simuler une infrastructure d’entreprise et préparer des tests de disponibilité.',
@@ -23,7 +24,8 @@ const projects = [
     tools: 'VMware Workstation Pro ; composants réseau et systèmes définis au fil du laboratoire.',
     work: 'J’ai rédigé le scénario de l’entreprise fictive et esquissé l’architecture réseau, les services et les scénarios de défaillance. Dans VMware Workstation Pro, je construis progressivement les machines et réseaux virtuels nécessaires aux tests de segmentation, de supervision et de reprise.',
     outcome: 'Le cas d’usage et le plan de laboratoire sont définis ; le déploiement et les validations progressent. Les essais de bascule et de PRA n’ont pas encore produit un résultat final à présenter, et cette maquette ne représente pas une infrastructure de production.',
-    evidence: 'Une démonstration et des résultats de test seront ajoutés après validation du laboratoire.'
+    evidence: 'Plan de laboratoire et méthode documentés ; captures de bascule et mesures PRA à ajouter après les essais.',
+    url: 'https://github.com/ihssanezaoui19-star/ihssanezaoui19-star.github.io/tree/main/projects/datacenter-virtualise'
   },
   {
     number: '03', title: 'Architecture réseau segmentée & supervisée', short: 'Laboratoire documenté : cloisonner les zones, contrôler l’accès distant et réunir les alertes.',
@@ -34,20 +36,22 @@ const projects = [
     architecture: ['Segments LAN / DMZ / invités', 'OPNsense + VPN', 'Suricata et proxy', 'Journaux centralisés Wazuh'],
     tools: 'OPNsense, OpenVPN, Squid, Suricata, Wazuh, VMware.',
     work: 'J’ai conçu les segments LAN, utilisateurs, administration, invités et DMZ ; configuré OPNsense et des règles inter-zones ; mis en place un accès OpenVPN avec MFA, un proxy Squid, Suricata en mode détection et la collecte des journaux dans Wazuh.',
-    outcome: 'Les essais documentés dans le laboratoire montrent des communications autorisées ou bloquées selon les zones, des règles de proxy appliquées, un accès VPN fonctionnel et des journaux/alertes remontés dans Wazuh. Le résultat valide les scénarios de la maquette, sans prétendre couvrir toutes les attaques d’un réseau réel.',
-    evidence: 'Le rapport détaillé porte une mention de confidentialité. Seule cette synthèse sans adresses, identifiants ni configurations est présentée ici.'
+    outcome: 'Le rapport montre des paramètres de segmentation, de proxy, de VPN et de supervision ainsi qu’un refus d’accès Web observé. Le README décrit des écarts trouvés puis corrigés sur les règles d’accès, les alertes et les signatures. Suricata fonctionne ici en détection par copie du trafic ; aucune couverture totale ni réponse automatisée mesurée n’est démontrée.',
+    evidence: 'README et méthodologie anonymisés, schéma et capture recadrée sur GitHub. Le rapport d’origine, déjà présent dans ce dépôt, porte une mention de confidentialité et nécessite une revue séparée.',
+    url: 'https://github.com/ihssanezaoui19-star/Architecture-R-seau-S-curis-e-'
   },
   {
     number: '04', title: 'WAN hybride MPLS & SD-WAN', short: 'Maquette multi-sites : associer routage, tunnels IPsec et politiques de sélection des liens.',
-    type: 'Projet réseau · 2024', status: 'Laboratoire réalisé', categories: ['Sécurité réseau', 'Infrastructure'], color: 'blue',
+    type: 'Projet académique · 2024–2025', status: 'Laboratoire réalisé', categories: ['Sécurité réseau', 'Infrastructure'], color: 'blue',
     tags: ['EVE-NG', 'FortiGate', 'Cisco'],
     problem: 'Une entreprise multi-sites doit maintenir les échanges lorsque les chemins WAN présentent des qualités différentes, tout en protégeant les communications. Le laboratoire devait montrer comment articuler routage interne et externe, tunnels et sélection de liens.',
-    objective: 'Simuler plusieurs sites et deux approches de transport (MPLS et SD-WAN), établir des tunnels IPsec, puis orienter les flux selon des politiques de routage et de performance.',
-    architecture: ['Sites simulés EVE-NG', 'MPLS + SD-WAN', 'BGP / OSPF', 'VPN IPsec'],
-    tools: 'EVE-NG, FortiGate, Cisco, BGP, OSPF, IPsec, QoS.',
-    work: 'J’ai monté une topologie multi-sites dans EVE-NG avec équipements Cisco et FortiGate, configuré BGP/OSPF, des tunnels IPsec et des règles SD-WAN de sélection de chemin.',
-    outcome: 'La topologie configurée réunit les sites dans EVE-NG et permet d’examiner les chemins BGP/OSPF, les tunnels et les décisions SD-WAN selon les politiques choisies. Il s’agit d’une validation de fonctionnement en laboratoire, sans gain de disponibilité ou de latence chiffré.',
-    evidence: 'Projet mentionné dans mon CV. Voir mon profil GitHub pour les travaux publiés ; aucun dépôt précis n’est associé ici sans vérification.'
+    objective: 'Simuler plusieurs sites et deux transports, préparer des tunnels IPsec, configurer des zones SD-WAN et vérifier d’abord les échanges de base avant d’étudier les pannes.',
+    architecture: ['Hub et sites EVE-NG', 'Routeurs MPLS/LDP', 'BGP et FortiGate SD-WAN', 'Tunnels IPsec configurés'],
+    tools: 'EVE-NG, FortiGate, Cisco vIOS, MPLS/LDP, BGP, IPsec. OSPF étudié dans l’état de l’art.',
+    work: 'En binôme, nous avons conçu la maquette multi-sites, préparé le transport MPLS, configuré des paramètres BGP sur les routeurs et FortiGate, créé des zones SD-WAN et documenté les configurations IPsec. Le rapport présente ensuite des tests ping entre postes, passerelles et routeurs.',
+    outcome: 'Les captures montrent la configuration de la topologie et des réponses ICMP pour les cibles testées. Le basculement automatique entre MPLS et Internet reste un objectif : le rapport ne mesure ni panne simulée, ni temps de convergence, ni disponibilité applicative.',
+    evidence: 'README, méthodologie et schéma anonymisés dans le dépôt académique ; la capture de zone SD-WAN ne contient pas les adresses ni la clé de laboratoire.',
+    url: 'https://github.com/ihssanezaoui19-star/Hybrid-SD-WAN-MPLS-Architecture-Deployment'
   },
   {
     number: '05', title: 'Audit AD d’un cas client simulé', short: 'Stage : auditer, superviser et durcir un domaine de laboratoire ; score PingCastle 95 → 20.',
@@ -66,13 +70,14 @@ const projects = [
     number: '06', title: 'Investigation d’un poste Windows', short: 'Étude DFIR : comprendre une activité anormale et choisir une remédiation prudente.',
     type: 'Étude DFIR · 2026', status: 'Investigation réalisée', categories: ['Blue Team', 'SOC'], color: 'gold',
     tags: ['Wireshark', 'Sysinternals', 'DFIR'],
-    problem: 'Un poste Windows présentait des ralentissements et du trafic inhabituel malgré un premier contrôle antivirus sans alerte. Se fier à ce seul contrôle risquait de laisser une activité persistante sur la machine.',
+    problem: 'Un poste Windows présentait des ralentissements et du trafic inhabituel après installation d’un logiciel non vérifié. Un premier scan avait retiré certaines menaces, mais les anomalies persistaient.',
     objective: 'Croiser processus, connexions et artefacts pour déterminer si une persistance était présente et évaluer la fiabilité d’un nettoyage.',
     architecture: ['Observation du poste', 'Analyse processus et trafic', 'Vérification des artefacts', 'Décision de remédiation'],
-    tools: 'Wireshark, Process Explorer, Process Monitor, VirusTotal, Any.Run.',
-    work: 'J’ai examiné les processus avec Process Explorer et Process Monitor, les connexions avec Wireshark et certains artefacts avec VirusTotal et Any.Run. Après identification d’une persistance suspecte, j’ai tenté un nettoyage et évalué le risque résiduel.',
-    outcome: 'L’analyse a mis en évidence une persistance suspecte et a éclairé la décision de remédiation. Après une tentative de nettoyage, la réinstallation complète a été retenue pour repartir d’un système fiable ; aucune preuve de nettoyage définitif par les seules étapes initiales n’est avancée.',
-    evidence: 'Étude résumée dans mon CV. Aucun échantillon ni artefact de la machine n’est publié.'
+    tools: 'Malwarebytes, Wireshark, Sysinternals, PowerShell, netstat, VirusTotal, YARA et Sigma.',
+    work: 'J’ai examiné les résultats du scan initial, le service WeatherZero, les processus et points de démarrage, puis la configuration réseau et des captures Wireshark. J’ai recoupé les indicateurs et exécuté un nettoyage contrôlé du service et de ses fichiers, suivi de vérifications sur tâches, processus, registre et d’un nouveau scan.',
+    outcome: 'La compromission était confirmée par un service persistant ; après nettoyage, aucun indicateur connu n’a été retrouvé avec les contrôles réalisés. Les captures réseau limitées n’ont pas montré de C2 actif. La réinstallation complète reste recommandée pour retrouver un poste fiable, sans être documentée comme effectuée.',
+    evidence: 'README et méthodologie sur le dépôt DFIR, avec schéma de décision reconstruit. Aucun échantillon malveillant ajouté au portfolio.',
+    url: 'https://github.com/ihssanezaoui19-star/DFIR-Compromised-System-Analysis-WeatherZero-Malware'
   }
 ];
 

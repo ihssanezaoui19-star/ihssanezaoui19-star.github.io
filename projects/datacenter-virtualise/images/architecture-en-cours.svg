@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Schéma de travail d'un datacenter virtualisé</title><desc id="desc">Un scénario d'entreprise fictive et des réseaux virtuels sont en construction sous VMware Workstation Pro ; supervision, reprise et bascule restent à valider.</desc>
+  <rect width="960" height="420" rx="22" fill="#0b1727"/>
+  <text x="34" y="47" fill="#f5f9ff" font-family="Arial,sans-serif" font-size="24" font-weight="700">Datacenter virtualisé · laboratoire en cours</text>
+  <text x="34" y="78" fill="#aec5d3" font-family="Arial,sans-serif" font-size="15">Vue de conception · les blocs prévus ne prouvent pas un déploiement terminé</text>
+  <g stroke="#85a7c6" stroke-width="3" fill="none"><path d="M244 205 H292 M518 205 H566 M740 205 H788"/></g>
+  <rect x="34" y="150" width="210" height="111" rx="13" fill="#1e3a4a" stroke="#56cab2" stroke-width="2"/>
+  <rect x="292" y="150" width="226" height="111" rx="13" fill="#1e3a4a" stroke="#56cab2" stroke-width="2"/>
+  <rect x="566" y="150" width="174" height="111" rx="13" fill="#273851" stroke="#90a8eb" stroke-width="2"/>
+  <rect x="788" y="150" width="140" height="111" rx="13" fill="#273851" stroke="#90a8eb" stroke-width="2"/>
+  <g fill="#f3f8ff" font-family="Arial,sans-serif" text-anchor="middle" font-size="18" font-weight="700"><text x="139" y="187">Scénario</text><text x="405" y="187">VMware et réseaux</text><text x="653" y="187">Supervision</text><text x="858" y="187">PRA</text></g>
+  <g fill="#bdcfdf" font-family="Arial,sans-serif" text-anchor="middle" font-size="13"><text x="139" y="216">Besoins fictifs définis</text><text x="405" y="216">Construction progressive</text><text x="653" y="216">À valider</text><text x="858" y="216">À tester</text></g>
+  <rect x="100" y="316" width="760" height="64" rx="11" fill="#172e44" stroke="#5c7e9a"/>
+  <text x="480" y="343" text-anchor="middle" fill="#dae6f1" font-family="Arial,sans-serif" font-size="16">Prochaines preuves : état initial · panne simulée · disponibilité mesurée · retour</text>
+</svg>
