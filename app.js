@@ -28,7 +28,7 @@ const projects = [
     url: 'https://github.com/ihssanezaoui19-star/ihssanezaoui19-star.github.io/tree/main/projects/datacenter-virtualise'
   },
   {
-    number: '03', title: 'Architecture réseau segmentée & supervisée', short: 'Laboratoire documenté : cloisonner les zones, contrôler l’accès distant et réunir les alertes.',
+    number: '03', title: 'Architecture réseau & démarche Zero Trust', short: 'Laboratoire documenté : limiter les accès entre zones, vérifier le VPN et réunir les alertes.',
     type: 'Étude de cas · 2026', status: 'Laboratoire documenté', categories: ['Sécurité réseau', 'SOC', 'Infrastructure'], color: 'gold',
     tags: ['OPNsense', 'Suricata', 'Wazuh'],
     problem: 'Dans le scénario d’entreprise simulée, les utilisateurs, l’administration, les invités et les services exposés ne devaient pas partager les mêmes droits d’accès. Sans séparation claire, filtrage des sorties et journaux communs, un incident dans une zone serait plus difficile à contenir et à retracer.',
@@ -36,8 +36,8 @@ const projects = [
     architecture: ['Segments LAN / DMZ / invités', 'OPNsense + VPN', 'Suricata et proxy', 'Journaux centralisés Wazuh'],
     tools: 'OPNsense, OpenVPN, Squid, Suricata, Wazuh, VMware.',
     work: 'J’ai conçu les segments LAN, utilisateurs, administration, invités et DMZ ; configuré OPNsense et des règles inter-zones ; mis en place un accès OpenVPN avec MFA, un proxy Squid, Suricata en mode détection et la collecte des journaux dans Wazuh.',
-    outcome: 'Le rapport montre des paramètres de segmentation, de proxy, de VPN et de supervision ainsi qu’un refus d’accès Web observé. Le README décrit des écarts trouvés puis corrigés sur les règles d’accès, les alertes et les signatures. Suricata fonctionne ici en détection par copie du trafic ; aucune couverture totale ni réponse automatisée mesurée n’est démontrée.',
-    evidence: 'README et méthodologie anonymisés, schéma et capture recadrée sur GitHub. Le rapport d’origine, déjà présent dans ce dépôt, porte une mention de confidentialité et nécessite une revue séparée.',
+    outcome: 'Le rapport montre des paramètres de segmentation, de proxy, de VPN et de supervision ainsi qu’un refus d’accès Web observé. Des écarts ont été trouvés puis corrigés sur les règles d’accès et la détection. Cette démarche ne prouve pas que la maquette est entièrement sécurisée : d’autres personnes peuvent relever des failles que je n’ai pas vues. Suricata fonctionne ici en détection par copie du trafic ; aucune réponse automatisée mesurée n’est démontrée.',
+    evidence: 'README et méthodologie anonymisés, schéma et capture recadrée sur GitHub ; le README invite aux retours et signalements de failles. Le rapport d’origine, déjà présent dans ce dépôt, porte une mention de confidentialité et nécessite une revue séparée.',
     url: 'https://github.com/ihssanezaoui19-star/Architecture-R-seau-S-curis-e-'
   },
   {
