@@ -86,37 +86,103 @@ const counter = document.querySelector('#project-count');
 const dialog = document.querySelector('#project-dialog');
 const dialogContent = document.querySelector('#dialog-content');
 const dialogIndex = document.querySelector('#dialog-index');
+const translations = window.portfolioTranslations;
+const staticCopy = window.portfolioStaticEnglish.map(([selector, en]) => {
+  const element = document.querySelector(selector);
+  if (!element) throw new Error(`Missing translation target: ${selector}`);
+  return { element, fr: element.innerHTML, en };
+});
+const attributeCopy = window.portfolioAttributeEnglish.map(([selector, attribute, en]) => {
+  const element = document.querySelector(selector);
+  if (!element) throw new Error(`Missing translation target: ${selector}`);
+  return { element, attribute, fr: element.getAttribute(attribute), en };
+});
+const description = document.querySelector('meta[name="description"]');
+const frenchDescription = description.content;
+const frenchTitle = document.title;
+const frenchContactLinks = [...document.querySelectorAll('a[href^="mailto:"]')].map(element => ({ element, href: element.href }));
+let language = 'fr';
+let activeFilter = 'Tous';
 let lastTrigger;
 
-function render(filter = 'Tous') {
+function label(key) {
+  return language === 'en' ? translations.ui[key] : {
+    count: 'PROJETS', card: 'Voir le projet', cardAria: 'Voir le projet', project: 'PROJET',
+    problem: 'Problématique', objective: 'Ce que je cherchais à corriger', architecture: 'Architecture',
+    tools: 'Outils', work: 'Travail réalisé', outcome: 'Résultat observé',
+    evidence: 'Preuves & liens', github: 'Voir le projet GitHub', docsNote: ''
+  }[key];
+}
+
+function localized(project) {
+  return language === 'en' ? { ...project, ...translations.projects[project.number] } : project;
+}
+
+function categoryName(category) {
+  return language === 'en' ? translations.categories[category] : category;
+}
+
+function render(filter = activeFilter) {
+  activeFilter = filter;
   const shown = projects.filter(project => filter === 'Tous' || project.categories.includes(filter));
-  counter.textContent = `${String(shown.length).padStart(2, '0')} / ${String(projects.length).padStart(2, '0')} PROJETS`;
-  grid.replaceChildren(...shown.map(project => {
+  counter.textContent = `${String(shown.length).padStart(2, '0')} / ${String(projects.length).padStart(2, '0')} ${label('count')}`;
+  grid.replaceChildren(...shown.map(source => {
+    const project = localized(source);
     const card = document.createElement('article');
     card.className = `project-card ${project.color}`;
     card.innerHTML = `<div class="card-top"><span class="card-number">${project.number} / 06</span><span class="card-status">${project.status}</span></div>
       <div class="card-emblem" aria-hidden="true"><span></span><i></i><b></b></div>
       <div class="card-body"><p class="card-type">${project.type}</p><h3>${project.title}</h3><p class="card-desc">${project.short}</p>
       <div class="card-tags">${project.tags.map(tag => `<span>${tag}</span>`).join('')}</div></div>
-      <button type="button" class="card-open" data-project="${project.number}" aria-label="Voir le projet ${project.title}">Voir le projet <span aria-hidden="true">↗</span></button>`;
+      <button type="button" class="card-open" data-project="${project.number}" aria-label="${label('cardAria')} ${project.title}">${label('card')} <span aria-hidden="true">↗</span></button>`;
     return card;
   }));
 }
 
+function drawDialog(number) {
+  const source = projects.find(item => item.number === number);
+  if (!source) return;
+  const project = localized(source);
+  dialogIndex.textContent = `${label('project')} ${project.number} / 06`;
+  dialogContent.innerHTML = `<div class="dialog-title-row"><p class="card-type">${project.type} <span class="sep">·</span> ${project.status}</p><h2 id="dialog-title">${project.title}</h2><div class="dialog-cats">${project.categories.map(c => `<span>${categoryName(c)}</span>`).join('')}</div></div>
+    <div class="detail-block"><h3>${label('problem')}</h3><p>${project.problem}</p></div>
+    <div class="detail-block"><h3>${label('objective')}</h3><p>${project.objective}</p></div>
+    <div class="detail-block"><h3>${label('architecture')}</h3><ol class="architecture">${project.architecture.map(step => `<li>${step}</li>`).join('')}</ol></div>
+    <div class="detail-columns"><div class="detail-block"><h3>${label('tools')}</h3><p>${project.tools}</p></div><div class="detail-block"><h3>${label('work')}</h3><p>${project.work}</p></div></div>
+    <div class="detail-result"><h3>${label('outcome')}</h3><p>${project.outcome}</p></div>
+    <div class="detail-evidence"><div><h3>${label('evidence')}</h3><p>${project.evidence}${language === 'en' ? ` ${label('docsNote')}` : ''}</p></div><a href="${project.url || github}" target="_blank" rel="noopener noreferrer">${project.url ? label('github') : 'GitHub'} ↗</a></div>`;
+}
+
 function openProject(number, trigger) {
-  const project = projects.find(item => item.number === number);
-  if (!project) return;
   lastTrigger = trigger;
-  dialogIndex.textContent = `PROJET ${project.number} / 06`;
-  dialogContent.innerHTML = `<div class="dialog-title-row"><p class="card-type">${project.type} <span class="sep">·</span> ${project.status}</p><h2 id="dialog-title">${project.title}</h2><div class="dialog-cats">${project.categories.map(c => `<span>${c}</span>`).join('')}</div></div>
-    <div class="detail-block"><h3>Problématique</h3><p>${project.problem}</p></div>
-    <div class="detail-block"><h3>Ce que je cherchais à corriger</h3><p>${project.objective}</p></div>
-    <div class="detail-block"><h3>Architecture</h3><ol class="architecture">${project.architecture.map(step => `<li>${step}</li>`).join('')}</ol></div>
-    <div class="detail-columns"><div class="detail-block"><h3>Outils</h3><p>${project.tools}</p></div><div class="detail-block"><h3>Travail réalisé</h3><p>${project.work}</p></div></div>
-    <div class="detail-result"><h3>Résultat observé</h3><p>${project.outcome}</p></div>
-    <div class="detail-evidence"><div><h3>Preuves & liens</h3><p>${project.evidence}</p></div><a href="${project.url || github}" target="_blank" rel="noopener noreferrer">${project.url ? 'Voir le projet GitHub' : 'Profil GitHub'} ↗</a></div>`;
+  dialog.dataset.project = number;
+  drawDialog(number);
   dialog.showModal();
   document.body.classList.add('modal-open');
+}
+
+function setLanguage(next, remember = true) {
+  language = next === 'en' ? 'en' : 'fr';
+  document.documentElement.lang = language;
+  document.title = language === 'en' ? 'Ihssane Zaoui — Networks & Cybersecurity' : frenchTitle;
+  description.content = language === 'en'
+    ? 'Ihssane Zaoui, network and cybersecurity engineer: SOC, Blue Team, network security and infrastructure projects.'
+    : frenchDescription;
+  for (const entry of staticCopy) entry.element.innerHTML = entry[language];
+  for (const entry of attributeCopy) entry.element.setAttribute(entry.attribute, entry[language]);
+  for (const { element, href } of frenchContactLinks) {
+    element.href = language === 'en'
+      ? 'mailto:ihssanezaoui19@gmail.com?subject=Network%20or%20cybersecurity%20opportunity'
+      : href;
+  }
+  document.querySelectorAll('.language-switch button').forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.lang === language));
+  });
+  render(activeFilter);
+  if (dialog.open) drawDialog(dialog.dataset.project);
+  if (remember) {
+    try { localStorage.setItem('portfolio-language', language); } catch { /* Private browsing may block storage. */ }
+  }
 }
 
 document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
@@ -127,6 +193,7 @@ document.querySelectorAll('.filter').forEach(button => button.addEventListener('
   });
   render(button.dataset.filter);
 }));
+document.querySelectorAll('.language-switch button').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
 grid.addEventListener('click', event => {
   const button = event.target.closest('[data-project]');
   if (button) openProject(button.dataset.project, button);
@@ -135,4 +202,6 @@ document.querySelector('.close-dialog').addEventListener('click', () => dialog.c
 dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
 dialog.addEventListener('close', () => { document.body.classList.remove('modal-open'); lastTrigger?.focus(); });
 document.querySelector('#year').textContent = new Date().getFullYear();
-render();
+let preferredLanguage = 'fr';
+try { preferredLanguage = localStorage.getItem('portfolio-language') || 'fr'; } catch { /* French stays the default. */ }
+setLanguage(preferredLanguage, false);
