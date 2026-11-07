@@ -1,0 +1,56 @@
+/* Project architecture diagrams: connected, legible paths in each case study. */
+@import url('./style-v12.css');
+
+.architecture-visual{
+  margin:14px 0 4px;
+  padding:0;
+  overflow:hidden;
+  border:1px solid #315769;
+  border-radius:9px;
+  background:#0c2331;
+  box-shadow:0 14px 30px #09262f1c;
+}
+.architecture-topline{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  padding:15px 20px 12px;
+  border-bottom:1px solid #294753;
+  color:#a7ead3;
+  font:500 10px/1.5 var(--mono);
+  letter-spacing:.035em;
+}
+.architecture-kind{color:#87aab2;font-size:9px;white-space:nowrap}
+.architecture-scroll{overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-color:#558580 #0c2331}
+.architecture-scroll:focus-visible{outline:2px solid #a7ead3;outline-offset:-3px}
+.architecture-svg{display:block;width:100%;min-width:720px;height:auto}
+.diagram-connectors path{fill:none;stroke:#85c9b7;stroke-width:2.3;stroke-linecap:round}
+.architecture-svg marker path{fill:#85c9b7}
+.diagram-node rect{fill:#183542;stroke:#527a81;stroke-width:1.3}
+.diagram-node.diagram-risk rect{fill:#3c3033;stroke:#a8776e}
+.diagram-node.diagram-security rect{fill:#18403f;stroke:#65bba4}
+.diagram-node.diagram-telemetry rect{fill:#173949;stroke:#74a9bd}
+.diagram-node.diagram-result rect{fill:#16463e;stroke:#7ed4ae}
+.diagram-node.diagram-planned rect{fill:#172e3a;stroke:#bc9b65;stroke-dasharray:6 5}
+.diagram-index,.diagram-status,.diagram-flow-label{font:500 10px var(--mono);fill:#9ce6d0}
+.diagram-status{font-size:8px;letter-spacing:.04em;fill:#83a9ad}
+.diagram-planned .diagram-status{fill:#e2bd79}
+.diagram-risk .diagram-index{fill:#f2aaa2}
+.diagram-title{font:600 14px 'Space Grotesk',sans-serif;fill:#f3faf8}
+.diagram-detail{font:11px var(--mono);fill:#b6d0d2}
+.diagram-flow-label{font-size:9px;letter-spacing:.11em;fill:#79a5a8}
+.architecture-visual figcaption{
+  display:flex;flex-direction:column;gap:7px;
+  margin:0;padding:16px 20px 18px;
+  border-top:1px solid #31515c;
+  color:#b9ced0;font:11px/1.65 var(--mono);
+}
+.architecture-visual figcaption strong{color:#a7ead3;font-weight:500}
+.architecture-mobile-hint{display:none}
+@media(max-width:760px){
+  .architecture-topline{padding:13px 15px;font-size:9px}
+  .architecture-kind{font-size:8px}
+  .architecture-mobile-hint{display:block;text-align:right;padding:5px 15px 11px;color:#96afb2;font:9px var(--mono)}
+  .architecture-visual figcaption{padding:14px 15px 18px;font-size:10px}
+}
