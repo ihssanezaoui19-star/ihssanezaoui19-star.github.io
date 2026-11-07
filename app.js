@@ -168,7 +168,7 @@ function drawDialog(number) {
   dialogContent.innerHTML = `<div class="dialog-title-row"><p class="card-type">${project.type} <span class="sep">·</span> ${project.status}</p><h2 id="dialog-title">${project.title}</h2><div class="dialog-cats">${project.categories.map(c => `<span>${categoryName(c)}</span>`).join('')}</div></div>
     <div class="detail-block"><h3>${label('problem')}</h3><p>${project.problem}</p></div>
     <div class="detail-block"><h3>${label('objective')}</h3><p>${project.objective}</p></div>
-    <div class="detail-block"><h3>${label('architecture')}</h3>${renderArchitecture(project.number)}<ol class="architecture architecture-summary">${project.architecture.map(step => '<li>' + step + '</li>').join('')}</ol></div>
+    <div class="detail-block"><h3>${label('architecture')}</h3>${renderArchitecture(project.number)}</div>
     <div class="detail-columns"><div class="detail-block"><h3>${label('tools')}</h3><p>${project.tools}</p></div><div class="detail-block"><h3>${label('work')}</h3><p>${project.work}</p></div></div>
     <div class="detail-result"><h3>${label('outcome')}</h3><p>${project.outcome}</p></div>
     <div class="detail-evidence"><div><h3>${label('evidence')}</h3><p>${project.evidence}${language === 'en' ? ` ${label('docsNote')}` : ''}</p></div><a href="${project.url || github}" target="_blank" rel="noopener noreferrer">${project.url ? label('github') : 'GitHub'} ↗</a></div>`;
