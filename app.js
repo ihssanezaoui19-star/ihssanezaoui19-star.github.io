@@ -81,6 +81,24 @@ const projects = [
   }
 ];
 
+
+const architectureDiagrams = {
+'01': {note:'T-Pot a été évalué au départ ; le schéma représente ensuite le honeypot adapté au besoin.',nodes:[['Sources externes','Tentatives visant les services exposés','external'],['Pare-feu','Point d’entrée de la maquette','security'],['Honeypot sur mesure','Service client et scénarios autour de CVE connues','core'],['Collecte','Événements, journaux et traces PCAP','telemetry'],['CTI + n8n','Enrichissement OSINT, qualification et scoring','telemetry']]},
+'02': {note:'Laboratoire en cours : supervision et reprise sont des objectifs, pas des résultats validés.',nodes:[['VMware Workstation Pro','Socle de virtualisation du laboratoire','core'],['Réseaux virtuels','Segmentation et isolation en construction','network'],['Machines virtuelles','Services et systèmes simulés','network'],['Scénarios de panne','Dépendances et points uniques à tester','planned'],['Supervision / reprise','Objectifs de validation à venir','planned']]},
+'03': {note:'Suricata est utilisé en détection ; le schéma ne suppose pas de blocage automatique.',nodes:[['Zones réseau','LAN, administration, invités et DMZ','network'],['OPNsense','Filtrage et règles inter-zones','security'],['OpenVPN + MFA','Accès distant authentifié','security'],['Squid + Suricata','Contrôle Web et détection réseau','telemetry'],['Wazuh','Centralisation et analyse des journaux','telemetry']]},
+'04': {note:'La connectivité a été testée par ICMP ; le basculement automatique MPLS / Internet n’est pas présenté comme validé.',nodes:[['Sites EVE-NG','Hub et sites distants simulés','network'],['Transport MPLS','Routeurs et LDP','network'],['Routage BGP','Échanges de routes configurés','security'],['FortiGate SD-WAN','Zones et politiques de liens','security'],['Tunnels IPsec','Communications chiffrées configurées','telemetry'],['Tests ICMP','Vérification de la connectivité','telemetry']]},
+'05': {note:'Résultat mesuré dans la maquette de laboratoire : score PingCastle de 95/100 à 20/100.',nodes:[['Proxmox','Environnement AD de laboratoire','core'],['Active Directory','Domaine, DNS / DHCP et postes de test','network'],['Audit initial','PingCastle : score 95/100','risk'],['Détection','Sysmon, agents et alertes Wazuh','telemetry'],['Remédiation','Analyse d’impact, PowerShell et GPO','security'],['Nouvel audit','PingCastle : score 20/100','success']]},
+'06': {note:'La réinstallation complète est une recommandation ; elle n’est pas présentée comme une action effectuée.',nodes:[['Poste Windows','Ralentissements et trafic inhabituel','risk'],['Analyse système','Processus, services et démarrage avec Sysinternals','network'],['Analyse réseau','Connexions et captures Wireshark','network'],['Corrélation','Vérification des artefacts et indicateurs','telemetry'],['Nettoyage contrôlé','Service et fichiers, puis contrôles complémentaires','security'],['Validation','Aucun indicateur connu retrouvé avec les contrôles réalisés','success']]}
+};
+function renderArchitecture(number) {
+ const diagram=architectureDiagrams[number];
+ if(!diagram) return '';
+ const nodes=diagram.nodes.map(function(node,index) {
+  return '<div class="arch-node '+node[2]+'"><span class="arch-node-index">'+String(index+1).padStart(2,'0')+'</span><strong>'+node[0]+'</strong><small>'+node[1]+'</small></div>';
+ }).join('<span class="arch-arrow" aria-hidden="true">→</span>');
+ return '<div class="architecture-visual" role="group" aria-label="Architecture et flux du projet"><div class="architecture-flow">'+nodes+'</div><p class="architecture-note"><span aria-hidden="true">ⓘ</span> '+diagram.note+'</p></div>';
+}
+
 const grid = document.querySelector('#project-grid');
 const counter = document.querySelector('#project-count');
 const dialog = document.querySelector('#project-dialog');
@@ -147,7 +165,7 @@ function drawDialog(number) {
   dialogContent.innerHTML = `<div class="dialog-title-row"><p class="card-type">${project.type} <span class="sep">·</span> ${project.status}</p><h2 id="dialog-title">${project.title}</h2><div class="dialog-cats">${project.categories.map(c => `<span>${categoryName(c)}</span>`).join('')}</div></div>
     <div class="detail-block"><h3>${label('problem')}</h3><p>${project.problem}</p></div>
     <div class="detail-block"><h3>${label('objective')}</h3><p>${project.objective}</p></div>
-    <div class="detail-block"><h3>${label('architecture')}</h3><ol class="architecture">${project.architecture.map(step => `<li>${step}</li>`).join('')}</ol></div>
+    <div class="detail-block"><h3>\${label('architecture')}</h3>\${renderArchitecture(project.number)}<ol class="architecture architecture-summary">\${project.architecture.map(step => '<li>' + step + '</li>').join('')}</ol></div>
     <div class="detail-columns"><div class="detail-block"><h3>${label('tools')}</h3><p>${project.tools}</p></div><div class="detail-block"><h3>${label('work')}</h3><p>${project.work}</p></div></div>
     <div class="detail-result"><h3>${label('outcome')}</h3><p>${project.outcome}</p></div>
     <div class="detail-evidence"><div><h3>${label('evidence')}</h3><p>${project.evidence}${language === 'en' ? ` ${label('docsNote')}` : ''}</p></div><a href="${project.url || github}" target="_blank" rel="noopener noreferrer">${project.url ? label('github') : 'GitHub'} ↗</a></div>`;
