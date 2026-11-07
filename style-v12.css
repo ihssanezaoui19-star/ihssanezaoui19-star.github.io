@@ -1,4 +1,5 @@
 /* v12 — Hybrid Network Engineering x Blue Team visual system */
+@import url('./style-v11.css');
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 :root{
  --navy:#07131f;--navy2:#0b1d2a;--ink:#142b38;--muted:#5c7078;
