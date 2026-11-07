@@ -86,6 +86,37 @@ function renderArchitecture(number) {
   return window.renderPortfolioArchitecture(number, language);
 }
 
+const provinceContent = document.querySelector('.internship-list li:nth-child(3) .internship-content');
+const provinceDiagramButton = document.createElement('button');
+provinceDiagramButton.type = 'button';
+provinceDiagramButton.className = 'internship-diagram-trigger';
+provinceDiagramButton.setAttribute('aria-expanded', 'false');
+provinceDiagramButton.setAttribute('aria-controls', 'taounate-diagram');
+const provinceDiagram = document.createElement('div');
+provinceDiagram.id = 'taounate-diagram';
+provinceDiagram.className = 'internship-diagram';
+provinceDiagram.hidden = true;
+provinceContent.append(provinceDiagramButton, provinceDiagram);
+provinceDiagramButton.addEventListener('click', () => {
+  provinceDiagram.hidden = !provinceDiagram.hidden;
+  provinceDiagramButton.setAttribute('aria-expanded', String(!provinceDiagram.hidden));
+  if (!provinceDiagram.hidden) provinceDiagram.innerHTML = renderArchitecture('taounate');
+});
+function showDiagramExplanation(target) {
+  const card = target.closest('[data-arch-detail]');
+  if (!card) return false;
+  const guide = card.closest('.architecture-visual')?.querySelector('.architecture-guide');
+  if (guide) guide.textContent = card.getAttribute('data-arch-detail');
+  return true;
+}
+document.addEventListener('click', event => showDiagramExplanation(event.target));
+document.addEventListener('keydown', event => {
+  if ((event.key === 'Enter' || event.key === ' ') && event.target.closest('[data-arch-detail]')) {
+    event.preventDefault();
+    showDiagramExplanation(event.target);
+  }
+});
+
 const grid = document.querySelector('#project-grid');
 const counter = document.querySelector('#project-count');
 const dialog = document.querySelector('#project-dialog');
@@ -185,6 +216,8 @@ function setLanguage(next, remember = true) {
   });
   render(activeFilter);
   if (dialog.open) drawDialog(dialog.dataset.project);
+  provinceDiagramButton.textContent = language === 'en' ? 'View the internship diagram ↗' : 'Voir le schéma du stage ↗';
+  if (!provinceDiagram.hidden) provinceDiagram.innerHTML = renderArchitecture('taounate');
   if (remember) {
     try { localStorage.setItem('portfolio-language', language); } catch { /* Private browsing may block storage. */ }
   }
