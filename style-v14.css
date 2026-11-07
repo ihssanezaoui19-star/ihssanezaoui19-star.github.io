@@ -1,0 +1,91 @@
+/* Architecture views follow the supplied zone-and-flow reference. */
+@import url('./style-v13.css');
+dialog{width:min(1230px,calc(100vw - 32px))}
+.dialog-title-row,.detail-block>p,.detail-result,.detail-evidence{max-width:900px}
+.architecture-visual{
+  margin:16px 0 4px;
+  background:#fff;
+  border:1px solid #c9d9e2;
+  border-radius:10px;
+  box-shadow:0 14px 38px #15334812;
+  color:#193345;
+}
+.architecture-topline{
+  padding:15px 22px;
+  background:#f4f8fa;
+  border-bottom:1px solid #cedde4;
+  color:#173b50;
+  font:500 12px/1.5 var(--mono);
+}
+.architecture-kind{color:#477980;font-size:10px}
+.architecture-scroll{background:#fff;scrollbar-color:#97b9c2 #edf4f6}
+.architecture-svg{min-width:1100px;width:100%;background:#fff}
+.arch-zone rect{fill:#f4f8fa;stroke:#b9ccd7;stroke-width:1.5;stroke-dasharray:6 5}
+.arch-zone-hostile rect{fill:#fff3f0;stroke:#f0b9af}
+.arch-zone-observe rect{fill:#edf8f8;stroke:#a9d9da}
+.arch-zone-planned rect{fill:#fbf7ee;stroke:#d6c9aa}
+.arch-zone text{font:500 15px var(--mono);fill:#305777}
+.arch-edge{fill:none;stroke:#829cad;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.arch-edge-hostile{stroke:#e44c3d}
+.arch-edge-telemetry{stroke:#0998a0;stroke-dasharray:6 5}
+.arch-edge-planned{stroke:#b48a54;stroke-dasharray:6 5}
+.arch-marker-flow path{fill:#829cad}
+.arch-marker-hostile path{fill:#e44c3d}
+.arch-marker-telemetry path{fill:#0998a0}
+.arch-marker-planned path{fill:#b48a54}
+.arch-card{cursor:pointer}
+.arch-card-face{fill:#fff;stroke:#bed0dc;stroke-width:1.6}
+.arch-card:hover .arch-card-face,.arch-card:focus-visible .arch-card-face{stroke:#008f99;stroke-width:2.6}
+.arch-card:focus-visible{outline:none}
+.arch-card-dark .arch-card-face{fill:#0e2738;stroke:#0e2738}
+.arch-card-observe .arch-card-face{stroke:#04959e;stroke-width:1.9}
+.arch-card-risk .arch-card-face{stroke:#e2b2aa}
+.arch-card-planned .arch-card-face{stroke:#bc9b66;stroke-dasharray:6 5}
+.arch-icon-disc{fill:#e2ecf2}
+.arch-card-risk .arch-icon-disc{fill:#ffe2dc}
+.arch-card-observe .arch-icon-disc{fill:#d9f1f0}
+.arch-card-dark .arch-icon-disc{fill:#355062}
+.arch-card-planned .arch-icon-disc{fill:#f4ead3}
+.arch-icon{font:700 13px 'Space Grotesk',sans-serif;fill:#12394e}
+.arch-card-risk .arch-icon{fill:#e44c3d}
+.arch-card-observe .arch-icon{fill:#047f88}
+.arch-card-dark .arch-icon{fill:#fff}
+.arch-title{font:700 17px 'Space Grotesk',sans-serif;fill:#071d30}
+.arch-card-dark .arch-title{fill:#fff}
+.arch-sub{font:12px var(--mono);fill:#3d6383}
+.arch-card-dark .arch-sub{fill:#91cafa}
+.arch-step-disc{fill:#0b283c}
+.arch-step{fill:#fff;font:700 11px var(--mono)}
+.arch-edge-label{fill:#087e88;font:12px var(--mono)}
+.architecture-guide{
+  padding:16px 22px;
+  border-top:1px solid #c5d7df;
+  background:#f3f7f9;
+  color:#315471;
+  font:14px/1.6 'DM Sans',sans-serif;
+  min-height:58px;
+}
+.architecture-visual figcaption{
+  display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:18px;
+  padding:12px 18px;
+  background:#fff;
+  border-top:1px solid #c5d7df;
+  color:#3d6280;
+  font:11px/1.6 var(--mono);
+}
+.architecture-legend{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.architecture-legend i{display:inline-block;width:20px;height:2px;margin-left:10px;background:#839cae}
+.architecture-legend .legend-hostile{background:#e44c3d}
+.architecture-legend .legend-telemetry{background:repeating-linear-gradient(90deg,#0998a0 0 6px,transparent 6px 9px)}
+.internship-diagram-trigger{margin:12px 0 0;padding:8px 0;border:0;border-bottom:1px solid #65a99c;background:transparent;color:#a9ead7;font:600 11px var(--mono);cursor:pointer}
+.internship-diagram[hidden]{display:none}
+.internship-diagram{margin-top:17px}
+@media(max-width:760px){
+  dialog{width:calc(100vw - 16px)}
+  .dialog-inner{padding:17px}
+  .architecture-svg{min-width:1000px}
+  .architecture-topline{padding:12px 15px;font-size:10px}
+  .architecture-visual figcaption{flex-wrap:wrap;padding:12px 15px;font-size:10px}
+  .architecture-guide{font-size:12px;padding:12px 15px}
+  .architecture-scroll::after{content:''}
+}
