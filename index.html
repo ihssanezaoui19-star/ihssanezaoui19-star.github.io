@@ -6,10 +6,10 @@
   <meta name="theme-color" content="#071521">
   <meta name="description" content="Portfolio d'Ihssane Zaoui, ingénieure réseaux et cybersécurité : projets SOC, Blue Team, sécurité réseau et infrastructure.">
   <title>Ihssane Zaoui — Réseaux & Cybersécurité</title>
-  <link rel="stylesheet" href="./style-v14.css?v=15">
-  <script src="./i18n.js" defer></script>
+  <link rel="stylesheet" href="./style-v15.css">
+  <script src="./i18n.js?v=15" defer></script>
   <script src="./architecture-diagrams.js?v=15" defer></script>
-  <script src="./app.js?v=14" defer></script>
+  <script src="./app.js?v=16" defer></script>
 </head>
 <body>
   <div class="site-shell">
@@ -28,19 +28,29 @@
           <div class="hero-actions"><a class="button-primary" href="mailto:ihssanezaoui19@gmail.com?subject=Opportunit%C3%A9%20r%C3%A9seaux%20ou%20cybers%C3%A9curit%C3%A9">Me contacter <span aria-hidden="true">↗</span></a><a class="button-text" href="#projets">Explorer mes projets <span aria-hidden="true">↓</span></a></div>
           <p class="hero-meta">Basée au Maroc · Mobile · Ouverte aux opportunités junior</p>
         </div>
-        <div class="hero-art" role="img" aria-label="Schéma conceptuel des compétences : accès réseau et VPN, pare-feu, zones segmentées puis analyse des journaux et du trafic.">
-          <div class="topology-panel">
-            <div class="topology-head"><span>RÉSEAUX <b>/</b> CYBERSÉCURITÉ</span><span class="topology-head-mark">IZ · 01</span></div>
-            <div class="topology-flow">
-              <div class="topology-node topology-access"><span class="topology-icon" aria-hidden="true">↔</span><div><span class="node-step">01 · ACCÈS & TRANSPORT</span><strong>Routage · VPN · SD-WAN</strong></div></div>
-              <div class="topology-link" aria-hidden="true"></div>
-              <div class="topology-node topology-firewall"><span class="topology-icon" aria-hidden="true">▤</span><div><span class="node-step">02 · CONTRÔLE DES FLUX</span><strong>Pare-feu · règles · MFA</strong></div><span class="node-status">FILTRER</span></div>
-              <div class="topology-branch" aria-hidden="true"></div>
-              <div class="topology-zones"><div class="topology-node topology-zone"><span class="node-step">03 · INFRASTRUCTURE</span><strong>VLAN · AD · Proxmox</strong></div><div class="topology-node topology-zone"><span class="node-step">04 · SERVICES</span><strong>DMZ · honeypot · proxy</strong></div></div>
-              <div class="topology-converge" aria-hidden="true"></div>
-              <div class="topology-node topology-detection"><span class="topology-icon" aria-hidden="true">⌁</span><div><span class="node-step">05 · VISIBILITÉ</span><strong>Wazuh · Suricata · PCAP</strong></div><span class="node-status">ANALYSER</span></div>
+        <div class="hero-art" role="group" aria-label="Parcours d’Ihssane : administration réseau, audit Active Directory, détection et CTI, puis recherche d’un premier poste.">
+          <div class="journey-panel">
+            <div class="journey-head"><div><span class="journey-overline">PARCOURS / 2024 → AUJOURD’HUI</span><strong>Du réseau à l’investigation<span>.</span></strong></div><span class="journey-stamp">IZ · 01</span></div>
+            <div class="journey-map">
+              <div class="journey-row journey-left journey-network">
+                <a class="journey-card" href="#stages"><span class="journey-card-kicker">2024 · PREMIER TERRAIN</span><strong>Comprendre le réseau</strong><small>Postes Windows · services · diagnostic</small><span class="journey-card-arrow" aria-hidden="true">↗</span></a>
+                <span class="journey-point" aria-hidden="true">01</span><span class="journey-aside">Observer les systèmes<br>et résoudre les incidents</span>
+              </div>
+              <div class="journey-row journey-right journey-directory">
+                <button class="journey-card" type="button" data-hero-project="05"><span class="journey-card-kicker">2025 · AUDIT & DURCISSEMENT</span><strong>Mesurer le risque AD</strong><small>PingCastle · Wazuh · Sysmon · GPO</small><span class="journey-card-arrow" aria-hidden="true">↗</span></button>
+                <span class="journey-point" aria-hidden="true">02</span><span class="journey-aside">Analyser l’impact<br>avant de corriger</span>
+              </div>
+              <div class="journey-row journey-left journey-detection">
+                <button class="journey-card" type="button" data-hero-project="01"><span class="journey-card-kicker">2026 · PFE / BLUE TEAM</span><strong>Suivre une attaque</strong><small>Honeypot · PCAP · CTI · n8n</small><span class="journey-card-arrow" aria-hidden="true">↗</span></button>
+                <span class="journey-point" aria-hidden="true">03</span><span class="journey-aside">Relier les traces<br>au scénario d’attaque</span>
+              </div>
+              <div class="journey-row journey-right journey-next">
+                <a class="journey-card" href="#projets"><span class="journey-card-kicker">PROCHAINE ÉTAPE · PREMIER POSTE</span><strong>Défendre en équipe</strong><small>SOC / Blue Team · sécurité réseau</small><span class="journey-card-arrow" aria-hidden="true">↗</span></a>
+                <span class="journey-point" aria-hidden="true">04</span><span class="journey-aside">Appliquer cette méthode<br>en environnement professionnel</span>
+              </div>
             </div>
-            <div class="topology-foot"><span class="topology-pulse" aria-hidden="true"></span> COMPÉTENCES PRATIQUÉES EN STAGE ET EN LABORATOIRE <span>↗</span></div>
+            <div class="journey-branch"><span>FIL ROUGE · INFRASTRUCTURE</span><strong>Proxmox · VPN · virtualisation · architectures</strong></div>
+            <div class="journey-foot"><span class="journey-live" aria-hidden="true"></span><span>STAGES + PROJETS DOCUMENTÉS</span><span>EXPLORER ↗</span></div>
           </div>
         </div>
       </section>
