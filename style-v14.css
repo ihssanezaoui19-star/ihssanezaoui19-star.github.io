@@ -29,14 +29,14 @@ dialog{width:min(1230px,calc(100vw - 32px))}
 .arch-edge-hostile{stroke:#e44c3d}
 .arch-edge-telemetry{stroke:#0998a0;stroke-dasharray:6 5}
 .arch-edge-planned{stroke:#b48a54;stroke-dasharray:6 5}
-.arch-marker-flow path{fill:#829cad}
-.arch-marker-hostile path{fill:#e44c3d}
-.arch-marker-telemetry path{fill:#0998a0}
-.arch-marker-planned path{fill:#b48a54}
+.architecture-svg .arch-marker-flow path{fill:#829cad}
+.architecture-svg .arch-marker-hostile path{fill:#e44c3d}
+.architecture-svg .arch-marker-telemetry path{fill:#0998a0}
+.architecture-svg .arch-marker-planned path{fill:#b48a54}
 .arch-card{cursor:pointer}
 .arch-card-face{fill:#fff;stroke:#bed0dc;stroke-width:1.6}
 .arch-card:hover .arch-card-face,.arch-card:focus-visible .arch-card-face{stroke:#008f99;stroke-width:2.6}
-.arch-card:focus-visible{outline:none}
+.arch-card:focus-visible{outline:2px solid #069aa3;outline-offset:3px}
 .arch-card-dark .arch-card-face{fill:#0e2738;stroke:#0e2738}
 .arch-card-observe .arch-card-face{stroke:#04959e;stroke-width:1.9}
 .arch-card-risk .arch-card-face{stroke:#e2b2aa}
