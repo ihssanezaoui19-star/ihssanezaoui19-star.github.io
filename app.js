@@ -236,6 +236,10 @@ grid.addEventListener('click', event => {
   const button = event.target.closest('[data-project]');
   if (button) openProject(button.dataset.project, button);
 });
+document.querySelector('.hero-art').addEventListener('click', event => {
+  const button = event.target.closest('[data-hero-project]');
+  if (button) openProject(button.dataset.heroProject, button);
+});
 document.querySelector('.close-dialog').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
 dialog.addEventListener('close', () => { document.body.classList.remove('modal-open'); lastTrigger?.focus(); });
