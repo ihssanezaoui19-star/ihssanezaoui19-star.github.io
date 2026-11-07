@@ -147,3 +147,70 @@ dialog{border-radius:7px}
  .detail-evidence a{white-space:normal}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* Project architecture diagrams */
+.architecture-visual{
+  margin:18px 0 8px;
+  padding:18px;
+  border:1px solid #294754;
+  border-radius:7px;
+  background:linear-gradient(145deg,#0b202d,#102a37);
+  overflow:hidden;
+}
+.architecture-flow{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:11px;
+  align-items:stretch;
+}
+.arch-node{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-height:126px;
+  padding:15px 13px 13px;
+  border:1px solid #36515c;
+  border-radius:5px;
+  background:#142f3c;
+  color:#e6f4ef;
+}
+.arch-node-index{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:25px;
+  height:25px;
+  border:1px solid #52716f;
+  border-radius:50%;
+  color:#a7ead3;
+  font:10px var(--mono);
+}
+.arch-node strong{font:600 12px/1.4 'Space Grotesk',sans-serif;color:#e7f5ef}
+.arch-node small{font:10px/1.65 var(--mono);color:#a9c1c4}
+.arch-node.external,.arch-node.risk{border-color:#9a594d;background:#332a2b}
+.arch-node.external .arch-node-index,.arch-node.risk .arch-node-index{color:#ffad9b;border-color:#9a594d}
+.arch-node.security{border-color:#527e79;background:#17343b}
+.arch-node.security .arch-node-index{color:#a7ead3}
+.arch-node.telemetry,.arch-node.success{border-color:#3e8179;background:#123a3b}
+.arch-node.telemetry .arch-node-index,.arch-node.success .arch-node-index{color:#83e1c7;border-color:#3e8179}
+.arch-node.planned{border-style:dashed;background:#172b36}
+.arch-node.planned .arch-node-index{color:#d9bd83;border-color:#806c4c}
+.architecture-note{
+  margin:14px 0 0;
+  padding-top:12px;
+  border-top:1px solid #294754;
+  color:#b6c9ca;
+  font:10px/1.7 var(--mono);
+}
+.architecture-note span{color:#83d9c3;margin-right:5px}
+@media(max-width:760px){
+ .architecture-visual{padding:13px}
+ .architecture-flow{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .arch-node{min-height:116px;padding:12px 10px}
+}
+@media(max-width:420px){
+ .architecture-flow{grid-template-columns:1fr}
+ .arch-node{min-height:0}
+}
