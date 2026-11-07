@@ -23,15 +23,15 @@
 .journey-row{display:grid;grid-template-columns:minmax(0,1fr) 32px minmax(0,1fr);align-items:center;gap:9px;position:relative;min-height:96px}
 .journey-card{position:relative;display:flex;flex-direction:column;justify-content:center;gap:4px;min-height:94px;width:100%;padding:12px 15px;text-align:left;border:1px solid #446570;border-radius:5px;background:#173540;color:#eaf8f3;cursor:pointer;box-shadow:0 8px 20px #0002;transition:transform .2s,border-color .2s,background .2s}
 .journey-card:hover,.journey-card:focus-visible{transform:translateY(-2px);border-color:#91e4ce;background:#1b4146;outline:none}
-.journey-card-kicker{color:#8adbc8;font-size:8px;line-height:1.35}
+.journey-card-kicker{color:#8adbc8;font-size:9px;line-height:1.35}
 .journey-card strong{font:600 14px/1.22 'Space Grotesk',sans-serif;letter-spacing:-.025em}
-.journey-card small{color:#adc8c9;font:9px/1.45 var(--mono)}
-.journey-card-arrow{position:absolute;right:12px;top:12px;color:#8ddbc8;font-size:13px}
+.journey-card small{color:#adc8c9;font:10px/1.45 var(--mono)}
+.journey-card-arrow{position:absolute;right:13px;top:13px;color:#8ddbc8;font-size:0;width:9px;height:9px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg)}
 .journey-point{display:grid;place-items:center;grid-column:2;grid-row:1;position:relative;z-index:1;width:30px;height:30px;border:1px solid #70c5b5;border-radius:50%;background:#123b3f;color:#c4f4e2;font:500 10px var(--mono);box-shadow:0 0 0 5px #0f2935,0 0 18px #54d1ac44}
 .journey-card::after{content:"";position:absolute;top:50%;height:1px;width:9px;background:#729e9f}
 .journey-left .journey-card{grid-column:1;grid-row:1}.journey-left .journey-card::after{right:-10px}
 .journey-right .journey-card{grid-column:3;grid-row:1}.journey-right .journey-card::after{left:-10px}
-.journey-aside{color:#82a9ae;font-size:9px;line-height:1.65}
+.journey-aside{color:#82a9ae;font-size:10px;line-height:1.65}
 .journey-left .journey-aside{grid-column:3;grid-row:1;padding-left:9px}
 .journey-right .journey-aside{grid-column:1;grid-row:1;text-align:right;padding-right:9px}
 .journey-directory .journey-card{background:#183b3f;border-color:#5b9f95}
@@ -59,6 +59,6 @@
   .journey-row .journey-card::after{left:-10px;right:auto}
   .journey-aside{display:none}
   .journey-card strong{font-size:13px}
-  .journey-card-kicker{font-size:8px}
-  .journey-card small{font-size:9px}
+  .journey-card-kicker{font-size:9px}
+  .journey-card small{font-size:10px}
 }
