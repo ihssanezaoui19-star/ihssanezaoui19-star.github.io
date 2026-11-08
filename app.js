@@ -101,6 +101,8 @@ provinceDiagramButton.addEventListener('click', () => {
   provinceDiagram.hidden = !provinceDiagram.hidden;
   provinceDiagramButton.setAttribute('aria-expanded', String(!provinceDiagram.hidden));
   if (!provinceDiagram.hidden) provinceDiagram.innerHTML = renderArchitecture('taounate');
+  updateStoryLanguage();
+  if (selectedMapNode) selectMapNode(selectedMapNode);
 });
 function showDiagramExplanation(target) {
   const card = target.closest('[data-arch-detail]');
@@ -244,6 +246,69 @@ document.querySelector('.close-dialog').addEventListener('click', () => dialog.c
 dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
 dialog.addEventListener('close', () => { document.body.classList.remove('modal-open'); lastTrigger?.focus(); });
 document.querySelector('#year').textContent = new Date().getFullYear();
+const storyStage = document.querySelector('.story-stage');
+const storySteps = [...document.querySelectorAll('.story-step')];
+const storyStatus = {
+  fr: ['Taounate · réseau et diagnostic', 'Audit AD · évaluer avant de corriger', 'Honeypot · traces et CTI', 'Premier poste recherché · objectif'],
+  en: ['Taounate · network diagnosis', 'AD audit · assess before hardening', 'Honeypot · evidence and CTI', 'First full-time role sought · goal']
+};
+function activateStory(step) {
+  if (!storyStage || step < 1 || step > 4) return;
+  storyStage.dataset.active = String(step);
+  storyStage.querySelector('.stage-counter').textContent = `0${step} / 04`;
+  storyStage.querySelector('.stage-status').textContent = storyStatus[language][step - 1];
+  storySteps.forEach(item => item.classList.toggle('is-active', Number(item.dataset.step) === step));
+  storyStage.querySelectorAll('[data-go]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.go) === step)));
+}
+function updateStoryLanguage() {
+  if (storyStage) activateStory(Number(storyStage.dataset.active) || 1);
+}
+storyStage?.querySelectorAll('[data-go]').forEach(button => button.addEventListener('click', () => activateStory(Number(button.dataset.go))));
+if ('IntersectionObserver' in window && matchMedia('(min-width:901px)').matches) {
+  const storyObserver = new IntersectionObserver(entries => {
+    for (const entry of entries) if (entry.isIntersecting) activateStory(Number(entry.target.dataset.step));
+  }, {rootMargin: '-38% 0px -38% 0px', threshold: 0});
+  storySteps.forEach(step => storyObserver.observe(step));
+}
+document.querySelector('.story-steps')?.addEventListener('click', event => {
+  const button = event.target.closest('[data-story-project]');
+  if (button) openProject(button.dataset.storyProject, button);
+});
+
+const mapData = {
+  ensa: {title:'ENSA Kénitra', text:'Ma formation en réseaux et télécommunications donne la base pour concevoir les architectures étudiées dans mes stages et mes laboratoires.', related:['network','infrastructure','taounate','ad','honeypot']},
+  datacenter: {title:'Datacenter virtualisé', text:'Laboratoire personnel en cours : architecture virtualisée, segmentation et scénarios de disponibilité à tester. Aucun résultat de bascule n’est revendiqué ici.', related:['infrastructure','network'], project:'02'},
+  taounate: {title:'Taounate · 2024', text:'Suivi du réseau local, des postes Windows, de services et des incidents de connectivité. Cette expérience a ancré ma pratique du diagnostic.', related:['network','infrastructure']},
+  ad: {title:'Audit Active Directory · 2025', text:'Cas client simulé : PingCastle, tests contrôlés, Wazuh/Sysmon, puis corrections après vérification de leur impact. Le score de risque du laboratoire est passé de 95 à 20.', related:['infrastructure','detection'], project:'05'},
+  honeypot: {title:'Honeypot & CTI · 2026', text:'PFE : simulation de services derrière un pare-feu, observation des tentatives, analyse PCAP, interface CTI et automatisation n8n.', related:['network','detection'], project:'01'},
+  network: {title:'Réseaux & accès', text:'Concevoir les zones, préparer VLAN, VPN et règles de pare-feu, puis vérifier que les flux utiles passent et que les accès non souhaités sont bloqués.', related:['taounate','datacenter','honeypot']},
+  infrastructure: {title:'Infrastructure', text:'Installer Proxmox, préparer les machines Windows/Linux et documenter les services AD, DNS et DHCP en laboratoire.', related:['ensa','datacenter','taounate','ad']},
+  detection: {title:'Détection & CTI', text:'Recouper les événements Wazuh/Sysmon et les traces PCAP pour comprendre les activités suspectes et expliquer les étapes observées.', related:['ad','honeypot']}
+};
+let selectedMapNode = null;
+const profileMap = document.querySelector('.profile-map');
+function selectMapNode(id) {
+  const source = language === 'en' ? window.portfolioMapEnglish : mapData;
+  const item = source[id]; if (!item || !profileMap) return;
+  selectedMapNode = id;
+  profileMap.classList.add('is-focused');
+  profileMap.querySelectorAll('[data-map-node]').forEach(node => {
+    node.classList.toggle('is-selected', node.dataset.mapNode === id);
+    node.classList.toggle('is-related', item.related.includes(node.dataset.mapNode));
+    node.setAttribute('aria-pressed', String(node.dataset.mapNode === id));
+  });
+  profileMap.querySelector('.map-insight-kicker').textContent = language === 'en' ? 'SELECTED CONNECTION' : 'CONNEXION SÉLECTIONNÉE';
+  profileMap.querySelector('.map-insight strong').textContent = item.title;
+  profileMap.querySelector('.map-insight p').textContent = item.text;
+  const link = profileMap.querySelector('.map-project-link');
+  link.hidden = !item.project;
+  link.dataset.projectNumber = item.project || '';
+}
+profileMap?.querySelectorAll('[data-map-node]').forEach(node => node.addEventListener('click', () => selectMapNode(node.dataset.mapNode)));
+profileMap?.querySelector('.map-project-link').addEventListener('click', event => {
+  const number = event.currentTarget.dataset.projectNumber;
+  if (number) openProject(number, event.currentTarget);
+});
 let preferredLanguage = 'fr';
 try { preferredLanguage = localStorage.getItem('portfolio-language') || 'fr'; } catch { /* French stays the default. */ }
 setLanguage(preferredLanguage, false);
