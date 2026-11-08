@@ -1,0 +1,34 @@
+/* Refined hero journey; original portfolio layout and content remain intact. */
+@import url('./style-v15.css?v=17');
+
+.hero-art{min-height:620px}
+.journey-panel{width:min(610px,100%);padding:10px 4px 8px;overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none}
+.journey-panel::before{top:0;left:29px;width:calc(100% - 58px);height:1px;background:linear-gradient(90deg,#79ddc0,#7cb6ce 58%,transparent)}
+.journey-panel::after{z-index:-1;inset:-60px -45px;opacity:.75;mask-image:none;background:radial-gradient(ellipse at 51% 52%,#38ab9c25,transparent 57%);pointer-events:none}
+.journey-head{margin:0 25px;padding:14px 0 25px;border-bottom:0}
+.journey-head>div{gap:10px}
+.journey-overline{font-size:10px;letter-spacing:.1em}
+.journey-head strong{font-size:clamp(22px,2.1vw,29px)}
+.journey-stamp{font-size:10px;color:#a1b8b5}
+.journey-map{gap:5px;padding:4px 0 14px}
+.journey-map::before{top:22px;bottom:23px;left:50%;width:2px;background:linear-gradient(#628f93,#72e2bd 53%,#dcbd7a);box-shadow:0 0 16px #69e5c477}
+.journey-row{grid-template-columns:minmax(0,1fr) 42px minmax(0,1fr);min-height:115px;gap:10px}
+.journey-card{min-height:103px;padding:15px 16px;gap:6px;border-radius:7px;border-color:#5b8990;background:linear-gradient(125deg,#163d49e8,#12303ddc);box-shadow:0 12px 30px #0005;backdrop-filter:blur(9px)}
+.journey-card:hover,.journey-card:focus-visible{transform:translateY(-3px) scale(1.015);border-color:#a4eed4;background:#1c4b51}
+.journey-card-kicker{font-size:9px;letter-spacing:.055em}
+.journey-card strong{font-size:17px;line-height:1.2}
+.journey-card small{font-size:10px;color:#b2cfcf}
+.journey-card-arrow{right:15px;top:16px;width:8px;height:8px;font-size:0;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg)}
+.journey-point{width:38px;height:38px;font-size:11px;border-width:2px;box-shadow:0 0 0 7px #0c2834,0 0 21px #54d1ac66}
+.journey-aside{font-size:10px;line-height:1.5;color:#a7c5c7}
+.journey-left .journey-aside{padding-left:14px}
+.journey-right .journey-aside{padding-right:14px}
+.journey-directory .journey-card{background:linear-gradient(125deg,#1b4b46e8,#14363ddc);border-color:#75b5a5}
+.journey-detection .journey-card{background:linear-gradient(125deg,#1c4255ed,#153143dc);border-color:#88b1c7}
+.journey-next .journey-card{background:linear-gradient(125deg,#3c3d3be0,#263744da);border-color:#dbc48e}
+.journey-branch{margin:10px 25px 13px;padding:12px 17px;background:#102c38b8;border-color:#527681;box-shadow:0 10px 26px #0002}
+.journey-branch span{font-size:9px}
+.journey-branch strong{font-size:12px}
+.journey-foot{margin:0 25px;padding-top:15px;font-size:9px}
+@media(max-width:900px){.hero-art{min-height:0}.journey-panel{width:min(610px,100%)}}
+@media(max-width:640px){.journey-panel{padding:12px 0}.journey-panel::before{left:0;width:100%}.journey-head{margin:0 8px;padding:12px 0 23px}.journey-head strong{font-size:21px}.journey-map::before{left:19px}.journey-row{grid-template-columns:38px minmax(0,1fr);min-height:100px;gap:13px}.journey-row .journey-point{width:36px;height:36px}.journey-row .journey-card{min-height:91px;padding:13px 14px}.journey-card strong{font-size:15px}.journey-card-kicker{font-size:9px}.journey-card small{font-size:10px}.journey-branch,.journey-foot{margin-left:8px;margin-right:8px}}
