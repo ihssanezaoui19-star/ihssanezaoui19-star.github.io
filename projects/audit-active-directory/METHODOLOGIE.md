@@ -32,6 +32,12 @@ Sur Proxmox, nous avons préparé un contrôleur de domaine Windows Server 2022 
 
 ![Architecture du laboratoire sans noms ni adresses](images/architecture-laboratoire.svg)
 
+**Schéma actualisé du portfolio (vue publique reconstruite)**
+
+![Schéma détaillé des étapes PingCastle, Wazuh, analyse d’impact et mitigation](images/architecture-detaillee.svg)
+
+Ce second schéma relie le diagnostic, les tests d’alerte, la décision et la mesure après correction. Il illustre la méthode suivie dans le laboratoire, sans présenter le score comme un pourcentage de sécurité. [Ouvrir le schéma en grand](images/architecture-detaillee.svg).
+
 ## 4. Mesurer l'état initial avec PingCastle
 
 J'ai lancé un Health Check sur le domaine simulé et examiné les recommandations plutôt que de m'arrêter au chiffre global. Le score initial était **95/100** (un chiffre élevé indique davantage de risque selon l'outil). Les écarts retenus pour le travail comprenaient notamment des droits trop larges sur des objets ou GPO, des comptes privilégiés mal protégés, SMBv1 ou LM/NTLMv1, des objets anciens, une politique de mots de passe faible, l'absence de LAPS et une politique d'audit insuffisante.
