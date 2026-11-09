@@ -1,0 +1,157 @@
+/* Site-wide refinement: a consistent editorial system for a technical portfolio. */
+@import url('./style-v22.css?v=23');
+
+:root{--focus:#83e0c0}
+html{scroll-behavior:smooth}
+.topbar{
+  background:#081e27eb;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom-color:#5b8b814d;
+}
+.brand-mark{color:#c3f7e2;letter-spacing:-.08em}
+.topbar nav a:not(.nav-contact){
+  position:relative;
+  transition:color .2s;
+}
+.topbar nav a:not(.nav-contact):hover{color:#b4f2d9}
+.topbar nav a:not(.nav-contact)::after{
+  content:"";
+  position:absolute;
+  left:0;right:100%;bottom:-7px;
+  height:1px;
+  background:#87dfbf;
+  transition:right .2s;
+}
+.topbar nav a:not(.nav-contact):hover::after{right:0}
+.nav-contact{background:#153b40;border-color:#73b5a4}
+.nav-contact:hover{background:#24564f}
+.language-switch{border-color:#537870}
+:where(a,button):focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+
+.hero{
+  background:
+    radial-gradient(ellipse at 76% 45%,#15505291,transparent 49%),
+    linear-gradient(125deg,#071721,#092832 75%,#071923);
+  border-bottom:1px solid #356264;
+}
+.hero::before{background:radial-gradient(ellipse at 75% 43%,#285e5970,transparent 51%)}
+.hero .intro{
+  max-width:660px;
+  padding-left:19px;
+  border-left:2px solid #79dcb8;
+  color:#d1e5df;
+}
+.hero-focus>div{
+  border-color:#57847d;
+  background:linear-gradient(145deg,#173d43a8,#0e29339c);
+  box-shadow:inset 0 1px #b1e8d51a;
+}
+.hero-focus>div:nth-child(2){border-top-color:#8cb7c6}
+.hero-focus>div:nth-child(3){border-top-color:#d3bd84}
+.hero-meta{color:#bad5cf}
+.journey-head strong{letter-spacing:-.05em}
+.journey-card{transition:transform .2s,border-color .2s,background .2s,box-shadow .2s}
+.journey-card:hover,.journey-card:focus-visible{box-shadow:0 16px 37px #00131b84}
+
+.section-kicker{display:flex;align-items:center;gap:10px}
+.section-kicker::after{
+  content:"";
+  display:block;
+  width:30px;height:1px;
+  background:currentColor;
+  opacity:.45;
+}
+.section-heading h2,.profile h2,.experience-intro h2{text-wrap:balance}
+.project-card:not(.featured){border-radius:15px;box-shadow:0 11px 32px #0c3d3420}
+.project-card:not(.featured):hover{box-shadow:0 22px 45px #0c3d3430}
+.card-top{align-items:center}
+.card-evidence-preview{box-shadow:inset 0 1px #fff7}
+.card-open{transition:color .2s,transform .2s}
+.card-open:hover{transform:translateX(3px)}
+.featured .card-open:hover{transform:translateY(-2px)}
+
+.profile{
+  background:
+    radial-gradient(ellipse at 87% 25%,#16424b72,transparent 35%),
+    linear-gradient(160deg,#0b2732,#0a222d 78%);
+}
+.profile-main>p{color:#c8dbd7}
+.profile-side{border-left-color:#568378}
+.skill-group{border-bottom-color:#426a69}
+.qualification{
+  border-color:#5a8880;
+  box-shadow:0 25px 58px #00131b47;
+}
+.qualification-heading{background:#205054b0}
+.qualification-degree{background:linear-gradient(110deg,#19484c,#143a43)}
+.experience{border-top-color:#4c7370}
+.experience-intro p{color:#bfd3cd}
+.capabilities{gap:16px}
+.capability{
+  min-height:150px;
+  border-color:#4d7271;
+  background:linear-gradient(145deg,#17404a,#102e3a);
+  box-shadow:inset 0 1px #aadccb13;
+}
+.capability-num{
+  display:grid;place-items:center;
+  width:30px;height:30px;flex:none;
+  border:1px solid #6cbca4;
+  border-radius:50%;
+  color:#a5edd2;
+}
+.capability h3{font-size:18px}
+.capability p{color:#c1d4d1}
+.internships{border-top-color:#4c7370}
+.internships-head{margin-bottom:21px}
+.internships-head h3{font-size:28px}
+.internship-list{display:grid;gap:15px}
+.internship-list li,.internship-list li:last-child{
+  grid-template-columns:175px minmax(0,1fr);
+  gap:22px;
+  padding:25px 28px;
+  border:1px solid #476b6e;
+  border-radius:12px;
+  background:linear-gradient(115deg,#153741,#102c38);
+  box-shadow:inset 0 1px #c3e8d311;
+}
+.internship-list li:first-child{border-color:#79b9a6;background:linear-gradient(115deg,#1c4546,#10323c)}
+.internship-date{color:#b1ead2;line-height:1.6}
+.internship-content{border-left-color:#649a8e}
+.internship-content h4{font-size:19px;color:#f0fff8}
+.internship-content p{max-width:900px;color:#c2d4d1}
+.internship-content strong{color:#d7f5e8}
+footer{border-top-color:#49746e;color:#a6c4bb}
+footer a:hover{color:#dbffec}
+
+dialog{border:1px solid #a8ccc0}
+dialog::backdrop{background:#051923c9;backdrop-filter:blur(5px)}
+.dialog-title-row h2{letter-spacing:-.05em}
+.detail-block h3,.detail-evidence h3,.detail-result h3{letter-spacing:.12em}
+.evidence-tile{transition:border-color .2s,transform .2s}
+.evidence-tile:hover{transform:translateY(-3px)}
+
+@media(max-width:1050px){
+  .hero{background:radial-gradient(ellipse at 85% 60%,#15505278,transparent 55%),#071923}
+}
+@media(max-width:720px){
+  html{scroll-behavior:auto}
+  .topbar{backdrop-filter:none;-webkit-backdrop-filter:none}
+  .topbar nav a:not(.nav-contact)::after{display:none}
+  .hero .intro{padding-left:14px}
+  .hero-focus>div{box-shadow:none}
+  .section-kicker::after{width:18px}
+  .capabilities{gap:11px}
+  .capability{min-height:0}
+  .internship-list{padding-left:0;gap:12px}
+  .internship-list li,.internship-list li:last-child{display:block;padding:23px 19px}
+  .internship-date{margin-bottom:13px}
+  .internship-content{padding-left:14px}
+  .internship-content h4{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .topbar nav a:not(.nav-contact),.topbar nav a:not(.nav-contact)::after,
+  .journey-card,.card-open,.evidence-tile{transition:none}
+}
