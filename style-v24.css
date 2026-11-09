@@ -1,7 +1,7 @@
 /* Creative hero inspired by the supplied floating-nav and luminous network reference. */
 @import url('./style-v23.css?v=24');
 
-@media(min-width:721px){
+@media(min-width:901px){
   .topbar{
     position:fixed;
     top:16px;left:50%;
