@@ -1,0 +1,31 @@
+/* Make public project evidence and verified training easy to inspect. */
+@import url('./style-v18.css?v=19');
+
+.card-evidence-preview{display:grid;grid-template-columns:90px minmax(0,1fr);align-items:center;gap:13px;margin-top:19px;padding:8px;border:1px solid #d8e6df;border-radius:5px;background:#f8fbf9;color:#1c4940;text-decoration:none}
+.card-evidence-preview:hover,.card-evidence-preview:focus-visible{border-color:#65ad96;background:#f1f8f4}
+.card-evidence-preview img{width:90px;height:65px;object-fit:contain;border:1px solid #e5ece9;border-radius:3px;background:#fff}
+.card-evidence-preview span{display:grid;gap:6px;min-width:0}
+.card-evidence-preview small{font:500 9px/1.35 var(--mono);color:#487e73}
+.card-evidence-preview strong{font:600 11px/1.35 'Space Grotesk',sans-serif}
+.project-card{min-height:460px}
+.detail-evidence{align-items:flex-start;gap:22px}
+.evidence-doc-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;flex-shrink:0}
+.evidence-doc-links a{display:inline-flex;align-items:center;padding:9px 11px;border:1px solid #82ad9d;border-radius:4px;color:#16483d;font:600 11px 'Space Grotesk',sans-serif;text-decoration:none}
+.evidence-doc-links a:hover,.evidence-doc-links a:focus-visible{background:#e4f2ea}
+.evidence-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0 4px}
+.evidence-tile{display:grid;align-content:start;gap:8px;padding:10px;border:1px solid #d4e2dc;border-radius:5px;background:#f7faf8;color:#183c35;text-decoration:none}
+.evidence-tile:hover,.evidence-tile:focus-visible{border-color:#67aa95;background:#eef8f2}
+.evidence-tile img{width:100%;height:135px;object-fit:contain;border:1px solid #e2e9e5;border-radius:3px;background:#fff}
+.evidence-kind{font:500 9px/1.4 var(--mono);color:#47816e;text-transform:uppercase;letter-spacing:.04em}
+.evidence-tile strong{font:600 12px/1.4 'Space Grotesk',sans-serif}
+.qualification{display:grid;gap:8px;margin:23px 0 20px;padding:18px 0;border-top:1px solid #34515c;border-bottom:1px solid #34515c}
+.qualification span{font:500 9px/1.5 var(--mono);letter-spacing:.06em;color:#88d6bd}
+.qualification span:nth-of-type(2){margin-top:8px}
+.qualification strong{font:600 17px/1.3 'Space Grotesk',sans-serif;color:#e7f6ee}
+.qualification p{margin:0;font-size:11px;line-height:1.7;color:#a9c4c4}
+@media(max-width:640px){
+  .project-card{min-height:0}
+  .detail-evidence{display:block}
+  .evidence-doc-links{justify-content:flex-start;margin-top:16px}
+  .evidence-gallery{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+}
