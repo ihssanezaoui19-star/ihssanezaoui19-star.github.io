@@ -1,0 +1,64 @@
+/* Make verified education and completed learning visible in the portfolio. */
+@import url('./style-v20.css?v=21');
+
+.qualification{
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(190px,.55fr) minmax(250px,.9fr);
+  gap:0;
+  margin:2px 0 0;
+  padding:0;
+  border:1px solid #426c6c;
+  border-radius:15px;
+  background:linear-gradient(115deg,#143c44,#10333d 70%,#102b37);
+  box-shadow:0 18px 44px #001a2238;
+  overflow:hidden;
+}
+.qualification-heading{
+  grid-column:1/-1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 25px;
+  border-bottom:1px solid #42676a;
+  background:#1b4850a8;
+}
+.qualification-heading span,.qualification-dut span,.qualification-training span{
+  font:600 10px/1.5 var(--mono);
+  letter-spacing:.08em;
+  color:#a6ead2;
+}
+.qualification-heading b{
+  color:#e4f9ed;
+  font:600 11px var(--mono);
+}
+.qualification-degree,.qualification-dut,.qualification-training{padding:25px}
+.qualification-degree,.qualification-dut{border-right:1px solid #41656a}
+.qualification-degree strong{display:block;font:600 clamp(21px,2vw,28px)/1.2 'Space Grotesk',sans-serif;color:#f4fff9;letter-spacing:-.04em}
+.qualification-degree p{max-width:510px;margin:9px 0 22px;font-size:14px;line-height:1.6;color:#c0d8d5}
+.qualification-results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.qualification-results div{display:grid;align-content:start;gap:7px;padding:13px 10px;border:1px solid #508178;border-radius:8px;background:#1b4b4d}
+.qualification-results b{font:600 clamp(14px,1.35vw,19px)/1.2 'Space Grotesk',sans-serif;color:#d6ffe9;letter-spacing:-.035em}
+.qualification-results small{font:10px/1.4 var(--mono);color:#b2d6cd}
+.qualification-dut{display:flex;flex-direction:column;gap:15px}
+.qualification-dut strong{font:600 clamp(20px,1.8vw,25px)/1.2 'Space Grotesk',sans-serif;color:#f4fff9}
+.qualification-training ul{margin:15px 0 0;padding-left:17px;color:#d0e6df;font-size:13px;line-height:1.7}
+.qualification-training li+li{margin-top:7px}
+.qualification-training li::marker{color:#90e1c3}
+.experience{margin-top:0}
+@media(max-width:1050px){
+  .qualification{grid-template-columns:1fr 1fr}
+  .qualification-degree{grid-column:1/-1;border-right:0;border-bottom:1px solid #41656a}
+  .qualification-dut{border-right:1px solid #41656a}
+}
+@media(max-width:640px){
+  .qualification{grid-template-columns:1fr}
+  .qualification-heading{padding:16px 19px}
+  .qualification-degree,.qualification-dut,.qualification-training{padding:22px 19px}
+  .qualification-degree,.qualification-dut{grid-column:auto;border-right:0;border-bottom:1px solid #41656a}
+  .qualification-degree strong{font-size:24px}
+  .qualification-results{gap:7px}
+  .qualification-results div{padding:11px 8px}
+  .qualification-results b{font-size:15px}
+  .qualification-results small{font-size:9px}
+}
