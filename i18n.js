@@ -154,11 +154,12 @@ window.portfolioStaticEnglish = [
   ['.skill-group:nth-child(1) p', 'Wazuh, Sysmon, Suricata, Wireshark, PCAP, CTI interface'],
   ['.skill-group:nth-child(2) h3', 'Networks & security'],
   ['.skill-group:nth-child(3) h3', 'Systems & virtualization'],
-  ['.qualification span:nth-of-type(1)', 'EDUCATION · CLASS OF 2026'],
-  ['.qualification strong', 'Engineering degree'],
-  ['.qualification p:nth-of-type(1)', 'Networks and Telecommunications Systems · ENSA Kénitra'],
-  ['.qualification span:nth-of-type(2)', 'ADDITIONAL LEARNING'],
-  ['.qualification p:nth-of-type(2)', 'Fortinet NSE 1 and 2: courses completed. TryHackMe SOC Level 1: path completed.'],
+  ['.qualification', `<div class="qualification-heading"><span>EDUCATION & CERTIFICATIONS</span><b>2026</b></div>
+    <div class="qualification-degree"><strong>Engineering degree</strong><p>Networks and Telecommunications Systems · ENSA Kénitra</p>
+      <div class="qualification-results"><div><b>Très Bien</b><small>Honors</small></div><div><b>15.70/20</b><small>Overall average</small></div><div><b>18.5/20</b><small>Final dissertation</small></div></div>
+    </div>
+    <div class="qualification-dut"><span>PREVIOUS STUDIES</span><strong>DUT · two-year technical degree</strong></div>
+    <div class="qualification-training"><span>COMPLETED COURSES & PATHS</span><ul><li>Fortinet NSE 1 and NSE 2 · courses completed</li><li>Fortinet NSE 3 · exam completed, certificate not issued</li><li>TryHackMe SOC Level 1 · path completed</li></ul></div>`],
   ['.profile-side .github-link', 'GitHub profile <span aria-hidden="true">→</span>'],
   ['.experience-intro .section-kicker', '<span>03 /</span> HANDS-ON EXPERIENCE'],
   ['.experience-intro h2', 'What I can contribute<span class="heading-dot">.</span>'],
@@ -202,6 +203,7 @@ window.portfolioAttributeEnglish = [
   ['.language-switch', 'aria-label', 'Portfolio language'],
   ['.hero-art', 'aria-label', 'Ihssane’s path: network administration, Active Directory audit, detection and CTI, and the search for a first full-time role.'],
   ['.hero-focus', 'aria-label', 'Areas practiced in internships and labs'],
+  ['.qualification', 'aria-label', 'Education and certification paths'],
   ['.filters', 'aria-label', 'Filter projects'],
   ['.capabilities', 'aria-label', 'Practiced skills'],
   ['.close-dialog', 'aria-label', 'Close project details']
