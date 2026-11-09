@@ -213,7 +213,7 @@ function render(filter = activeFilter) {
     const preview = evidenceMedia[source.number][0];
     const previewLinks = evidenceLinks(preview);
     const card = document.createElement('article');
-    card.className = `project-card ${project.color}`;
+    card.className = `project-card ${project.color}${source.number === '01' ? ' featured' : ''}`;
     card.innerHTML = `<div class="card-top"><span class="card-number">${project.number} / 06</span><span class="card-status">${project.status}</span></div>
       <div class="card-emblem" aria-hidden="true"><span></span><i></i><b></b></div>
       <div class="card-body"><p class="card-type">${project.type}</p><h3>${project.title}</h3><p class="card-desc">${project.short}</p>
