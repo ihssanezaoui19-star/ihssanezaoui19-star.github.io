@@ -174,8 +174,6 @@ window.portfolioAttributeEnglish = [
   ['.brand', 'aria-label', 'Ihssane Zaoui, home'],
   ['.topbar nav', 'aria-label', 'Main navigation'],
   ['.language-switch', 'aria-label', 'Portfolio language'],
-  ['.hero-art', 'aria-label', 'Three documented project previews with diagrams and outcomes: honeypot CTI, Active Directory audit, and virtualized datacenter.'],
-  ['.spotlight-switch', 'aria-label', 'Choose a featured project'],
   ['.tech-ribbon', 'aria-label', 'Tools and practices'],
   ['.qualification', 'aria-label', 'Education and certification paths'],
   ['.filters', 'aria-label', 'Filter projects'],
