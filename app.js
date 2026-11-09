@@ -85,26 +85,32 @@ const projects = [
 // diagrams are labeled as such and are not presented as operational captures.
 const evidenceMedia = {
   '01': [
-    { repo: 'ihssanezaoui19-star.github.io', path: 'projects/honeypot-cti/images/parcours-observation.svg', fr: 'Parcours d’observation reconstruit', en: 'Reconstructed observation path', kind: 'diagram' }
+    { repo: 'ihssanezaoui19-star.github.io', path: 'projects/honeypot-cti/images/parcours-observation.svg', fr: 'Parcours d’observation reconstruit', en: 'Reconstructed observation path', kind: 'diagram' },
+    { repo: 'ihssanezaoui19-star.github.io', path: 'projects/honeypot-cti/images/architecture-detaillee.svg', fr: 'Architecture d’observation détaillée', en: 'Detailed observation architecture', kind: 'diagram' }
   ],
   '02': [
-    { repo: 'ihssanezaoui19-star.github.io', path: 'projects/datacenter-virtualise/images/architecture-en-cours.svg', fr: 'Architecture de travail en cours', en: 'Architecture plan in progress', kind: 'diagram' }
+    { repo: 'ihssanezaoui19-star.github.io', path: 'projects/datacenter-virtualise/images/architecture-en-cours.svg', fr: 'Architecture de travail en cours', en: 'Architecture plan in progress', kind: 'diagram' },
+    { repo: 'ihssanezaoui19-star.github.io', path: 'projects/datacenter-virtualise/images/architecture-detaillee.svg', fr: 'Plan détaillé du laboratoire', en: 'Detailed lab plan', kind: 'diagram' }
   ],
   '03': [
     { repo: 'Architecture-R-seau-S-curis-e-', path: 'images/capture-proxy-acces-refuse.png', fr: 'Capture anonymisée : accès Web refusé', en: 'Anonymized screenshot: denied Web access', kind: 'screenshot' },
-    { repo: 'Architecture-R-seau-S-curis-e-', path: 'images/architecture-anonymisee.svg', fr: 'Architecture anonymisée reconstruite', en: 'Reconstructed anonymized architecture', kind: 'diagram' }
+    { repo: 'Architecture-R-seau-S-curis-e-', path: 'images/architecture-anonymisee.svg', fr: 'Architecture anonymisée reconstruite', en: 'Reconstructed anonymized architecture', kind: 'diagram' },
+    { repo: 'Architecture-R-seau-S-curis-e-', path: 'images/architecture-detaillee.svg', fr: 'Zones et visibilité détaillées', en: 'Detailed zones and visibility', kind: 'diagram' }
   ],
   '04': [
     { repo: 'Hybrid-SD-WAN-MPLS-Architecture-Deployment', path: 'images/capture-zone-sdwan.png', fr: 'Capture anonymisée : zone SD-WAN', en: 'Anonymized screenshot: SD-WAN zone', kind: 'screenshot' },
-    { repo: 'Hybrid-SD-WAN-MPLS-Architecture-Deployment', path: 'images/topologie-anonymisee.svg', fr: 'Topologie multi-sites reconstruite', en: 'Reconstructed multi-site topology', kind: 'diagram' }
+    { repo: 'Hybrid-SD-WAN-MPLS-Architecture-Deployment', path: 'images/topologie-anonymisee.svg', fr: 'Topologie multi-sites reconstruite', en: 'Reconstructed multi-site topology', kind: 'diagram' },
+    { repo: 'Hybrid-SD-WAN-MPLS-Architecture-Deployment', path: 'images/architecture-detaillee.svg', fr: 'Routage et tests détaillés', en: 'Detailed routing and checks', kind: 'diagram' }
   ],
   '05': [
     { repo: 'ihssanezaoui19-star.github.io', path: 'projects/audit-active-directory/images/capture-wazuh-alerte.png', fr: 'Capture anonymisée : alerte Wazuh', en: 'Anonymized screenshot: Wazuh alert', kind: 'screenshot' },
     { repo: 'ihssanezaoui19-star.github.io', path: 'projects/audit-active-directory/images/capture-gpo-llmnr.png', fr: 'Capture anonymisée : GPO LLMNR', en: 'Anonymized screenshot: LLMNR GPO', kind: 'screenshot' },
-    { repo: 'ihssanezaoui19-star.github.io', path: 'projects/audit-active-directory/images/score-avant-apres.svg', fr: 'Comparaison du score PingCastle', en: 'PingCastle score comparison', kind: 'diagram' }
+    { repo: 'ihssanezaoui19-star.github.io', path: 'projects/audit-active-directory/images/score-avant-apres.svg', fr: 'Comparaison du score PingCastle', en: 'PingCastle score comparison', kind: 'diagram' },
+    { repo: 'ihssanezaoui19-star.github.io', path: 'projects/audit-active-directory/images/architecture-detaillee.svg', fr: 'Audit, détection et correction', en: 'Audit, detection and remediation', kind: 'diagram' }
   ],
   '06': [
-    { repo: 'DFIR-Compromised-System-Analysis-WeatherZero-Malware', path: 'images/parcours-investigation.svg', fr: 'Parcours d’investigation reconstruit', en: 'Reconstructed investigation path', kind: 'diagram' }
+    { repo: 'DFIR-Compromised-System-Analysis-WeatherZero-Malware', path: 'images/parcours-investigation.svg', fr: 'Parcours d’investigation reconstruit', en: 'Reconstructed investigation path', kind: 'diagram' },
+    { repo: 'DFIR-Compromised-System-Analysis-WeatherZero-Malware', path: 'images/architecture-detaillee.svg', fr: 'Investigation et décision détaillées', en: 'Detailed investigation and decision', kind: 'diagram' }
   ]
 };
 
