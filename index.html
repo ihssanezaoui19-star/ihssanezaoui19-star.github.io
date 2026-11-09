@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#071521">
   <meta name="description" content="Ihssane Zaoui, ingénieure d’État en réseaux et systèmes : administration, sécurité réseau et cybersécurité défensive. Projets Proxmox, Active Directory, Wazuh et honeypot CTI.">
   <title>Ihssane Zaoui — Réseaux, systèmes & cybersécurité</title>
-  <link rel="stylesheet" href="./style-v23.css?v=24">
-  <script src="./i18n.js?v=30" defer></script>
+  <link rel="stylesheet" href="./style-v24.css?v=25">
+  <script src="./i18n.js?v=31" defer></script>
   <script src="./architecture-diagrams.js?v=15" defer></script>
   <script src="./app.js?v=29" defer></script>
 </head>
@@ -29,29 +29,18 @@
           <div class="hero-actions"><a class="button-primary" href="mailto:ihssanezaoui19@gmail.com?subject=Opportunit%C3%A9%20r%C3%A9seaux%20ou%20cybers%C3%A9curit%C3%A9">Me contacter <span aria-hidden="true">→</span></a><a class="button-text" href="#projets">Explorer mes projets <span aria-hidden="true">↓</span></a></div>
           <p class="hero-meta">Premier poste recherché · Disponible immédiatement · Mobile au Maroc</p>
         </div>
-        <div class="hero-art" role="group" aria-label="Parcours d’Ihssane : administration réseau, audit Active Directory, détection et CTI, puis recherche d’un premier poste.">
-          <div class="journey-panel">
-            <div class="journey-head"><div><span class="journey-overline">PARCOURS / 2024 → AUJOURD’HUI</span><strong>Du réseau à l’investigation<span>.</span></strong></div><span class="journey-stamp">IZ · 01</span></div>
-            <div class="journey-map">
-              <div class="journey-row journey-left journey-network">
-                <a class="journey-card" href="#stages"><span class="journey-card-kicker">2024 · PREMIER TERRAIN</span><strong>Diagnostiquer le réseau</strong><small>Postes Windows · AD · connectivité</small><span class="journey-card-arrow" aria-hidden="true">→</span></a>
-                <span class="journey-point" aria-hidden="true">01</span><span class="journey-aside">Vérifier les services<br>et les accès réseau</span>
-              </div>
-              <div class="journey-row journey-right journey-directory">
-                <button class="journey-card" type="button" data-hero-project="05"><span class="journey-card-kicker">2025 · AUDIT & DURCISSEMENT</span><strong>Mesurer le risque AD</strong><small>PingCastle · Wazuh · Sysmon · GPO</small><span class="journey-card-arrow" aria-hidden="true">→</span></button>
-                <span class="journey-point" aria-hidden="true">02</span><span class="journey-aside">Analyser l’impact<br>avant de corriger</span>
-              </div>
-              <div class="journey-row journey-left journey-detection">
-                <button class="journey-card" type="button" data-hero-project="01"><span class="journey-card-kicker">2026 · PFE / BLUE TEAM</span><strong>Suivre une attaque</strong><small>Honeypot · PCAP · CTI · n8n</small><span class="journey-card-arrow" aria-hidden="true">→</span></button>
-                <span class="journey-point" aria-hidden="true">03</span><span class="journey-aside">Relier les traces<br>au scénario d’attaque</span>
-              </div>
-              <div class="journey-row journey-right journey-next">
-                <a class="journey-card" href="#projets"><span class="journey-card-kicker">PROCHAINE ÉTAPE · PREMIER POSTE</span><strong>Diagnostiquer & durcir</strong><small>Réseaux · systèmes · SOC</small><span class="journey-card-arrow" aria-hidden="true">→</span></a>
-                <span class="journey-point" aria-hidden="true">04</span><span class="journey-aside">Vérifier les changements<br>et documenter les incidents</span>
-              </div>
+        <div class="hero-art" role="group" aria-label="Trois axes de travail d’Ihssane : infrastructure virtualisée, audit Active Directory et détection par honeypot. Chaque carte ouvre une fiche projet.">
+          <div class="signal-board">
+            <div class="signal-head"><div><span class="signal-overline">TROIS TERRAINS · UNE DÉMARCHE</span><strong>Construire. Observer.<br><em>Corriger.</em></strong></div><span class="signal-stamp">IZ / 2024—26</span></div>
+            <div class="signal-canvas">
+              <svg class="signal-wire" viewBox="0 0 620 480" preserveAspectRatio="none" aria-hidden="true"><path d="M256 121 C277 146 277 178 304 205"/><path d="M388 178 C359 189 350 199 330 216"/><path d="M300 308 C279 331 269 344 256 359"/><circle cx="304" cy="205" r="3"/><circle cx="330" cy="216" r="3"/><circle cx="300" cy="308" r="3"/></svg>
+              <div class="signal-core" aria-hidden="true"><span>IZ</span><small>RÉSEAUX<br>× SÉCURITÉ</small></div>
+              <button class="signal-card signal-infra" type="button" data-hero-project="02"><span class="signal-card-kicker">01 / INFRASTRUCTURE</span><strong>Construire le terrain</strong><small>Proxmox · pare-feu · VPN</small><span class="signal-arrow" aria-hidden="true">↗</span></button>
+              <button class="signal-card signal-ad" type="button" data-hero-project="05"><span class="signal-card-kicker">02 / AUDIT AD</span><strong>Mesurer avant de corriger</strong><small>PingCastle · Wazuh · GPO</small><span class="signal-arrow" aria-hidden="true">↗</span></button>
+              <button class="signal-card signal-cti" type="button" data-hero-project="01"><span class="signal-card-kicker">03 / DÉTECTION & CTI</span><strong>Suivre une attaque</strong><small>Honeypot · PCAP · n8n</small><span class="signal-arrow" aria-hidden="true">↗</span></button>
+              <div class="signal-note"><span>FIL CONDUCTEUR</span><strong>Du réseau aux traces,<br>puis à la décision.</strong></div>
             </div>
-            <div class="journey-branch"><span>FIL ROUGE · INFRASTRUCTURE</span><strong>Proxmox · VPN · virtualisation · architectures</strong></div>
-            <div class="journey-foot"><span class="journey-live" aria-hidden="true"></span><span>STAGES + PROJETS DOCUMENTÉS</span><span>EXPLORER →</span></div>
+            <a class="signal-foot" href="#projets"><span>EXPLORER LES PROJETS DOCUMENTÉS</span><span aria-hidden="true">↗</span></a>
           </div>
         </div>
       </section>
