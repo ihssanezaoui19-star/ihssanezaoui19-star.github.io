@@ -31,6 +31,12 @@ Dans ce projet de stage, j'ai travaillé sur la conception de la maquette virtua
 
 ![Architecture anonymisée du laboratoire AD](images/architecture-laboratoire.svg)
 
+**Schéma actualisé du portfolio (vue publique reconstruite)**
+
+![Chaîne détaillée d’audit AD, détection Wazuh et corrections](images/architecture-detaillee.svg)
+
+Vue publique reconstruite du chemin audit → observation → analyse d’impact → correction → nouvel audit. Le score PingCastle 95 → 20 concerne uniquement la maquette ; aucun nom, compte ou adressage de l’entreprise n’apparaît. [Ouvrir le schéma en grand](images/architecture-detaillee.svg).
+
 ### Pourquoi Wazuh et les tests d'intrusion ?
 
 PingCastle signalait des écarts de configuration, mais ce diagnostic ne montrait pas à lui seul comment les reconnaître dans les journaux. Les tests autorisés sur les machines de la maquette visaient à vérifier les conséquences possibles et la capacité de détection. Les agents Wazuh recueillaient les événements Windows ; Sysmon enrichissait ceux du serveur ; Manager, Indexer et Dashboard permettaient de traiter, rechercher et visualiser les alertes. Le rapport documente des règles configurées et plusieurs alertes effectivement observées. Il ne démontre pas une couverture exhaustive des attaques.
