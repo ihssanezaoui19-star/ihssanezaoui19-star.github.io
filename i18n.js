@@ -127,7 +127,6 @@ window.portfolioStaticEnglish = [
   ['.field-cti .field-type', 'OBSERVE · FINAL-YEAR PROJECT'],
   ['.field-cti strong', 'Honeypot & CTI interface'],
   ['.field-cti small', 'Simulated services · PCAP · n8n automation'],
-  ['.field-footer > span:nth-child(2)', 'Each case study opens the work and available evidence.'],
   ['.field-footer a', 'View all 6 projects <span aria-hidden="true">→</span>'],
   ['.tech-label', 'TOOLS & PRACTICE'],
   ['.projects .section-kicker', '<span>01 /</span> SELECTED WORK'],
