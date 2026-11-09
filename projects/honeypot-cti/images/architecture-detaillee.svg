@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="architecture-svg" width="1200" height="635" viewBox="0 0 1200 635" role="img" aria-label="Honeypot · architecture d’observation" xmlns="http://www.w3.org/2000/svg">
+<style>
+svg{background:#fff;font-family:Arial,Helvetica,sans-serif}
+.arch-zone rect{fill:#f4f8fa;stroke:#b9ccd7;stroke-width:1.5;stroke-dasharray:6 5}
+.arch-zone-hostile rect{fill:#fff3f0;stroke:#f0b9af}
+.arch-zone-observe rect{fill:#edf8f8;stroke:#a9d9da}
+.arch-zone-planned rect{fill:#fbf7ee;stroke:#d6c9aa}
+.arch-zone text{font:500 15px 'DejaVu Sans Mono',monospace;fill:#305777}
+.arch-edge{fill:none;stroke:#829cad;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.arch-edge-hostile{stroke:#e44c3d}
+.arch-edge-telemetry{stroke:#0998a0;stroke-dasharray:6 5}
+.arch-edge-planned{stroke:#b48a54;stroke-dasharray:6 5}
+.arch-marker-flow path{fill:#829cad}
+.arch-marker-hostile path{fill:#e44c3d}
+.arch-marker-telemetry path{fill:#0998a0}
+.arch-marker-planned path{fill:#b48a54}
+.arch-card-face{fill:#fff;stroke:#bed0dc;stroke-width:1.6}
+.arch-card-dark .arch-card-face{fill:#0e2738;stroke:#0e2738}
+.arch-card-observe .arch-card-face{stroke:#04959e;stroke-width:1.9}
+.arch-card-risk .arch-card-face{stroke:#e2b2aa}
+.arch-card-planned .arch-card-face{stroke:#bc9b66;stroke-dasharray:6 5}
+.arch-icon-disc{fill:#e2ecf2}
+.arch-card-risk .arch-icon-disc{fill:#ffe2dc}
+.arch-card-observe .arch-icon-disc{fill:#d9f1f0}
+.arch-card-dark .arch-icon-disc{fill:#355062}
+.arch-card-planned .arch-icon-disc{fill:#f4ead3}
+.arch-icon{font:700 13px Arial,sans-serif;fill:#12394e}
+.arch-card-risk .arch-icon{fill:#e44c3d}
+.arch-card-observe .arch-icon{fill:#047f88}
+.arch-card-dark .arch-icon{fill:#fff}
+.arch-title{font:700 17px Arial,sans-serif;fill:#071d30}
+.arch-card-dark .arch-title{fill:#fff}
+.arch-sub{font:12px 'DejaVu Sans Mono',monospace;fill:#3d6383}
+.arch-card-dark .arch-sub{fill:#91cafa}
+.arch-step-disc{fill:#0b283c}
+.arch-step{fill:#fff;font:700 11px 'DejaVu Sans Mono',monospace}
+.arch-edge-label{fill:#087e88;font:12px 'DejaVu Sans Mono',monospace}
+</style>
+
+          <defs><marker id="arch-arrow-01-flow" class="arch-marker-flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker><marker id="arch-arrow-01-hostile" class="arch-marker-hostile" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker><marker id="arch-arrow-01-telemetry" class="arch-marker-telemetry" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker><marker id="arch-arrow-01-planned" class="arch-marker-planned" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker></defs>
+          <g class="arch-zone arch-zone-hostile"><rect x="18" y="202" width="238" height="412" rx="16"/><text x="38" y="233">Externe</text></g><g class="arch-zone arch-zone-neutral"><rect x="512" y="202" width="368" height="412" rx="16"/><text x="532" y="233">Environnement simulé</text></g><g class="arch-zone arch-zone-observe"><rect x="900" y="202" width="282" height="412" rx="16"/><text x="920" y="233">Observation</text></g>
+          <g class="arch-edges"><path class="arch-edge arch-edge-flow" d="M305 80 H342" marker-end="url(#arch-arrow-01-flow)"/><path class="arch-edge arch-edge-flow" d="M617 80 H654" marker-end="url(#arch-arrow-01-flow)"/><path class="arch-edge arch-edge-flow" d="M792 125 V252" marker-end="url(#arch-arrow-01-flow)"/><path class="arch-edge arch-edge-hostile" d="M238 410 H282" marker-end="url(#arch-arrow-01-hostile)"/><path class="arch-edge arch-edge-hostile" d="M484 410 H505 V297 H538" marker-end="url(#arch-arrow-01-hostile)"/><path class="arch-edge arch-edge-flow" d="M484 410 H505 V487 H538" marker-end="url(#arch-arrow-01-flow)"/><path class="arch-edge arch-edge-telemetry" d="M854 297 H926" marker-end="url(#arch-arrow-01-telemetry)"/><path class="arch-edge arch-edge-telemetry" d="M854 487 H891 V297 H926" marker-end="url(#arch-arrow-01-telemetry)"/><path class="arch-edge arch-edge-telemetry" d="M1042 342 V377" marker-end="url(#arch-arrow-01-telemetry)"/><path class="arch-edge arch-edge-telemetry" d="M1042 467 V502" marker-end="url(#arch-arrow-01-telemetry)"/></g>
+          <g class="arch-card arch-card-plain" aria-label="T-Pot : Nous avons testé T-Pot avant de définir les besoins non couverts." transform="translate(30 35)">
+      <rect class="arch-card-face" width="275" height="90" rx="10"/>
+      <circle class="arch-icon-disc" cx="29" cy="34" r="21"/><text class="arch-icon" x="29" y="39" text-anchor="middle">TP</text>
+      <text class="arch-title"><tspan x="60" y="40">T-Pot</tspan></text>
+      <text class="arch-sub"><tspan x="17" y="70">Étude et essai</tspan></text>
+      <circle class="arch-step-disc" cx="0" cy="0" r="13"/><text class="arch-step" x="0" y="4" text-anchor="middle">01</text>
+    </g><g class="arch-card arch-card-risk" aria-label="Limites identifiées : Le service client et le parcours après le premier accès étaient insuffisamment représentés." transform="translate(342 35)">
+      <rect class="arch-card-face" width="275" height="90" rx="10"/>
+      <circle class="arch-icon-disc" cx="29" cy="34" r="21"/><text class="arch-icon" x="29" y="39" text-anchor="middle">!</text>
+      <text class="arch-title"><tspan x="60" y="40">Limites identifiées</tspan></text>
+      <text class="arch-sub"><tspan x="17" y="70">Écarts avec le besoin</tspan></text>
+      <circle class="arch-step-disc" cx="0" cy="0" r="13"/><text class="arch-step" x="0" y="4" text-anchor="middle">02</text>
+    </g><g class="arch-card arch-card-observe" aria-label="Honeypot adapté : Nous avons conçu un capteur adapté aux services simulés." transform="translate(654 35)">
+      <rect class="arch-card-face" width="275" height="90" rx="10"/>
+      <circle class="arch-icon-disc" cx="29" cy="34" r="21"/><text class="arch-icon" x="29" y="39" text-anchor="middle">HP</text>
+      <text class="arch-title"><tspan x="60" y="40">Honeypot adapté</tspan></text>
+      <text class="arch-sub"><tspan x="17" y="70">Conception sur mesure</tspan></text>
+      <circle class="arch-step-disc" cx="0" cy="0" r="13"/><text class="arch-step" x="0" y="4" text-anchor="middle">03</text>
+    </g><g class="arch-card arch-card-risk" aria-label="Attaquants : Le capteur observe les tentatives qui atteignent cette maquette ; il ne mesure pas toutes les attaques au Maroc." transform="translate(36 365)">
+      <rect class="arch-card-face" width="202" height="90" rx="10"/>
+      <circle class="arch-icon-disc" cx="29" cy="34" r="21"/><text class="arch-icon" x="29" y="39" text-anchor="middle">EXT</text>
+      <text class="arch-title"><tspan x="60" y="40">Attaquants</tspan></text>
+      <text class="arch-sub"><tspan x="17" y="70">Trafic externe observé</tspan></text>
+      <circle class="arch-step-disc" cx="0" cy="0" r="13"/><text class="arch-step" x="0" y="4" text-anchor="middle">04</text>
+    </g><g class="arch-card arch-card-dark" aria-label="Pare-feu : Le pare-feu matérialise le point d’entrée et le contrôle des flux." transform="translate(282 365)">
+      <rect class="arch-card-face" width="202" height="90" rx="10"/>
+      <circle class="arch-icon-disc" cx="29" cy="34" r="21"/><text class="arch-icon" x="29" y="39" text-anchor="middle">FW</text>
+      <text class="arch-title"><tspan x="60" y="40">Pare-feu</tspan></text>
+      <text class="arch-sub"><tspan x="17" y="70">Point d’entrée</tspan></text>
+      <circle class="arch-step-disc" cx="0" cy="0" r="13"/><text class="arch-step" x="0" y="4" text-anchor="middle">05</text>
+    </g><g class="arch-card arch-card-observe" aria-label="Honeypot sur mesure : Le service simulé permet d’examiner les interactions liées au scénario et aux CVE connues." transform="translate(538 252)">
+      <rect class="arch-card-face" width="316" height="90" rx="10"/>
+      <circle class="arch-icon-disc" cx="29" cy="34" r="21"/><text class="arch-icon" x="29" y="39" text-anchor="middle">HP</text>
+      <text class="arch-title"><tspan x="60" y="40">Honeypot sur mesure</tspan></text>
+      <text class="arch-sub"><tspan x="17" y="70">Services et CVE simulés</tspan></text>
+      <circle class="arch-step-disc" cx="0" cy="0" r="13"/><text class="arch-step" x="0" y="4" text-anchor="middle">06</text>
+    </g><g class="arch-card arch-card-plain" aria-label="Réseau interne : Un réseau interne simulé permet de représenter le parcours possible après l’entrée." transform="translate(538 442)">
+      <rect class="arch-card-face" width="316" height="90" rx="10"/>
+      <circle class="arch-icon-disc" cx="29" cy="34" r="21"/><text class="arch-icon" x="29" y="39" text-anchor="middle">LAN</text>
+      <text class="arch-title"><tspan x="60" y="40">Réseau interne</tspan></text>
+      <text class="arch-sub"><tspan x="17" y="70">Réseau simulé derrière le pare-feu</tspan></text>
+      <circle class="arch-step-disc" cx="0" cy="0" r="13"/><text class="arch-step" x="0" y="4" text-anchor="middle">07</text>
+    </g><g class="arch-card arch-card-plain" aria-label="Collecte : Journaux et traces réseau sont rassemblés pour analyser ce qui a effectivement été observé." transform="translate(926 252)">
+      <rect class="arch-card-face" width="232" height="90" rx="10"/>
+      <circle class="arch-icon-disc" cx="29" cy="34" r="21"/><text class="arch-icon" x="29" y="39" text-anchor="middle">DB</text>
+      <text class="arch-title"><tspan x="60" y="40">Collecte</tspan></text>
+      <text class="arch-sub"><tspan x="17" y="70">Événements · PCAP</tspan></text>
+      <circle class="arch-step-disc" cx="0" cy="0" r="13"/><text class="arch-step" x="0" y="4" text-anchor="middle">08</text>
+    </g><g class="arch-card arch-card-observe" aria-label="n8n : n8n automatise le rapprochement et l’enrichissement de données CTI." transform="translate(926 377)">
+      <rect class="arch-card-face" width="232" height="90" rx="10"/>
+      <circle class="arch-icon-disc" cx="29" cy="34" r="21"/><text class="arch-icon" x="29" y="39" text-anchor="middle">n8n</text>
+      <text class="arch-title"><tspan x="60" y="40">n8n</tspan></text>
+      <text class="arch-sub"><tspan x="17" y="70">Traitements CTI automatisés</tspan></text>
+      <circle class="arch-step-disc" cx="0" cy="0" r="13"/><text class="arch-step" x="0" y="4" text-anchor="middle">09</text>
+    </g><g class="arch-card arch-card-plain" aria-label="Interface CTI : L’interface rend les événements et leur contexte consultables." transform="translate(926 502)">
+      <rect class="arch-card-face" width="232" height="90" rx="10"/>
+      <circle class="arch-icon-disc" cx="29" cy="34" r="21"/><text class="arch-icon" x="29" y="39" text-anchor="middle">CTI</text>
+      <text class="arch-title"><tspan x="60" y="40">Interface CTI</tspan></text>
+      <text class="arch-sub"><tspan x="17" y="70">Qualification et analyse</tspan></text>
+      <circle class="arch-step-disc" cx="0" cy="0" r="13"/><text class="arch-step" x="0" y="4" text-anchor="middle">10</text>
+    </g>
+        </svg>
