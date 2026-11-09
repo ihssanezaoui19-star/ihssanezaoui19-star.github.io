@@ -10,8 +10,8 @@ const projects = [
     architecture: ['Services et réseau d’entreprise simulés', 'Pare-feu et honeypot sur mesure', 'Traces réseau, PCAP et journaux', 'Interface CTI et automatisation n8n'],
     tools: 'Proxmox, Linux, pare-feu, T-Pot / Cowrie évalués au départ, honeypot développé pour le cas d’usage, analyse PCAP, Elasticsearch / Kibana, interface CTI et n8n.',
     work: 'Nous avons commencé par étudier les outils et déployer T-Pot, puis identifié ses limites pour notre question de recherche. Nous avons créé notre propre honeypot capable de simuler un service client, préparé une maquette avec pare-feu et réseau interne, et utilisé des scénarios contrôlés autour de vulnérabilités connues pour observer les étapes d’une attaque. J’ai contribué à l’architecture, au déploiement, à l’analyse du trafic et des PCAP, au développement de l’interface CTI et à l’automatisation des traitements avec n8n.',
-    outcome: 'Cette approche a donné une vue adaptée aux services simulés : des événements collectés et rapprochés dans une interface CTI. Le rapprochement entre une CVE et la première tentative visible sur le capteur était une question étudiée ; aucun délai chiffré ni mesure représentative de toutes les attaques au Maroc n’est publié.',
-    evidence: 'Synthèse et méthodologie publiques ; données d’attaque, code du PFE et rapport interne non disponibles dans les dépôts accessibles.',
+    outcome: 'La chaîne d’analyse relie un service simulé, un événement horodaté, le trafic PCAP associé, le contexte d’une CVE éventuelle et l’interface CTI ; n8n automatise une partie du traitement. Les volumes d’événements, exemples de traces brutes et délais CVE ne sont pas publiés. Ce dispositif n’est pas représentatif de toutes les attaques au Maroc.',
+    evidence: 'Schéma de méthode et documentation publics. Le code du honeypot, les workflows n8n, les données d’attaque, les captures de l’interface CTI et le rapport interne ne sont pas publiés.',
     url: 'https://github.com/ihssanezaoui19-star/ihssanezaoui19-star.github.io/tree/main/projects/honeypot-cti'
   },
   {
@@ -80,6 +80,52 @@ const projects = [
     url: 'https://github.com/ihssanezaoui19-star/DFIR-Compromised-System-Analysis-WeatherZero-Malware'
   }
 ];
+
+// Only files verified in the public repositories appear here. Reconstructed
+// diagrams are labeled as such and are not presented as operational captures.
+const evidenceMedia = {
+  '01': [
+    { repo: 'ihssanezaoui19-star.github.io', path: 'projects/honeypot-cti/images/parcours-observation.svg', fr: 'Parcours d’observation reconstruit', en: 'Reconstructed observation path', kind: 'diagram' }
+  ],
+  '02': [
+    { repo: 'ihssanezaoui19-star.github.io', path: 'projects/datacenter-virtualise/images/architecture-en-cours.svg', fr: 'Architecture de travail en cours', en: 'Architecture plan in progress', kind: 'diagram' }
+  ],
+  '03': [
+    { repo: 'Architecture-R-seau-S-curis-e-', path: 'images/capture-proxy-acces-refuse.png', fr: 'Capture anonymisée : accès Web refusé', en: 'Anonymized screenshot: denied Web access', kind: 'screenshot' },
+    { repo: 'Architecture-R-seau-S-curis-e-', path: 'images/architecture-anonymisee.svg', fr: 'Architecture anonymisée reconstruite', en: 'Reconstructed anonymized architecture', kind: 'diagram' }
+  ],
+  '04': [
+    { repo: 'Hybrid-SD-WAN-MPLS-Architecture-Deployment', path: 'images/capture-zone-sdwan.png', fr: 'Capture anonymisée : zone SD-WAN', en: 'Anonymized screenshot: SD-WAN zone', kind: 'screenshot' },
+    { repo: 'Hybrid-SD-WAN-MPLS-Architecture-Deployment', path: 'images/topologie-anonymisee.svg', fr: 'Topologie multi-sites reconstruite', en: 'Reconstructed multi-site topology', kind: 'diagram' }
+  ],
+  '05': [
+    { repo: 'ihssanezaoui19-star.github.io', path: 'projects/audit-active-directory/images/capture-wazuh-alerte.png', fr: 'Capture anonymisée : alerte Wazuh', en: 'Anonymized screenshot: Wazuh alert', kind: 'screenshot' },
+    { repo: 'ihssanezaoui19-star.github.io', path: 'projects/audit-active-directory/images/capture-gpo-llmnr.png', fr: 'Capture anonymisée : GPO LLMNR', en: 'Anonymized screenshot: LLMNR GPO', kind: 'screenshot' },
+    { repo: 'ihssanezaoui19-star.github.io', path: 'projects/audit-active-directory/images/score-avant-apres.svg', fr: 'Comparaison du score PingCastle', en: 'PingCastle score comparison', kind: 'diagram' }
+  ],
+  '06': [
+    { repo: 'DFIR-Compromised-System-Analysis-WeatherZero-Malware', path: 'images/parcours-investigation.svg', fr: 'Parcours d’investigation reconstruit', en: 'Reconstructed investigation path', kind: 'diagram' }
+  ]
+};
+
+function evidenceLinks(item) {
+  const base = `https://github.com/ihssanezaoui19-star/${item.repo}/blob/main/${item.path}`;
+  const src = item.repo === 'ihssanezaoui19-star.github.io'
+    ? `./${item.path}`
+    : `https://raw.githubusercontent.com/ihssanezaoui19-star/${item.repo}/main/${item.path}`;
+  return { href: base, src };
+}
+
+function evidenceName(item) { return language === 'en' ? item.en : item.fr; }
+function evidenceKind(item) {
+  if (item.kind === 'screenshot') return language === 'en' ? 'Actual screenshot · anonymized' : 'Capture réelle · anonymisée';
+  return language === 'en' ? 'Reconstructed diagram' : 'Schéma reconstruit';
+}
+function methodologyUrl(project) {
+  return project.url.includes('/tree/main/')
+    ? `${project.url.replace('/tree/main/', '/blob/main/')}/METHODOLOGIE.md`
+    : `${project.url}/blob/main/METHODOLOGIE.md`;
+}
 
 
 function renderArchitecture(number) {
@@ -164,12 +210,15 @@ function render(filter = activeFilter) {
   counter.textContent = `${String(shown.length).padStart(2, '0')} / ${String(projects.length).padStart(2, '0')} ${label('count')}`;
   grid.replaceChildren(...shown.map(source => {
     const project = localized(source);
+    const preview = evidenceMedia[source.number][0];
+    const previewLinks = evidenceLinks(preview);
     const card = document.createElement('article');
     card.className = `project-card ${project.color}`;
     card.innerHTML = `<div class="card-top"><span class="card-number">${project.number} / 06</span><span class="card-status">${project.status}</span></div>
       <div class="card-emblem" aria-hidden="true"><span></span><i></i><b></b></div>
       <div class="card-body"><p class="card-type">${project.type}</p><h3>${project.title}</h3><p class="card-desc">${project.short}</p>
-      <div class="card-tags">${project.tags.map(tag => `<span>${tag}</span>`).join('')}</div></div>
+      <div class="card-tags">${project.tags.map(tag => `<span>${tag}</span>`).join('')}</div>
+      <a class="card-evidence-preview" href="${previewLinks.href}" target="_blank" rel="noopener noreferrer"><img src="${previewLinks.src}" alt="" loading="lazy"><span><small>${evidenceKind(preview)}</small><strong>${evidenceName(preview)} ↗</strong></span></a></div>
       <button type="button" class="card-open" data-project="${project.number}" aria-label="${label('cardAria')} ${project.title}">${label('card')} <span aria-hidden="true">↗</span></button>`;
     return card;
   }));
@@ -179,6 +228,10 @@ function drawDialog(number) {
   const source = projects.find(item => item.number === number);
   if (!source) return;
   const project = localized(source);
+  const gallery = evidenceMedia[number].map(item => {
+    const links = evidenceLinks(item);
+    return `<a class="evidence-tile" href="${links.href}" target="_blank" rel="noopener noreferrer"><img src="${links.src}" alt="${evidenceName(item)}" loading="lazy"><span class="evidence-kind">${evidenceKind(item)}</span><strong>${evidenceName(item)} ↗</strong></a>`;
+  }).join('');
   dialogIndex.textContent = `${label('project')} ${project.number} / 06`;
   dialogContent.innerHTML = `<div class="dialog-title-row"><p class="card-type">${project.type} <span class="sep">·</span> ${project.status}</p><h2 id="dialog-title">${project.title}</h2><div class="dialog-cats">${project.categories.map(c => `<span>${categoryName(c)}</span>`).join('')}</div></div>
     <div class="detail-block"><h3>${label('problem')}</h3><p>${project.problem}</p></div>
@@ -186,7 +239,8 @@ function drawDialog(number) {
     <div class="detail-block"><h3>${label('architecture')}</h3>${renderArchitecture(project.number)}</div>
     <div class="detail-columns"><div class="detail-block"><h3>${label('tools')}</h3><p>${project.tools}</p></div><div class="detail-block"><h3>${label('work')}</h3><p>${project.work}</p></div></div>
     <div class="detail-result"><h3>${label('outcome')}</h3><p>${project.outcome}</p></div>
-    <div class="detail-evidence"><div><h3>${label('evidence')}</h3><p>${project.evidence}${language === 'en' ? ` ${label('docsNote')}` : ''}</p></div><a href="${project.url || github}" target="_blank" rel="noopener noreferrer">${project.url ? label('github') : 'GitHub'} ↗</a></div>`;
+    <div class="detail-evidence"><div><h3>${label('evidence')}</h3><p>${project.evidence}${language === 'en' ? ` ${label('docsNote')}` : ''}</p></div><div class="evidence-doc-links"><a href="${methodologyUrl(source)}" target="_blank" rel="noopener noreferrer">${language === 'en' ? 'Read the methodology' : 'Lire la méthodologie'} ↗</a><a href="${project.url || github}" target="_blank" rel="noopener noreferrer">${project.url ? label('github') : 'GitHub'} ↗</a></div></div>
+    <div class="evidence-gallery" aria-label="${language === 'en' ? 'Available visual evidence' : 'Éléments visuels disponibles'}">${gallery}</div>`;
 }
 
 function openProject(number, trigger) {
