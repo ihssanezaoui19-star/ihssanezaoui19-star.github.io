@@ -1,0 +1,103 @@
+/* A field-notes hero: concrete case studies instead of a decorative orbit. */
+@import url('./style-v25.css?v=27');
+
+.hero{
+  min-height:790px;
+  padding-top:126px;
+  padding-bottom:70px;
+  gap:clamp(34px,4.5vw,82px);
+  background:
+    radial-gradient(ellipse at 74% 39%,#225a5d70,transparent 43%),
+    radial-gradient(ellipse at 12% -8%,#566ca445,transparent 38%),
+    linear-gradient(120deg,#091824,#0b2730 72%,#0b1e28);
+}
+.hero::before{opacity:.6}
+.hero::after{opacity:.12}
+.hero h1{font-size:clamp(54px,4.8vw,82px);line-height:1.035;margin:37px 0 32px}
+.hero .intro{max-width:665px;font-size:clamp(15px,1.1vw,17px);line-height:1.75;color:#d5e6e2}
+.hero-art{display:flex;align-items:center;justify-content:center;min-width:0}
+.field-notes{
+  position:relative;
+  width:min(650px,100%);
+  padding:clamp(26px,2.7vw,42px);
+  border:1px solid #9ccfc2;
+  border-radius:5px 27px 5px 5px;
+  background:#edf3ed;
+  color:#102c35;
+  box-shadow:16px 17px 0 -8px #398c81,16px 17px 0 -7px #80b8ad,0 38px 80px #00121bb8;
+  transform:rotate(1deg);
+}
+.field-notes::before{
+  content:"";position:absolute;right:0;top:0;width:66px;height:66px;
+  background:linear-gradient(225deg,#b1ddd0 49%,#d6e6df 50%);
+  border-bottom-left-radius:15px;border-top-right-radius:25px;
+  box-shadow:-3px 3px 7px #123e3c16;
+}
+.field-head{position:relative;z-index:1;padding:0 44px 23px 0;border-bottom:1px solid #a7c3bb}
+.field-label,.field-index,.field-type,.field-number,.field-footer{font-family:var(--mono)}
+.field-label,.field-index{display:inline-block;color:#3d817b;font-size:10px;letter-spacing:.06em;font-weight:600}
+.field-index{float:right;margin-right:23px}
+.field-head h2{margin:23px 0 10px;font:600 clamp(31px,2.7vw,43px)/1.11 'Space Grotesk',sans-serif;letter-spacing:-.055em}
+.field-head h2 em{font-style:normal;color:#277f75}
+.field-head p{max-width:440px;margin:0;color:#537079;font-size:13px;line-height:1.55}
+.field-list{position:relative;display:grid;gap:9px;padding:19px 0 17px}
+.field-list::before{content:"";position:absolute;top:27px;bottom:28px;left:27px;width:1px;background:linear-gradient(#71aaa3,#b4cdca,#76aaa3)}
+.field-case{
+  position:relative;display:flex;align-items:center;gap:15px;width:100%;min-height:99px;
+  padding:15px 15px 15px 13px;
+  border:1px solid #cbdcd6;border-radius:11px;
+  background:#fff;color:#122f37;text-align:left;cursor:pointer;
+  box-shadow:0 5px 14px #1a464315;
+  transition:transform .2s,border-color .2s,box-shadow .2s;
+}
+.field-case:hover,.field-case:focus-visible{
+  transform:translateX(-7px);border-color:#4faaa0;
+  box-shadow:7px 11px 0 #82c5ae6b,0 9px 25px #1a46432b;
+}
+.field-number{
+  position:relative;z-index:1;display:grid;place-items:center;flex:none;
+  width:31px;height:31px;border:1px solid #4a9d91;border-radius:50%;
+  background:#e8f6ef;color:#1e776a;font-size:10px;font-weight:600;
+}
+.field-content{display:grid;gap:5px;min-width:0;flex:1}
+.field-type{font-size:9px;letter-spacing:.065em;font-weight:600;color:#318073}
+.field-content strong{font:600 clamp(17px,1.4vw,21px)/1.22 'Space Grotesk',sans-serif;letter-spacing:-.035em}
+.field-content small{font:400 11px/1.45 var(--mono);color:#59747a}
+.field-icon{align-self:flex-start;display:grid;place-items:center;flex:none;width:27px;height:27px;border:1px solid #badbd1;border-radius:50%;color:#226d63;font-size:17px;line-height:1}
+.field-ad{background:#f8fbfa}
+.field-cti{background:#e8f4ee;border-color:#a6d4bf}
+.field-cti .field-number{background:#1c746c;border-color:#1c746c;color:#fff}
+.field-footer{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-top:14px;border-top:1px solid #a7c3bb;color:#4a6a70;font-size:9px;line-height:1.5}
+.field-pulse{width:6px;height:6px;border-radius:50%;background:#38a88c;box-shadow:0 0 0 4px #38a88c20;flex:none}
+.field-footer a{margin-left:auto;color:#145f58;text-decoration:none;font-weight:600;white-space:nowrap}
+.field-footer a:hover{text-decoration:underline}
+.field-footer a span{font-size:14px}
+
+@media(max-width:1200px){
+  .hero{gap:30px}
+  .hero h1{font-size:clamp(51px,5vw,72px)}
+  .field-notes{padding:26px}
+  .field-head h2{font-size:clamp(28px,3vw,38px)}
+}
+@media(max-width:1050px){
+  .hero{padding-top:105px;min-height:0}
+  .hero-art{justify-content:flex-start}
+  .field-notes{width:min(720px,calc(100% - 18px));margin-right:18px}
+}
+@media(max-width:720px){
+  .hero{padding-top:54px;padding-bottom:60px}
+  .hero h1{margin:29px 0 28px;font-size:clamp(41px,10vw,60px)}
+  .hero .intro{font-size:14px;line-height:1.75}
+  .hero-art{padding-top:35px}
+  .field-notes{padding:23px 18px;width:calc(100% - 10px);margin-right:10px;transform:none;box-shadow:10px 10px 0 -5px #398c81,10px 10px 0 -4px #80b8ad}
+  .field-notes::before{width:48px;height:48px}
+  .field-head{padding-right:18px}
+  .field-head h2{font-size:clamp(27px,7vw,38px)}
+  .field-index{display:none}
+  .field-case{gap:10px;padding:13px 11px;min-height:96px}
+  .field-content strong{font-size:17px}
+  .field-content small{font-size:10px}
+  .field-list::before{left:26px}
+  .field-footer a{margin-left:14px}
+}
+@media(prefers-reduced-motion:reduce){.field-case{transition:none}.field-case:hover,.field-case:focus-visible{transform:none}}
