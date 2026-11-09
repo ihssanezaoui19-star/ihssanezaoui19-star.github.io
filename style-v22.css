@@ -1,0 +1,155 @@
+/* Editorial case-study layout; keeps the established navy and mint identity. */
+@import url('./style-v21.css?v=22');
+
+.projects{
+  background:
+    radial-gradient(circle at 84% 8%,#dcece5 0,transparent 31%),
+    linear-gradient(180deg,#edf3f0,#f7faf8 72%);
+}
+.section-heading{align-items:end}
+.project-count{
+  padding:9px 12px;
+  border:1px solid #c8dcd3;
+  border-radius:6px;
+  background:#fff9;
+  white-space:nowrap;
+}
+.filters{margin-top:30px}
+.filter:focus-visible,.card-open:focus-visible,.card-evidence-preview:focus-visible{
+  outline:3px solid #53b899;
+  outline-offset:3px;
+}
+.project-grid{gap:22px}
+.project-card{overflow:hidden}
+.project-card:focus-within{border-color:#62b99a;box-shadow:0 18px 42px #0b4a3730}
+.project-card:not(.featured){min-height:490px}
+.project-card:not(.featured) .card-body{padding-top:25px}
+.project-card:not(.featured) .card-evidence-preview{margin-top:23px}
+
+/* The PFE reads as a case study with an architecture artifact, not a small tile. */
+.project-card.featured{
+  grid-column:1/-1;
+  min-height:0;
+  padding:32px clamp(27px,3.2vw,46px) 28px;
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 88% 22%,#21685b73,transparent 39%),
+    linear-gradient(120deg,#0c3138,#09242f 76%);
+}
+.featured .card-top{padding-bottom:17px;border-bottom:1px solid #5a8b806b}
+.featured .card-body{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(320px,.92fr);
+  grid-template-rows:auto auto 1fr auto;
+  column-gap:clamp(28px,5vw,78px);
+  align-items:start;
+  padding-top:28px;
+}
+.featured .card-type,.featured h3,.featured .card-desc,.featured .card-tags{grid-column:1}
+.featured .card-type{grid-row:1;margin-bottom:18px}
+.featured h3{
+  grid-row:2;
+  max-width:570px;
+  font-size:clamp(30px,3vw,44px);
+  line-height:1.08;
+  margin-bottom:20px;
+}
+.featured .card-desc{grid-row:3;max-width:560px;font-size:16px;line-height:1.7}
+.featured .card-tags{grid-row:4;align-self:end}
+.featured .card-evidence-preview{
+  grid-column:2;
+  grid-row:1/5;
+  display:flex;
+  flex-direction:column;
+  align-self:stretch;
+  gap:15px;
+  min-width:0;
+  min-height:282px;
+  margin:0;
+  padding:15px;
+  border-color:#67998c;
+  background:#194a48;
+}
+.featured .card-evidence-preview img{
+  width:100%;
+  height:205px;
+  padding:7px;
+  object-fit:contain;
+  border:1px solid #8fb8a8;
+  border-radius:7px;
+  background:#f3f8f4;
+}
+.featured .card-evidence-preview span{display:grid;gap:5px;padding:0 5px 3px}
+.featured .card-evidence-preview strong{font-size:16px}
+.featured .card-open{
+  align-self:flex-start;
+  display:inline-flex;
+  align-items:center;
+  gap:25px;
+  width:auto;
+  margin-top:26px;
+  padding:12px 17px;
+  border:1px solid #a6ebd1;
+  border-radius:8px;
+  background:#b7f0d9;
+  color:#0c3437;
+  font-weight:700;
+  transition:background .2s,transform .2s;
+}
+.featured .card-open span{color:#0c3437}
+.featured .card-open:hover{background:#e0ffef;transform:translateY(-2px)}
+
+/* A quieter credential panel and clearer stage chronology. */
+.qualification{grid-template-columns:minmax(0,1.15fr) minmax(165px,.5fr) minmax(280px,1.12fr)}
+.qualification-degree{display:flex;flex-direction:column;justify-content:center;border-left:3px solid #99e6c5}
+.qualification-degree strong{font-size:clamp(23px,2.1vw,30px)}
+.qualification-dut,.qualification-training{background:#ffffff08}
+.skill-group{position:relative;padding-left:18px}
+.skill-group::before{
+  content:"";
+  position:absolute;
+  top:7px;
+  left:0;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#83d9b8;
+  box-shadow:0 0 0 4px #83d9b820;
+}
+.capability{transition:background .2s,border-color .2s,transform .2s}
+.capability:hover{background:#17414a;border-color:#6bbba4;transform:translateY(-3px)}
+.internship-list li{position:relative}
+.internship-date{color:#a4e3cf}
+.internship-content{padding-left:20px;border-left:1px solid #4e7777}
+.internship-content h4{line-height:1.35}
+
+@media(max-width:1050px){
+  .qualification{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  .featured .card-body{grid-template-columns:minmax(0,1fr) minmax(260px,.83fr);column-gap:25px}
+  .featured h3{font-size:clamp(27px,3.6vw,36px)}
+  .featured .card-evidence-preview img{height:175px}
+}
+@media(max-width:720px){
+  .project-count{padding:7px 9px}
+  .project-card.featured{padding:24px}
+  .featured .card-body{display:flex;flex-direction:column;align-items:stretch;padding-top:25px}
+  .featured h3{font-size:clamp(27px,7vw,37px);margin-bottom:14px}
+  .featured .card-desc{font-size:14px;margin-bottom:17px}
+  .featured .card-evidence-preview{min-height:0;margin-top:23px;padding:11px}
+  .featured .card-evidence-preview img{height:165px}
+  .featured .card-open{margin-top:22px}
+  .project-card:not(.featured){min-height:0}
+  .qualification{grid-template-columns:1fr}
+  .qualification-degree{border-left:3px solid #99e6c5}
+  .internship-content{padding-left:15px}
+}
+@media(max-width:430px){
+  .featured .card-evidence-preview img{height:135px}
+  .featured .card-evidence-preview strong{font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  .capability,.featured .card-open{transition:none}
+  .capability:hover,.featured .card-open:hover{transform:none}
+}
