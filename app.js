@@ -200,9 +200,9 @@ function openProject(number, trigger) {
 function setLanguage(next, remember = true) {
   language = next === 'en' ? 'en' : 'fr';
   document.documentElement.lang = language;
-  document.title = language === 'en' ? 'Ihssane Zaoui — Networks & Cybersecurity' : frenchTitle;
+  document.title = language === 'en' ? 'Ihssane Zaoui — Networks, Systems & Cybersecurity' : frenchTitle;
   description.content = language === 'en'
-    ? 'Ihssane Zaoui, network and cybersecurity engineer: SOC, Blue Team, network security and infrastructure projects.'
+    ? 'Ihssane Zaoui, network and systems engineer: systems administration, network security, defensive cybersecurity and documented projects.'
     : frenchDescription;
   for (const entry of staticCopy) entry.element.innerHTML = entry[language];
   for (const entry of attributeCopy) entry.element.setAttribute(entry.attribute, entry[language]);
@@ -247,4 +247,5 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 let preferredLanguage = 'fr';
 try { preferredLanguage = localStorage.getItem('portfolio-language') || 'fr'; } catch { /* French stays the default. */ }
 setLanguage(preferredLanguage, false);
+
 
