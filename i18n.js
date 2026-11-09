@@ -111,7 +111,7 @@ window.portfolioStaticEnglish = [
   ['.topbar .nav-contact', 'Contact me <span aria-hidden="true">↗</span>'],
   ['.hero .eyebrow', '<span class="live-dot"></span> ENGINEERING GRADUATE · ENSA KÉNITRA'],
   ['#hero-title', 'Reliable networks.<br><span>Security you can observe.</span>'],
-  ['.hero .intro', 'I am Ihssane Zaoui, an engineering graduate from ENSA Kénitra. I like understanding an environment end to end: designing the network, administering systems, securing access and reading the evidence when something goes wrong. My internships have taken me from Proxmox and VPNs to an Active Directory audit using PingCastle and Wazuh, then to building a custom honeypot and CTI interface. I am seeking my first role where this approach can serve a networks, systems or cyber defense team.'],
+  ['.hero .intro', 'I am Ihssane Zaoui, an engineering graduate from ENSA Kénitra. I like understanding an environment end to end: designing the network, administering systems, securing access and reading the evidence when something goes wrong. My internships have taken me from Proxmox and VPNs to an Active Directory audit using PingCastle and Wazuh, then to building a custom honeypot and CTI interface. I am seeking my first role where this approach can serve a network, systems or cyber defense team.'],
   ['.hero-focus div:nth-child(1)', '<span>01 / NETWORKS & SECURITY</span><strong>VLAN · VPN · firewalls</strong>'],
   ['.hero-focus div:nth-child(2)', '<span>02 / SYSTEMS & INFRA</span><strong>Proxmox · AD · Windows/Linux</strong>'],
   ['.hero-focus div:nth-child(3)', '<span>03 / SOC & BLUE TEAM</span><strong>Wazuh · PCAP · CTI</strong>'],
