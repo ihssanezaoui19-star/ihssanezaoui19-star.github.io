@@ -20,6 +20,12 @@ Si un hôte, un réseau virtuel ou un service central tombe, quelles fonctions c
 
 ![Architecture de travail : éléments à valider indiqués dans le schéma](images/architecture-en-cours.svg)
 
+**Schéma actualisé du portfolio (vue publique reconstruite)**
+
+![Architecture détaillée du laboratoire VMware et des validations prévues](images/architecture-detaillee.svg)
+
+Vue de travail publique : scénario fictif, réseaux et VMs en construction, tests de panne et reprise encore à valider. Les traits pointillés ne sont pas des résultats de haute disponibilité. [Ouvrir le schéma en grand](images/architecture-detaillee.svg).
+
 ## Résultat et limites
 
 Le cas d'usage, les premiers choix de segmentation et le **plan de validation** sont définis. Aucun temps de bascule, résultat de reprise ou niveau de disponibilité mesuré n'est présenté : les preuves seront ajoutées après les essais. Ce laboratoire ne constitue pas une infrastructure de production.
