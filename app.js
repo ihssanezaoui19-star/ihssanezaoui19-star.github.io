@@ -218,8 +218,8 @@ function render(filter = activeFilter) {
       <div class="card-emblem" aria-hidden="true"><span></span><i></i><b></b></div>
       <div class="card-body"><p class="card-type">${project.type}</p><h3>${project.title}</h3><p class="card-desc">${project.short}</p>
       <div class="card-tags">${project.tags.map(tag => `<span>${tag}</span>`).join('')}</div>
-      <a class="card-evidence-preview" href="${previewLinks.href}" target="_blank" rel="noopener noreferrer"><img src="${previewLinks.src}" alt="" loading="lazy"><span><small>${evidenceKind(preview)}</small><strong>${evidenceName(preview)} ↗</strong></span></a></div>
-      <button type="button" class="card-open" data-project="${project.number}" aria-label="${label('cardAria')} ${project.title}">${label('card')} <span aria-hidden="true">↗</span></button>`;
+      <a class="card-evidence-preview" href="${previewLinks.href}" target="_blank" rel="noopener noreferrer"><img src="${previewLinks.src}" alt="" loading="lazy"><span><small>${evidenceKind(preview)}</small><strong>${evidenceName(preview)} →</strong></span></a></div>
+      <button type="button" class="card-open" data-project="${project.number}" aria-label="${label('cardAria')} ${project.title}">${label('card')} <span aria-hidden="true">→</span></button>`;
     return card;
   }));
 }
@@ -230,7 +230,7 @@ function drawDialog(number) {
   const project = localized(source);
   const gallery = evidenceMedia[number].map(item => {
     const links = evidenceLinks(item);
-    return `<a class="evidence-tile" href="${links.href}" target="_blank" rel="noopener noreferrer"><img src="${links.src}" alt="${evidenceName(item)}" loading="lazy"><span class="evidence-kind">${evidenceKind(item)}</span><strong>${evidenceName(item)} ↗</strong></a>`;
+    return `<a class="evidence-tile" href="${links.href}" target="_blank" rel="noopener noreferrer"><img src="${links.src}" alt="${evidenceName(item)}" loading="lazy"><span class="evidence-kind">${evidenceKind(item)}</span><strong>${evidenceName(item)} →</strong></a>`;
   }).join('');
   dialogIndex.textContent = `${label('project')} ${project.number} / 06`;
   dialogContent.innerHTML = `<div class="dialog-title-row"><p class="card-type">${project.type} <span class="sep">·</span> ${project.status}</p><h2 id="dialog-title">${project.title}</h2><div class="dialog-cats">${project.categories.map(c => `<span>${categoryName(c)}</span>`).join('')}</div></div>
@@ -239,7 +239,7 @@ function drawDialog(number) {
     <div class="detail-block"><h3>${label('architecture')}</h3>${renderArchitecture(project.number)}</div>
     <div class="detail-columns"><div class="detail-block"><h3>${label('tools')}</h3><p>${project.tools}</p></div><div class="detail-block"><h3>${label('work')}</h3><p>${project.work}</p></div></div>
     <div class="detail-result"><h3>${label('outcome')}</h3><p>${project.outcome}</p></div>
-    <div class="detail-evidence"><div><h3>${label('evidence')}</h3><p>${project.evidence}${language === 'en' ? ` ${label('docsNote')}` : ''}</p></div><div class="evidence-doc-links"><a href="${methodologyUrl(source)}" target="_blank" rel="noopener noreferrer">${language === 'en' ? 'Read the methodology' : 'Lire la méthodologie'} ↗</a><a href="${project.url || github}" target="_blank" rel="noopener noreferrer">${project.url ? label('github') : 'GitHub'} ↗</a></div></div>
+    <div class="detail-evidence"><div><h3>${label('evidence')}</h3><p>${project.evidence}${language === 'en' ? ` ${label('docsNote')}` : ''}</p></div><div class="evidence-doc-links"><a href="${methodologyUrl(source)}" target="_blank" rel="noopener noreferrer">${language === 'en' ? 'Read the methodology' : 'Lire la méthodologie'} →</a><a href="${project.url || github}" target="_blank" rel="noopener noreferrer">${project.url ? label('github') : 'GitHub'} →</a></div></div>
     <div class="evidence-gallery" aria-label="${language === 'en' ? 'Available visual evidence' : 'Éléments visuels disponibles'}">${gallery}</div>`;
 }
 
@@ -270,7 +270,7 @@ function setLanguage(next, remember = true) {
   });
   render(activeFilter);
   if (dialog.open) drawDialog(dialog.dataset.project);
-  provinceDiagramButton.textContent = language === 'en' ? 'View the internship diagram ↗' : 'Voir le schéma du stage ↗';
+  provinceDiagramButton.textContent = language === 'en' ? 'View the internship diagram →' : 'Voir le schéma du stage →';
   if (!provinceDiagram.hidden) provinceDiagram.innerHTML = renderArchitecture('taounate');
   if (remember) {
     try { localStorage.setItem('portfolio-language', language); } catch { /* Private browsing may block storage. */ }
