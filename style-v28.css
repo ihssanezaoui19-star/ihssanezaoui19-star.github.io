@@ -1,0 +1,31 @@
+/* Quiet, single-column introduction. Project diagrams remain in their case studies. */
+@import url('./style-v25.css?v=27');
+
+.hero{
+  display:flex;
+  align-items:center;
+  min-height:710px;
+  padding-top:142px;
+  padding-bottom:96px;
+  background:
+    radial-gradient(ellipse at 87% 22%,#1c51504b,transparent 40%),
+    radial-gradient(ellipse at 7% 0%,#5865922e,transparent 34%),
+    linear-gradient(125deg,#071722,#0b2731 75%,#0a202a);
+}
+.hero::before{opacity:.35}
+.hero::after{opacity:.09;mask-image:linear-gradient(90deg,transparent 24%,#000 100%)}
+.hero-copy{width:100%;max-width:1120px;margin:0 auto}
+.hero h1{max-width:1100px;margin:36px 0 36px;font-size:clamp(60px,7vw,106px);line-height:1.035;letter-spacing:-.063em}
+.hero .intro{max-width:780px;font-size:clamp(16px,1.28vw,19px);line-height:1.76}
+.hero-actions{margin-top:36px}
+.hero-meta{margin-top:28px}
+@media(max-width:1050px){
+  .hero{min-height:0;padding-top:125px;padding-bottom:85px}
+  .hero h1{font-size:clamp(55px,8vw,86px)}
+}
+@media(max-width:720px){
+  .hero{padding-top:55px;padding-bottom:68px}
+  .hero h1{margin:30px 0;font-size:clamp(42px,10.3vw,62px)}
+  .hero .intro{font-size:14px;line-height:1.78}
+  .hero-actions{margin-top:30px}
+}
