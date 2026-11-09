@@ -22,6 +22,12 @@ Les honeypots T-Pot/Cowrie étudiés au départ ne reproduisaient pas assez pré
 
 ![Parcours d'observation conceptuel reconstruit](images/parcours-observation.svg)
 
+**Schéma actualisé du portfolio (vue publique reconstruite)**
+
+![Architecture détaillée et anonymisée du parcours d’observation](images/architecture-detaillee.svg)
+
+Vue publique reconstruite d’après les étapes du PFE : T-Pot évalué, capteur adapté, pare-feu, réseau interne simulé, collecte, n8n et CTI. Les flèches rouges représentent le trafic hostile observé dans la maquette ; les pointillés turquoise représentent la télémétrie. [Ouvrir le schéma en grand](images/architecture-detaillee.svg).
+
 ## Résultat et limites
 
 Une maquette d'observation adaptée aux services simulés et une interface CTI ont été développées dans le cadre du PFE, d'après la description du travail fournie par l'auteure. **Aucun jeu de données, mesure chiffrée du délai CVE, code source ou rapport interne n'est publié dans les dépôts accessibles** : je ne revendique donc ni taux de détection ni résultat représentatif de tout le Maroc. L'absence d'événement sur le capteur ne prouve pas l'absence d'attaque ailleurs.
