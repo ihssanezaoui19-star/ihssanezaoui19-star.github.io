@@ -18,6 +18,12 @@
 
 ![Schéma de travail : conception et validations futures](images/architecture-en-cours.svg)
 
+**Schéma actualisé du portfolio (vue publique reconstruite)**
+
+![Schéma détaillé de la construction du laboratoire et des essais à venir](images/architecture-detaillee.svg)
+
+Le schéma reprend la vue du portfolio. Les tests de bascule et de PRA sont des étapes prévues ; aucun temps de reprise mesuré n’est représenté. [Ouvrir le schéma en grand](images/architecture-detaillee.svg).
+
 **À vérifier ensuite :** comparer le diagramme à la topologie réellement installée et tester un flux autorisé et un flux refusé pour chaque séparation importante.
 
 ## 3. Définir supervision, accès et sauvegardes avant les pannes
