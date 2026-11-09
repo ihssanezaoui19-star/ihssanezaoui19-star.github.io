@@ -35,11 +35,7 @@
 .qualification-degree,.qualification-dut,.qualification-training{padding:25px}
 .qualification-degree,.qualification-dut{border-right:1px solid #41656a}
 .qualification-degree strong{display:block;font:600 clamp(21px,2vw,28px)/1.2 'Space Grotesk',sans-serif;color:#f4fff9;letter-spacing:-.04em}
-.qualification-degree p{max-width:510px;margin:9px 0 22px;font-size:14px;line-height:1.6;color:#c0d8d5}
-.qualification-results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.qualification-results div{display:grid;align-content:start;gap:7px;padding:13px 10px;border:1px solid #508178;border-radius:8px;background:#1b4b4d}
-.qualification-results b{font:600 clamp(14px,1.35vw,19px)/1.2 'Space Grotesk',sans-serif;color:#d6ffe9;letter-spacing:-.035em}
-.qualification-results small{font:10px/1.4 var(--mono);color:#b2d6cd}
+.qualification-degree p{max-width:510px;margin:9px 0 0;font-size:14px;line-height:1.6;color:#c0d8d5}
 .qualification-dut{display:flex;flex-direction:column;gap:15px}
 .qualification-dut strong{font:600 clamp(20px,1.8vw,25px)/1.2 'Space Grotesk',sans-serif;color:#f4fff9}
 .qualification-training ul{margin:15px 0 0;padding-left:17px;color:#d0e6df;font-size:13px;line-height:1.7}
@@ -57,8 +53,4 @@
   .qualification-degree,.qualification-dut,.qualification-training{padding:22px 19px}
   .qualification-degree,.qualification-dut{grid-column:auto;border-right:0;border-bottom:1px solid #41656a}
   .qualification-degree strong{font-size:24px}
-  .qualification-results{gap:7px}
-  .qualification-results div{padding:11px 8px}
-  .qualification-results b{font-size:15px}
-  .qualification-results small{font-size:9px}
 }
