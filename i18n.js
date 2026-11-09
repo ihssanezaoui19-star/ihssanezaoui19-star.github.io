@@ -141,9 +141,6 @@ window.portfolioStaticEnglish = [
   ['.journey-foot', '<span class="journey-live" aria-hidden="true"></span><span>DOCUMENTED INTERNSHIPS + PROJECTS</span><span>EXPLORE →</span>'],
   ['.projects .section-kicker', '<span>01 /</span> SELECTED WORK'],
   ['#projects-title', 'Projects & case studies<span class="heading-dot">.</span>'],
-  ['.projects .section-heading p', 'Each case study shows the problem, result, available diagrams and screenshots. Private and ongoing work is clearly marked.'],
-  ['.project-contact div', '<span>IS YOUR TEAM HIRING?</span><strong>Networks, systems administration or cyber defense: let’s discuss your needs.</strong>'],
-  ['.project-contact a', 'Email me <span aria-hidden="true">→</span>'],
   ['.filter[data-filter="Tous"]', 'All'],
   ['.filter[data-filter="Sécurité réseau"]', 'Network security'],
   ['.profile-main .section-kicker', '<span>02 /</span> ABOUT & CONTACT'],
@@ -156,7 +153,6 @@ window.portfolioStaticEnglish = [
   ['.skill-group:nth-child(3) h3', 'Systems & virtualization'],
   ['.qualification', `<div class="qualification-heading"><span>EDUCATION & CERTIFICATIONS</span><b>2026</b></div>
     <div class="qualification-degree"><strong>Engineering degree</strong><p>Networks and Telecommunications Systems · ENSA Kénitra</p>
-      <div class="qualification-results"><div><b>Très Bien</b><small>Honors</small></div><div><b>15.70/20</b><small>Overall average</small></div><div><b>18.5/20</b><small>Final dissertation</small></div></div>
     </div>
     <div class="qualification-dut"><span>PREVIOUS STUDIES</span><strong>DUT · two-year technical degree</strong></div>
     <div class="qualification-training"><span>COMPLETED COURSES & PATHS</span><ul><li>Fortinet NSE 1 and NSE 2 · courses completed</li><li>Fortinet NSE 3 · exam completed, certificate not issued</li><li>TryHackMe SOC Level 1 · path completed</li></ul></div>`],
