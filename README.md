@@ -19,7 +19,7 @@ Les résultats sont distingués des objectifs et des travaux encore en cours. Le
 
 ## Formation et parcours
 
-- **Diplôme d’ingénieur d’État**, Réseaux et Systèmes de Télécommunications, ENSA Kénitra, promotion 2026 — mention Très Bien, moyenne générale 15,70/20 et mémoire de fin d’études 18,5/20.
+- **Diplôme d’ingénieur d’État**, Réseaux et Systèmes de Télécommunications, ENSA Kénitra, promotion 2026.
 - **DUT (Bac+2)**, avant le cycle ingénieur.
 - **Fortinet NSE 1 et NSE 2** : formations validées. **NSE 3** : examen terminé, certificat non délivré.
 - **TryHackMe SOC Level 1** : parcours terminé.
