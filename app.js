@@ -192,6 +192,48 @@ const frenchContactLinks = [...document.querySelectorAll('a[href^="mailto:"]')].
 let language = 'fr';
 let activeFilter = 'Tous';
 let lastTrigger;
+let activeHeroCase = '01';
+const heroCases = {
+  '01': {
+    index: '01', image: './projects/honeypot-cti/images/parcours-observation.svg',
+    fr: { status: 'PFE · 2026', title: 'Observer une attaque,<br>relier les traces.', summary: 'Un service simulé, un pare-feu et un réseau interne pour comprendre ce qui est observé, du premier contact à l’analyse CTI.', alt: 'Schéma reconstruit du parcours honeypot et CTI', caption: 'SCHÉMA DE MÉTHODE · OUVRIR LA FICHE', action: 'Découvrir le PFE', tab: 'Honeypot & CTI', aria: 'Ouvrir la fiche du projet honeypot CTI' },
+    en: { status: 'FINAL-YEAR PROJECT · 2026', title: 'Observe an attack,<br>connect the evidence.', summary: 'A simulated service, firewall and internal network to examine what is observed, from first contact to CTI analysis.', alt: 'Reconstructed honeypot and CTI observation path', caption: 'METHOD DIAGRAM · OPEN CASE', action: 'Explore the project', tab: 'Honeypot & CTI', aria: 'Open the honeypot and CTI case study' }
+  },
+  '05': {
+    index: '02', image: './projects/audit-active-directory/images/score-avant-apres.svg',
+    fr: { status: 'STAGE · 2025', title: 'Mesurer le risque,<br>vérifier les corrections.', summary: 'Audit PingCastle, visibilité Wazuh et durcissement après étude de l’impact : score de risque 95 → 20 dans la maquette AD.', alt: 'Comparaison du score de risque PingCastle avant et après dans la maquette', caption: 'RÉSULTAT DU LABORATOIRE · OUVRIR LA FICHE', action: 'Voir l’audit AD', tab: 'Audit AD', aria: 'Ouvrir la fiche de l’audit Active Directory' },
+    en: { status: 'INTERNSHIP · 2025', title: 'Assess risk,<br>verify remediation.', summary: 'PingCastle audit, Wazuh visibility and impact-aware hardening: risk score 95 → 20 in the AD lab.', alt: 'PingCastle risk score before and after remediation in the lab', caption: 'LAB RESULT · OPEN CASE', action: 'View the AD audit', tab: 'AD audit', aria: 'Open the Active Directory audit case study' }
+  },
+  '02': {
+    index: '03', image: './projects/datacenter-virtualise/images/architecture-en-cours.svg',
+    fr: { status: 'LABORATOIRE · EN COURS', title: 'Concevoir le réseau,<br>préparer la résilience.', summary: 'Une architecture virtualisée sous VMware : réseaux isolés, dépendances et scénarios de panne à valider progressivement.', alt: 'Plan reconstruit du datacenter virtualisé en cours', caption: 'PLAN DU LABORATOIRE · OUVRIR LA FICHE', action: 'Voir le laboratoire', tab: 'Datacenter', aria: 'Ouvrir la fiche du laboratoire datacenter' },
+    en: { status: 'LAB · IN PROGRESS', title: 'Design the network,<br>plan resilience.', summary: 'A VMware-based virtual architecture with isolated networks, dependencies and failure scenarios to validate progressively.', alt: 'Reconstructed virtualized datacenter lab plan in progress', caption: 'LAB PLAN · OPEN CASE', action: 'View the lab', tab: 'Datacenter', aria: 'Open the datacenter lab case study' }
+  }
+};
+
+function renderHeroCase() {
+  const entry = heroCases[activeHeroCase];
+  const copy = entry[language];
+  const panel = document.querySelector('.case-spotlight');
+  panel.querySelector('.spotlight-kicker').textContent = `${language === 'en' ? 'FEATURED CASE' : 'PROJET À LA UNE'} / ${entry.index}`;
+  panel.querySelector('.spotlight-status').textContent = copy.status;
+  panel.querySelector('.spotlight-title').innerHTML = copy.title;
+  panel.querySelector('.spotlight-summary').textContent = copy.summary;
+  panel.querySelector('.spotlight-preview img').src = entry.image;
+  panel.querySelector('.spotlight-preview img').alt = copy.alt;
+  panel.querySelector('.spotlight-preview').dataset.heroProject = activeHeroCase;
+  panel.querySelector('.spotlight-preview').setAttribute('aria-label', copy.aria);
+  panel.querySelector('.preview-caption').innerHTML = `${copy.caption} <span aria-hidden="true">↗</span>`;
+  panel.querySelector('.spotlight-open').dataset.heroProject = activeHeroCase;
+  panel.querySelector('.spotlight-open').innerHTML = `${copy.action} <span aria-hidden="true">→</span>`;
+  panel.querySelector('.spotlight-context').textContent = language === 'en' ? 'DOCUMENTED WORK / 2024–26' : 'TRAVAUX DOCUMENTÉS / 2024–26';
+  panel.querySelectorAll('[data-case]').forEach(button => {
+    const selected = button.dataset.case === activeHeroCase;
+    button.classList.toggle('selected', selected);
+    button.setAttribute('aria-pressed', String(selected));
+    button.innerHTML = `<span>${heroCases[button.dataset.case].index}</span> ${heroCases[button.dataset.case][language].tab}`;
+  });
+}
 
 function label(key) {
   return language === 'en' ? translations.ui[key] : {
@@ -275,6 +317,7 @@ function setLanguage(next, remember = true) {
     button.setAttribute('aria-pressed', String(button.dataset.lang === language));
   });
   render(activeFilter);
+  renderHeroCase();
   if (dialog.open) drawDialog(dialog.dataset.project);
   provinceDiagramButton.textContent = language === 'en' ? 'View the internship diagram →' : 'Voir le schéma du stage →';
   if (!provinceDiagram.hidden) provinceDiagram.innerHTML = renderArchitecture('taounate');
@@ -297,6 +340,8 @@ grid.addEventListener('click', event => {
   if (button) openProject(button.dataset.project, button);
 });
 document.querySelector('.hero-art').addEventListener('click', event => {
+  const selector = event.target.closest('[data-case]');
+  if (selector) { activeHeroCase = selector.dataset.case; renderHeroCase(); return; }
   const button = event.target.closest('[data-hero-project]');
   if (button) openProject(button.dataset.heroProject, button);
 });
