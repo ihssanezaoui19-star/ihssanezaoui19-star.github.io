@@ -129,6 +129,7 @@ window.portfolioStaticEnglish = [
   ['.signal-cti .signal-card-kicker', '03 / DETECTION & CTI'],
   ['.signal-cti strong', 'Trace an attack'],
   ['.signal-cti small', 'Honeypot · PCAP · n8n'],
+  ['.signal-core small', 'NETWORKS<br>× SECURITY'],
   ['.signal-note span', 'THREAD THROUGH THE WORK'],
   ['.signal-note strong', 'From network to evidence,<br>then to decisions.'],
   ['.signal-foot span:first-child', 'EXPLORE DOCUMENTED PROJECTS'],
