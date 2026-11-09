@@ -22,6 +22,12 @@ Nous avons représenté un service exposé derrière un pare-feu et un réseau i
 
 ![Parcours d'observation conceptuel](images/parcours-observation.svg)
 
+**Schéma actualisé du portfolio (vue publique reconstruite)**
+
+![Schéma détaillé de la méthode du honeypot et de l’interface CTI](images/architecture-detaillee.svg)
+
+Cette vue détaille les composants et les flux décrits ci-dessus. Elle représente une maquette publique reconstruite, sans topologie client, CVE exploitable ni données d’attaque. [Ouvrir le schéma en grand](images/architecture-detaillee.svg).
+
 ## 4. Construire le capteur adapté au cas d'usage
 
 Le honeypot développé pour le projet visait à simuler le service retenu et à recueillir les interactions utiles à ce scénario. Nous l'avons intégré dans le parcours d'observation de la maquette, au lieu d'utiliser uniquement les comportements standards des capteurs évalués.
