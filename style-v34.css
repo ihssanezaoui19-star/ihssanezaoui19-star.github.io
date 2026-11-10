@@ -1,0 +1,38 @@
+/* Atmospheric grid for the space around the framed sections. */
+@import url('./style-v33.css?v=1');
+
+body,.site-shell{background:#061416}
+main{
+  background-color:#061416;
+  background-image:
+    radial-gradient(ellipse 56% 43% at 85% 20%,#24a88925,transparent 73%),
+    radial-gradient(ellipse 48% 37% at 8% 86%,#326e9b22,transparent 75%),
+    radial-gradient(ellipse 44% 34% at 96% 88%,#a4824920,transparent 76%),
+    linear-gradient(90deg,#061416b3,transparent 17%,transparent 83%,#061416b3),
+    linear-gradient(#78d9b90c 1px,transparent 1px),
+    linear-gradient(90deg,#78d9b90c 1px,transparent 1px),
+    linear-gradient(#78d9b905 1px,transparent 1px),
+    linear-gradient(90deg,#78d9b905 1px,transparent 1px);
+  background-size:
+    100% 1150px,
+    100% 1250px,
+    100% 1600px,
+    100% 100%,
+    72px 72px,
+    72px 72px,
+    18px 18px,
+    18px 18px;
+  background-repeat:repeat-y,repeat-y,repeat-y,no-repeat,repeat,repeat,repeat,repeat;
+}
+
+@media(max-width:600px){
+  main{
+    background-image:
+      radial-gradient(ellipse 95% 34% at 92% 15%,#24a8891a,transparent 76%),
+      radial-gradient(ellipse 85% 34% at 4% 86%,#326e9b18,transparent 77%),
+      linear-gradient(#78d9b909 1px,transparent 1px),
+      linear-gradient(90deg,#78d9b909 1px,transparent 1px);
+    background-size:100% 950px,100% 1050px,64px 64px,64px 64px;
+    background-repeat:repeat-y,repeat-y,repeat,repeat;
+  }
+}
