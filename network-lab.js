@@ -15,7 +15,7 @@
   const links = document.querySelector('#lab-links');
   const names = [['Pare-feu','Routeur','Switch L3','Serveur','Sonde SOC'],['Firewall','Router','Layer 3 switch','Server','SOC sensor']];
   const en = () => document.documentElement.lang === 'en';
-  let selected = -1, orientation = .5, cutaway = false, spinning = false, incident = -1;
+  let selected = -1, hovered = -1, orientation = .5, cutaway = false, spinning = false, incident = -1;
   let dragX = null, dragStart = null, timer = null, stepTimer = null, runToken = 0;
   let completedStages = [], activeScenario = -1;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -35,6 +35,25 @@
     links.append(group);
     return { group, path, dot };
   });
+  const inspect = document.createElement('div');
+  inspect.className = 'lab-inspect';
+  inspect.hidden = true;
+  inspect.setAttribute('aria-hidden', 'true');
+  const inspectTitle = document.createElement('strong');
+  const inspectTools = document.createElement('small');
+  const inspectDescription = document.createElement('span');
+  inspect.append(inspectTitle, inspectTools, inspectDescription);
+  canvas.parentElement.append(inspect);
+  const focusedLayer = () => hovered >= 0 ? hovered : selected;
+  function renderInspect() {
+    const i = focusedLayer();
+    inspect.hidden = i < 0;
+    cards.forEach((card,index)=>card.classList.toggle('is-preview',hovered===index));
+    if(i < 0) return;
+    inspectTitle.textContent = `0${i+1} · ${names[Number(en())][i]}`;
+    inspectTools.textContent = cards[i].querySelector('small').textContent;
+    inspectDescription.textContent = cards[i].querySelector('span[data-fr]').textContent;
+  }
 
   const spacing = () => 66 + Number(slider.value) * .18;
   function geometry(i) {
@@ -58,7 +77,7 @@
       const bend = sx + Math.max(16,(tx-sx)*.47);
       path.setAttribute('d', `M ${sx} ${sy} L ${bend} ${sy} L ${tx-16} ${ty} L ${tx-2} ${ty}`);
       dot.setAttribute('cx', String(sx)); dot.setAttribute('cy', String(sy));
-      group.classList.toggle('is-active', selected===i);
+      group.classList.toggle('is-active', focusedLayer()===i);
       group.classList.toggle('is-alert', incident===i);
     });
   }
@@ -120,7 +139,7 @@
       const front=[[x,y],[x+w,y+slope],[x+w,y+slope+h],[x,y+h]];
       const top=[[x,y],[x+w,y+slope],[x+w+depth,y+slope-28],[x+depth,y-28]];
       const side=[[x+w,y+slope],[x+w+depth,y+slope-28],[x+w+depth,y+slope+h-28],[x+w,y+slope+h]];
-      const active=selected===i, alert=incident===i;
+      const active=focusedLayer()===i, alert=incident===i;
       const edge=alert?'#ff6570':active?'#f4bc59':'#548f83';
       ctx.save();
       if(active||alert){ctx.shadowColor=edge;ctx.shadowBlur=21;}
@@ -185,9 +204,16 @@
     cards.forEach((card,i)=>card.setAttribute('aria-pressed',String(i===index)));
     log.replaceChildren();
     renderTarget();
+    renderInspect();
     draw();
   }
-  cards.forEach((card,index)=>card.addEventListener('click',()=>choose(index)));
+  cards.forEach((card,index)=>{
+    card.addEventListener('click',()=>choose(index));
+    card.addEventListener('pointerenter',()=>{hovered=index;renderInspect();draw();});
+    card.addEventListener('pointerleave',()=>{hovered=-1;renderInspect();draw();});
+    card.addEventListener('focus',()=>{hovered=index;renderInspect();draw();});
+    card.addEventListener('blur',()=>{hovered=-1;renderInspect();draw();});
+  });
   slider.addEventListener('input',draw);
   cut.addEventListener('click',()=>{cutaway=!cutaway;cut.setAttribute('aria-pressed',String(cutaway));draw();});
   function stopRotation(){spinning=false;rotate.setAttribute('aria-pressed','false');if(timer)clearInterval(timer);timer=null;}
@@ -197,18 +223,27 @@
     timer=setInterval(()=>{if(!document.hidden&&!reduced.matches){orientation=(orientation+.008)%1;draw();}},45);
   });
   canvas.addEventListener('pointerdown',event=>{dragX=event.clientX;dragStart=[event.clientX,event.clientY];canvas.setPointerCapture(event.pointerId);stopRotation();});
-  canvas.addEventListener('pointermove',event=>{if(dragX===null)return;if(Math.abs(event.clientX-dragStart[0])<4)return;orientation=Math.max(0,Math.min(1,orientation+(event.clientX-dragX)/240));dragX=event.clientX;draw();});
+  function layerAt(event) {
+    const rect=canvas.getBoundingClientRect();
+    const x=(event.clientX-rect.left)*540/rect.width;
+    const y=(event.clientY-rect.top)*510/rect.height;
+    const layers=cards.map((_,i)=>({i,distance:Math.abs(y-(geometry(i).y+geometry(i).h*.6))})).sort((a,b)=>a.distance-b.distance);
+    return x>55 && x<490 && layers[0].distance<42 ? layers[0].i : -1;
+  }
+  canvas.addEventListener('pointermove',event=>{
+    if(dragX===null){const next=layerAt(event);if(next!==hovered){hovered=next;renderInspect();draw();}return;}
+    if(Math.abs(event.clientX-dragStart[0])<4)return;
+    orientation=Math.max(0,Math.min(1,orientation+(event.clientX-dragX)/240));dragX=event.clientX;draw();
+  });
   canvas.addEventListener('pointerup',event=>{
     if(dragStart && Math.hypot(event.clientX-dragStart[0],event.clientY-dragStart[1])<7){
-      const rect=canvas.getBoundingClientRect();
-      const x=(event.clientX-rect.left)*540/rect.width;
-      const y=(event.clientY-rect.top)*510/rect.height;
-      const layers=cards.map((_,i)=>({i,distance:Math.abs(y-(geometry(i).y+geometry(i).h*.6))})).sort((a,b)=>a.distance-b.distance);
-      if(x>55 && x<490 && layers[0].distance<42)choose(layers[0].i);
+      const layer=layerAt(event);
+      if(layer>=0)choose(layer);
     }
     dragX=null;dragStart=null;
   });
   canvas.addEventListener('pointercancel',()=>{dragX=null;dragStart=null;});
+  canvas.addEventListener('pointerleave',()=>{if(dragX!==null)return;hovered=-1;renderInspect();draw();});
   // Each script is a local teaching scenario, not a claim of a real attack or response.
   const scenarios=[
     [
@@ -269,6 +304,7 @@
     document.querySelectorAll('.network-lab [data-fr], .route-section [data-fr], .plate-kicker [data-fr]').forEach(el=>{el.textContent=el.dataset[key];});
     canvas.setAttribute('aria-label',en()?'Illustrative network model: firewall, router, switch, server and SOC sensor':'Maquette illustrative : pare-feu, routeur, switch, serveur et sonde SOC');
     renderTarget();
+    renderInspect();
     if(completedStages.length)renderLog();
     draw();
   }
