@@ -22,10 +22,10 @@
 .skill-leaf-dot{fill:#54e5af}
 .skill-leaf-label{font:500 16px var(--mono,ui-monospace,monospace);fill:#c9e2d9;dominant-baseline:middle}
 .skill-branch{cursor:pointer;transition:opacity .25s,filter .25s}
-.skills-graph.has-active .skill-branch:not(.is-active){opacity:.43}
+.skills-graph.has-active .skill-branch:not(.is-active){opacity:.64}
 .skill-branch:hover,.skill-branch:focus-visible,.skill-branch.is-active{opacity:1!important;filter:drop-shadow(0 0 10px #50efb063)}
 .skill-branch:hover .skill-node,.skill-branch:focus-visible .skill-node,.skill-branch.is-active .skill-node{fill:#165c4b;stroke:#92f5c5;stroke-width:2}
-.skill-branch:focus-visible{outline:none}
+.skill-branch:focus,.skill-branch:focus-visible{outline:none}
 .skills-map-choices{display:none}
 .skills-map-detail{display:flex;align-items:baseline;gap:18px;min-height:72px;padding:18px 31px;border-top:1px solid #315e54;background:#0b2829;color:#cce7da;font-size:14px;line-height:1.55}
 .skills-map-detail strong{flex:none;color:#8eeac1;font:700 12px var(--mono,ui-monospace,monospace);text-transform:uppercase;letter-spacing:.06em}
