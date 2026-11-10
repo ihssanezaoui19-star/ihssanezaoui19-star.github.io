@@ -6,10 +6,11 @@
   <meta name="theme-color" content="#071521">
   <meta name="description" content="Ihssane Zaoui, ingénieure d’État en réseaux et systèmes : administration, sécurité réseau et cybersécurité défensive. Projets Proxmox, Active Directory, Wazuh et honeypot CTI.">
   <title>Ihssane Zaoui — Réseaux, systèmes & cybersécurité</title>
-  <link rel="stylesheet" href="./style-v29.css?v=31">
+  <link rel="stylesheet" href="./style-v30.css?v=32">
   <script src="./i18n.js?v=37" defer></script>
   <script src="./architecture-diagrams.js?v=15" defer></script>
   <script src="./app.js?v=31" defer></script>
+  <script src="./site-experience.js?v=1" defer></script>
 </head>
 <body>
   <div class="site-shell">
@@ -17,6 +18,7 @@
       <a class="brand" href="#accueil" aria-label="Ihssane Zaoui, accueil"><span class="brand-mark">IZ<span class="mark-dot">.</span></span><span class="brand-name">Ihssane Zaoui</span></a>
       <nav aria-label="Navigation principale"><a href="#projets">Projets</a><a href="#stages">Stages</a><a href="#profil">Profil</a><a class="nav-contact" href="mailto:ihssanezaoui19@gmail.com?subject=Opportunit%C3%A9%20r%C3%A9seaux%20ou%20cybers%C3%A9curit%C3%A9">Me contacter <span aria-hidden="true">→</span></a></nav>
       <div class="language-switch" role="group" aria-label="Langue du portfolio"><button type="button" data-lang="fr" lang="fr" aria-label="Lire en français" aria-pressed="true">FR</button><button type="button" data-lang="en" lang="en" aria-label="Read in English" aria-pressed="false">EN</button></div>
+      <div class="network-status" role="status" aria-live="off" title="Mesures de requêtes HTTP vers cette page"><span class="status-light" aria-hidden="true"></span><span id="network-latency">latence —</span><span id="network-packets">sondes 0/0</span><span id="network-loss">perte —</span></div>
     </header>
 
     <main>
@@ -72,6 +74,13 @@
   </div>
 
   <dialog id="project-dialog" aria-labelledby="dialog-title"><div class="dialog-inner"><div class="dialog-header"><span id="dialog-index" class="dialog-index"></span><button class="close-dialog" type="button" aria-label="Fermer la fiche projet">×</button></div><div id="dialog-content"></div></div></dialog>
+  <div class="boot-overlay" id="boot-overlay" role="dialog" aria-modal="true" aria-labelledby="boot-title" hidden>
+    <div class="boot-window">
+      <div class="boot-bar"><span class="window-lights" aria-hidden="true"><i></i><i></i><i></i></span><span id="boot-title">ping — ihssane.zaoui</span><span class="boot-host">PORTFOLIO / RÉSEAUX & SÉCURITÉ</span></div>
+      <div class="boot-terminal" id="boot-terminal" role="log" aria-live="polite" aria-relevant="additions text"></div>
+      <div class="boot-foot"><p id="boot-prompt" aria-live="polite"></p><button id="boot-enter" type="button" disabled>Entrer ↵</button></div>
+    </div>
+  </div>
 </body>
 </html>
 
