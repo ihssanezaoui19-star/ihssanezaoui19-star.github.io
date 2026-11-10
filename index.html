@@ -6,12 +6,12 @@
   <meta name="theme-color" content="#071521">
   <meta name="description" content="Ihssane Zaoui, ingénieure d’État en réseaux et systèmes : administration, sécurité réseau et cybersécurité défensive. Projets Proxmox, Active Directory, Wazuh et honeypot CTI.">
   <title>Ihssane Zaoui — Réseaux, systèmes & cybersécurité</title>
-  <link rel="stylesheet" href="./style-v31.css?v=34">
+  <link rel="stylesheet" href="./style-v32.css?v=1">
   <script src="./i18n.js?v=37" defer></script>
   <script src="./architecture-diagrams.js?v=15" defer></script>
   <script src="./app.js?v=32" defer></script>
   <script src="./site-experience.js?v=3" defer></script>
-  <script src="./journey-viz.js?v=1" defer></script>
+  <script src="./network-lab.js?v=1" defer></script>
 </head>
 <body>
   <div class="site-shell">
@@ -35,20 +35,25 @@
 
       <div class="tech-ribbon" aria-label="Outils et pratiques"><span class="tech-label">OUTILS & PRATIQUES</span><div class="tech-window"><div class="tech-track"><div class="tech-set"><span>Proxmox</span><span>Active Directory</span><span>OPNsense</span><span>VPN</span><span>Wazuh</span><span>Sysmon</span><span>Wireshark</span><span>PCAP</span><span>CTI</span><span>n8n</span></div><div class="tech-set" aria-hidden="true"><span>Proxmox</span><span>Active Directory</span><span>OPNsense</span><span>VPN</span><span>Wazuh</span><span>Sysmon</span><span>Wireshark</span><span>PCAP</span><span>CTI</span><span>n8n</span></div></div></div></div>
 
-      <section class="skills-map section-pad" id="competences" aria-labelledby="skills-map-title">
-        <div class="section-kicker" data-fr="MON TERRAIN / RÉSEAUX · SYSTÈMES · DÉFENSE" data-en="MY PRACTICE / NETWORKS · SYSTEMS · DEFENSE">MON TERRAIN / RÉSEAUX · SYSTÈMES · DÉFENSE</div>
-        <div class="skills-map-head"><h2 id="skills-map-title" data-fr="Du réseau aux traces." data-en="From networks to evidence.">Du réseau aux traces.</h2><p data-fr="Une carte des outils et pratiques que j’ai mobilisés en stage ou en laboratoire. Sélectionnez un domaine pour voir ma démarche." data-en="A map of the tools and practices I have used in internships or labs. Select an area to see how I work.">Une carte des outils et pratiques que j’ai mobilisés en stage ou en laboratoire. Sélectionnez un domaine pour voir ma démarche.</p></div>
-        <div class="skills-map-panel">
-          <div class="map-caption"><span>IZ / <span data-fr="CARTE DE COMPÉTENCES" data-en="SKILLS MAP">CARTE DE COMPÉTENCES</span></span><span data-fr="STAGES + LABORATOIRES" data-en="INTERNSHIPS + LABS">STAGES + LABORATOIRES</span></div>
-          <div id="skills-graph" class="skills-graph" aria-label="Carte des compétences : détection, réseaux, systèmes et automatisation"></div>
-          <div class="skills-map-choices" role="group" aria-label="Domaines de compétences">
-            <button type="button" data-skill="detection"><strong data-fr="Détection" data-en="Detection">Détection</strong><span>Wazuh · Sysmon · Suricata · Wireshark</span></button>
-            <button type="button" data-skill="network"><strong data-fr="Réseaux" data-en="Networks">Réseaux</strong><span>VLAN · BGP · MPLS · IPsec · OpenVPN · OPNsense · FortiGate</span></button>
-            <button type="button" data-skill="systems"><strong data-fr="Systèmes" data-en="Systems">Systèmes</strong><span>Windows Server · AD/GPO · Linux · Proxmox · VMware</span></button>
-            <button type="button" data-skill="automation"><strong data-fr="Automatisation" data-en="Automation">Automatisation</strong><span>PowerShell · n8n</span></button>
+      <section class="network-lab section-pad" id="competences" aria-labelledby="lab-title">
+        <div class="section-kicker" data-fr="MON TERRAIN / ARCHITECTURE & DÉFENSE" data-en="MY PRACTICE / ARCHITECTURE & DEFENSE">MON TERRAIN / ARCHITECTURE & DÉFENSE</div>
+        <h2 id="lab-title"><span data-fr="Le réseau que je sécurise," data-en="The network I secure,">Le réseau que je sécurise,</span> <em data-fr="équipement par équipement." data-en="layer by layer.">équipement par équipement.</em></h2>
+        <p class="lab-lead" data-fr="Explorez une maquette qui relie mes pratiques en réseaux, systèmes et détection. Sélectionnez une couche pour comprendre son rôle." data-en="Explore an illustrative model connecting my network, systems and detection practice. Select a layer to understand its role.">Explorez une maquette qui relie mes pratiques en réseaux, systèmes et détection. Sélectionnez une couche pour comprendre son rôle.</p>
+        <div class="lab-panel">
+          <div class="lab-view">
+            <div class="lab-canvas-wrap"><canvas id="lab-canvas" width="540" height="510" role="img" aria-label="Maquette illustrative de cinq couches réseau : pare-feu, routeur, switch, serveur et sonde SOC"></canvas><span class="lab-drag-hint" data-fr="Glisser pour orienter" data-en="Drag to rotate">Glisser pour orienter</span></div>
+            <div class="lab-controls"><label for="lab-explode" data-fr="Éclater" data-en="Explode">Éclater</label><input id="lab-explode" type="range" min="0" max="100" value="45"><button id="lab-cut" type="button" aria-pressed="false" data-fr="Coupe" data-en="Cutaway">Coupe</button><button id="lab-rotate" type="button" aria-pressed="false" data-fr="Rotation auto" data-en="Auto rotate">Rotation auto</button><button id="lab-attack" type="button" data-fr="Simuler une attaque" data-en="Simulate an attack">Simuler une attaque</button></div>
+            <div class="lab-log" id="lab-log" role="status" aria-live="polite"></div>
           </div>
-          <div class="skills-map-detail" id="skills-map-detail" aria-live="polite"></div>
+          <ol class="lab-devices" aria-label="Couches de la maquette">
+            <li><button type="button" data-layer="0"><span class="lab-number">01</span><span><strong data-fr="Pare-feu" data-en="Firewall">Pare-feu</strong><small>FortiGate · OPNsense</small><span data-fr="Filtre les flux et réduit l’exposition ; VPN IPsec et OpenVPN pour les accès distants." data-en="Filters traffic and limits exposure; IPsec and OpenVPN for remote access.">Filtre les flux et réduit l’exposition ; VPN IPsec et OpenVPN pour les accès distants.</span></span></button></li>
+            <li><button type="button" data-layer="1"><span class="lab-number">02</span><span><strong data-fr="Routeur" data-en="Router">Routeur</strong><small>BGP · MPLS</small><span data-fr="Relie les sites et fait circuler le trafic entre les réseaux." data-en="Connects sites and carries traffic between networks.">Relie les sites et fait circuler le trafic entre les réseaux.</span></span></button></li>
+            <li><button type="button" data-layer="2"><span class="lab-number">03</span><span><strong data-fr="Switch L3" data-en="Layer 3 switch">Switch L3</strong><small>VLAN</small><span data-fr="Segmente le réseau en zones et limite les déplacements latéraux." data-en="Segments the network into zones and limits lateral movement.">Segmente le réseau en zones et limite les déplacements latéraux.</span></span></button></li>
+            <li><button type="button" data-layer="3"><span class="lab-number">04</span><span><strong data-fr="Serveur" data-en="Server">Serveur</strong><small>Proxmox · Windows Server</small><span data-fr="Héberge Active Directory, GPO et des services Linux dans une infrastructure virtualisée." data-en="Hosts Active Directory, GPOs and Linux services in a virtualized environment.">Héberge Active Directory, GPO et des services Linux dans une infrastructure virtualisée.</span></span></button></li>
+            <li><button type="button" data-layer="4"><span class="lab-number">05</span><span><strong data-fr="Sonde SOC" data-en="SOC sensor">Sonde SOC</strong><small>Wazuh · Suricata · Sysmon</small><span data-fr="Collecte journaux et trafic pour détecter et expliquer une activité suspecte." data-en="Collects logs and traffic to detect and explain suspicious activity.">Collecte journaux et trafic pour détecter et expliquer une activité suspecte.</span></span></button></li>
+          </ol>
         </div>
+        <p class="lab-note" data-fr="Maquette illustrative de mes outils et compétences · aucune topologie client ni donnée réelle reproduite." data-en="Illustrative model of my tools and skills · no client topology or real data reproduced.">Maquette illustrative de mes outils et compétences · aucune topologie client ni donnée réelle reproduite.</p>
       </section>
 
       <section class="projects section-pad" id="projets" aria-labelledby="projects-title">

@@ -150,7 +150,7 @@
   function startSections() {
     const sections = [
       ['#accueil', '.hero-copy', 'accueil'],
-      ['#competences', '.skills-map-panel', 'competences'],
+      ['#competences', '.lab-panel', 'competences'],
       ['#projets', '#projets', 'pfe-2026'],
       ['#parcours', '.route-window', 'traceroute'],
       ['#profil', '.profile-main', 'profil'],
