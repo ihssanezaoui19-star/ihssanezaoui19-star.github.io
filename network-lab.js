@@ -10,12 +10,14 @@
   const rotate = document.querySelector('#lab-rotate');
   const attack = document.querySelector('#lab-attack');
   const log = document.querySelector('#lab-log');
+  const targetLabel = document.querySelector('#lab-target');
   const panel = document.querySelector('.lab-panel');
   const links = document.querySelector('#lab-links');
   const names = [['Pare-feu','Routeur','Switch L3','Serveur','Sonde SOC'],['Firewall','Router','Layer 3 switch','Server','SOC sensor']];
   const en = () => document.documentElement.lang === 'en';
   let selected = -1, orientation = .5, cutaway = false, spinning = false, incident = -1;
-  let dragX = null, timer = null, completedStages = [];
+  let dragX = null, dragStart = null, timer = null, stepTimer = null, runToken = 0;
+  let completedStages = [], activeScenario = -1;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   canvas.width = 540 * dpr;
@@ -51,7 +53,7 @@
       path.setAttribute('d', `M ${sx} ${sy} L ${bend} ${sy} L ${tx-16} ${ty} L ${tx-2} ${ty}`);
       dot.setAttribute('cx', String(sx)); dot.setAttribute('cy', String(sy));
       group.classList.toggle('is-active', selected===i);
-      group.classList.toggle('is-alert', incident===i && (i===0||i===4));
+      group.classList.toggle('is-alert', incident===i);
     });
   }
 
@@ -83,7 +85,7 @@
       const front=[[x,y],[x+w,y+slope],[x+w,y+slope+42],[x,y+42]];
       const top=[[x,y],[x+w,y+slope],[x+w+depth,y+slope-24],[x+depth,y-24]];
       const side=[[x+w,y+slope],[x+w+depth,y+slope-24],[x+w+depth,y+slope+18],[x+w,y+slope+42]];
-      const active=selected===i, alert=incident===i && (i===0||i===4);
+      const active=selected===i, alert=incident===i;
       const edge=alert?'#ff6570':active?'#f4bc59':'#418779';
       ctx.save();
       if(active||alert){ctx.shadowColor=edge;ctx.shadowBlur=22;}
@@ -104,11 +106,23 @@
     }
     updateConnections();
   }
+  function renderTarget() {
+    const target = selected < 0 ? 0 : selected;
+    targetLabel.textContent = en()
+      ? `SCENARIO TARGET / ${names[1][target]}${selected < 0 ? ' · default; select a layer to change it' : ''}`
+      : `CIBLE DU SCÉNARIO / ${names[0][target]}${selected < 0 ? ' · par défaut ; choisissez une couche pour la changer' : ''}`;
+  }
   function choose(index) {
+    runToken++;
+    clearTimeout(stepTimer);
+    attack.disabled = false;
+    incident = -1;
     selected=index;
+    activeScenario=-1;
     completedStages=[];
     cards.forEach((card,i)=>card.setAttribute('aria-pressed',String(i===index)));
-    if(incident<0) log.textContent=en()?`${names[1][index]} · ${cards[index].querySelector('small').textContent}`:`${names[0][index]} · ${cards[index].querySelector('small').textContent}`;
+    log.replaceChildren();
+    renderTarget();
     draw();
   }
   cards.forEach((card,index)=>card.addEventListener('click',()=>choose(index)));
@@ -120,27 +134,72 @@
     spinning=true;rotate.setAttribute('aria-pressed','true');
     timer=setInterval(()=>{if(!document.hidden&&!reduced.matches){orientation=(orientation+.008)%1;draw();}},45);
   });
-  canvas.addEventListener('pointerdown',event=>{dragX=event.clientX;canvas.setPointerCapture(event.pointerId);stopRotation();});
-  canvas.addEventListener('pointermove',event=>{if(dragX===null)return;orientation=Math.max(0,Math.min(1,orientation+(event.clientX-dragX)/240));dragX=event.clientX;draw();});
-  canvas.addEventListener('pointerup',()=>{dragX=null;});
-  canvas.addEventListener('pointercancel',()=>{dragX=null;});
-  const stages=[
-    ['[ALERTE] Tentative sur le pare-feu','[ALERT] Attempt at the firewall'],
-    ['[SOC] La sonde associe les traces réseau et système','[SOC] The sensor correlates network and system traces'],
-    ['[RÉPONSE] Vérification des flux et des accès','[RESPONSE] Review of traffic and access'],
-    ['[FIN] Scénario pédagogique terminé · aucun trafic réel','[END] Illustrative scenario complete · no real traffic']
+  canvas.addEventListener('pointerdown',event=>{dragX=event.clientX;dragStart=[event.clientX,event.clientY];canvas.setPointerCapture(event.pointerId);stopRotation();});
+  canvas.addEventListener('pointermove',event=>{if(dragX===null)return;if(Math.abs(event.clientX-dragStart[0])<4)return;orientation=Math.max(0,Math.min(1,orientation+(event.clientX-dragX)/240));dragX=event.clientX;draw();});
+  canvas.addEventListener('pointerup',event=>{
+    if(dragStart && Math.hypot(event.clientX-dragStart[0],event.clientY-dragStart[1])<7){
+      const rect=canvas.getBoundingClientRect();
+      const x=(event.clientX-rect.left)*540/rect.width;
+      const y=(event.clientY-rect.top)*510/rect.height;
+      const spread=56+Number(slider.value)*.25;
+      const layers=cards.map((_,i)=>({i,distance:Math.abs(y-(128+i*spread))})).sort((a,b)=>a.distance-b.distance);
+      if(x>88 && x<455 && layers[0].distance<46)choose(layers[0].i);
+    }
+    dragX=null;dragStart=null;
+  });
+  canvas.addEventListener('pointercancel',()=>{dragX=null;dragStart=null;});
+  // Each script is a local teaching scenario, not a claim of a real attack or response.
+  const scenarios=[
+    [
+      ['[ALERTE] Flux entrant non autorisé vers un service exposé (simulation).','[ALERT] Unauthorized inbound traffic to an exposed service (simulation).'],
+      ['[TRACE] Examiner le port, la règle de pare-feu et le journal du flux.','[TRACE] Check the port, firewall rule and traffic log.'],
+      ['[ANALYSE] Vérifier les accès légitimes avant de modifier la règle.','[ANALYSIS] Check legitimate access before changing the rule.'],
+      ['[ISSUE] Flux refusé dans la maquette ; événement conservé pour investigation.','[OUTCOME] Traffic denied in the model; event retained for investigation.']
+    ],[
+      ['[ALERTE] Chemin de routage inattendu entre deux sites (simulation).','[ALERT] Unexpected routing path between two sites (simulation).'],
+      ['[TRACE] Comparer les routes BGP/MPLS et le chemin attendu.','[TRACE] Compare BGP/MPLS routes with the expected path.'],
+      ['[ANALYSE] Évaluer les services affectés avant de retirer une route.','[ANALYSIS] Assess affected services before removing a route.'],
+      ['[ISSUE] Changement isolé dans la maquette ; chemin attendu rétabli.','[OUTCOME] Change isolated in the model; expected path restored.']
+    ],[
+      ['[ALERTE] Tentative de flux inter-VLAN hors politique (simulation).','[ALERT] Inter-VLAN traffic outside policy (simulation).'],
+      ['[TRACE] Identifier VLAN source, destination et règle inter-zone.','[TRACE] Identify source and destination VLANs and the inter-zone rule.'],
+      ['[ANALYSE] Vérifier les dépendances avant de durcir le filtrage.','[ANALYSIS] Check dependencies before tightening filtering.'],
+      ['[ISSUE] Flux non autorisé refusé dans la maquette ; accès utile préservé.','[OUTCOME] Unauthorized traffic denied in the model; legitimate access preserved.']
+    ],[
+      ['[ALERTE] Échecs répétés de connexion à Active Directory (simulation).','[ALERT] Repeated Active Directory sign-in failures (simulation).'],
+      ['[TRACE] Recouper journaux Windows, Sysmon et Wazuh avec le compte et la source.','[TRACE] Correlate Windows, Sysmon and Wazuh logs with account and source.'],
+      ['[ANALYSE] Vérifier l’impact avant toute action sur le compte ou la GPO.','[ANALYSIS] Check impact before changing the account or GPO.'],
+      ['[ISSUE] Mesure ciblée puis nouvelle vérification dans ce scénario.','[OUTCOME] Targeted measure followed by a new check in this scenario.']
+    ],[
+      ['[ALERTE] Événements suspects reçus par la sonde SOC (simulation).','[ALERT] Suspicious events received by the SOC sensor (simulation).'],
+      ['[TRACE] Corréler Suricata, Wazuh et PCAP par heure et adresse.','[TRACE] Correlate Suricata, Wazuh and PCAPs by time and address.'],
+      ['[ANALYSE] Qualifier l’alerte avant de conclure ou d’escalader.','[ANALYSIS] Triage the alert before concluding or escalating.'],
+      ['[ISSUE] Contexte documenté ; aucune réponse automatique revendiquée.','[OUTCOME] Context documented; no automatic response claimed.']
+    ]
   ];
+  function renderLog(){
+    log.replaceChildren(...completedStages.map(step=>{
+      const item=document.createElement('span');
+      item.className=`lab-entry lab-entry-${step}`;
+      item.textContent=scenarios[activeScenario][step][Number(en())];
+      return item;
+    }));
+  }
   attack.addEventListener('click',()=>{
-    attack.disabled=true;completedStages=[];log.textContent='';log.classList.add('is-alert');
+    const target=selected<0?0:selected;
+    if(selected<0)choose(target);
+    const token=++runToken;
+    activeScenario=target;
+    attack.disabled=true;completedStages=[];log.replaceChildren();
     let step=0;
     function next(){
+      if(token!==runToken)return;
       completedStages.push(step);
-      log.textContent=completedStages.map(index=>stages[index][Number(en())]).join('\n');
-      incident=step===0?0:step===1?4:-1;selected=incident;
-      cards.forEach((card,i)=>card.setAttribute('aria-pressed',String(i===incident)));
+      renderLog();
+      incident=step<2?target:-1;
       draw();step++;
-      if(step<stages.length)setTimeout(next,670);
-      else{attack.disabled=false;log.classList.remove('is-alert');}
+      if(step<scenarios[target].length)stepTimer=setTimeout(next,750);
+      else attack.disabled=false;
     }
     next();
   });
@@ -148,8 +207,8 @@
     const key=en()?'en':'fr';
     document.querySelectorAll('.network-lab [data-fr], .route-section [data-fr]').forEach(el=>{el.textContent=el.dataset[key];});
     canvas.setAttribute('aria-label',en()?'Illustrative network model: firewall, router, switch, server and SOC sensor':'Maquette illustrative : pare-feu, routeur, switch, serveur et sonde SOC');
-    if(completedStages.length)log.textContent=completedStages.map(index=>stages[index][Number(en())]).join('\n');
-    else if(selected>=0)log.textContent=`${names[Number(en())][selected]} · ${cards[selected].querySelector('small').textContent}`;
+    renderTarget();
+    if(completedStages.length)renderLog();
     draw();
   }
   translate();

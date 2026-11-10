@@ -27,9 +27,12 @@
 .lab-controls button[aria-pressed="true"],.lab-controls button:hover{border-color:#e8bd69;color:#f8d58a;background:#293327}
 .lab-controls #lab-attack{border-color:#ad5d64;color:#ffadb3;background:#361e22}
 .lab-controls #lab-attack:hover{background:#642a31}
+.lab-controls #lab-attack:disabled{opacity:.65;cursor:wait}
 .lab-controls button:focus-visible,.lab-devices button:focus-visible{outline:2px solid #e9c16e;outline-offset:3px}
-.lab-log{min-height:45px;margin-top:11px;color:#baf4d2;font:500 12px/1.6 var(--mono,ui-monospace,monospace);white-space:pre-line}
-.lab-log.is-alert{color:#ff8a91}
+.lab-target{margin:14px 0 0;padding:8px 11px;width:max-content;max-width:100%;border:1px solid #4b7464;border-radius:6px;background:#10312b;color:#b2eacb;font:700 10px/1.4 var(--mono,ui-monospace,monospace);letter-spacing:.035em}
+.lab-log{min-height:45px;margin-top:12px;color:#baf4d2;font:500 12px/1.65 var(--mono,ui-monospace,monospace)}
+.lab-entry{display:block}
+.lab-entry-0{color:#ff929c}.lab-entry-1{color:#f1c27a}.lab-entry-2{color:#a1e4cf}.lab-entry-3{color:#69e8b2}
 .lab-devices{display:grid;gap:9px;list-style:none;margin:0;padding:0}
 .lab-devices button{display:grid;grid-template-columns:29px minmax(0,1fr);gap:12px;width:100%;min-height:105px;padding:15px;border:1px solid #345e55;border-radius:12px;background:#081a1b;color:#d5e9e0;text-align:left;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
 .lab-devices button:hover,.lab-devices button[aria-pressed="true"]{border-color:#d3a954;background:linear-gradient(110deg,#1b302b,#172a28);transform:translateX(3px);box-shadow:inset 3px 0 #d3a954,0 12px 30px #0004}
