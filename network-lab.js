@@ -205,7 +205,7 @@
   });
   function translate(){
     const key=en()?'en':'fr';
-    document.querySelectorAll('.network-lab [data-fr], .route-section [data-fr]').forEach(el=>{el.textContent=el.dataset[key];});
+    document.querySelectorAll('.network-lab [data-fr], .route-section [data-fr], .plate-kicker [data-fr]').forEach(el=>{el.textContent=el.dataset[key];});
     canvas.setAttribute('aria-label',en()?'Illustrative network model: firewall, router, switch, server and SOC sensor':'Maquette illustrative : pare-feu, routeur, switch, serveur et sonde SOC');
     renderTarget();
     if(completedStages.length)renderLog();

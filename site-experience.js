@@ -150,10 +150,10 @@
   function startSections() {
     const sections = [
       ['#accueil', '.hero-copy', 'accueil'],
-      ['#competences', '.lab-panel', 'competences'],
+      ['#competences', '#competences', 'lab-reseau'],
       ['#projets', '#projets', 'pfe-2026'],
       ['#parcours', '.route-window', 'traceroute'],
-      ['#profil', '.profile-main', 'profil'],
+      ['#profil', '#profil', 'profil'],
       ['#stages', '.experience-intro', 'stages']
     ].map(([selector, host, name]) => {
       const section = document.querySelector(selector);

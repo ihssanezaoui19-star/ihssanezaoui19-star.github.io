@@ -1,0 +1,100 @@
+/* Framed, numbered sections inspired by the supplied lab reference. */
+@import url('./style-v32.css?v=3');
+
+body,.site-shell,main{background:#061416}
+main{
+  background:
+    linear-gradient(#72d9ab08 1px,transparent 1px) 0 0/48px 48px,
+    linear-gradient(90deg,#72d9ab08 1px,transparent 1px) 0 0/48px 48px,
+    radial-gradient(ellipse at 80% 54%,#0e4d3a40,transparent 45%),
+    #061416;
+  padding-bottom:70px;
+}
+.hero{background-color:transparent}
+.network-lab,.projects,.profile{
+  --plate-pad:clamp(24px,3.1vw,44px);
+  position:relative;
+  width:min(1180px,calc(100% - 32px));
+  margin:42px auto 0;
+  padding:0 var(--plate-pad) clamp(38px,4vw,60px);
+  border:1px solid #3a685c;
+  border-radius:15px;
+  overflow:hidden;
+  background:linear-gradient(135deg,#091e20f5,#071719fa 68%);
+  box-shadow:0 26px 65px #0008,inset 0 1px #b8ffe315;
+  color:#eafbf3;
+}
+.network-lab::before,.projects::before,.profile::before{content:none}
+.network-lab>.section-link-status,.projects>.section-link-status,.profile>.section-link-status{
+  grid-column:1/-1;
+  position:relative;
+  width:calc(100% + 2*var(--plate-pad));
+  max-width:none;
+  min-height:44px;
+  margin:0 calc(-1*var(--plate-pad)) 30px;
+  padding:9px calc(var(--plate-pad) + 175px) 9px var(--plate-pad);
+  border:0;
+  border-bottom:1px solid #366c5e;
+  border-radius:0;
+  background:#11372f91;
+  font-size:11px;
+}
+.network-lab>.section-link-status{z-index:1}
+.plate-id{
+  position:absolute!important;
+  z-index:3;
+  top:15px;
+  right:var(--plate-pad);
+  color:#8fbaaa;
+  font:600 10px/1.4 var(--mono,ui-monospace,monospace);
+  letter-spacing:.08em;
+  white-space:nowrap;
+}
+.plate-kicker{
+  grid-column:1/-1;
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:9px;
+  margin:0 0 11px;
+  font:500 11px/1.5 var(--mono,ui-monospace,monospace);
+  letter-spacing:.01em;
+}
+.plate-kicker strong{color:#e8ba68;font-weight:700}
+.plate-kicker span{color:#9bbcb0}
+.network-lab h2{margin:10px 0 17px;font-size:clamp(34px,3.5vw,52px)}
+.network-lab .lab-lead{margin-bottom:30px}
+.projects .section-heading .section-kicker,.profile-main>.section-kicker{display:none}
+.projects .section-heading h2{margin-top:2px}
+.projects .filters{margin-top:24px}
+.profile{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(270px,.85fr);column-gap:clamp(28px,5vw,72px);row-gap:32px;align-items:start}
+.profile .plate-kicker{margin-bottom:0}
+.profile-main,.profile-side{min-width:0}
+.profile-main h2{margin-top:0}
+.profile .qualification,.profile .experience{grid-column:1/-1;min-width:0}
+.profile .experience{margin-top:18px}
+.route-section{padding:0 16px;margin-top:42px;background:transparent}
+.route-window{width:min(1180px,100%);max-width:none;border-radius:15px;border-color:#3a685c;background:linear-gradient(135deg,#091e20f5,#071719fa 68%)}
+.route-window>.section-link-status{background:#11372f91}
+.route-window-id{right:clamp(24px,3.1vw,44px)}
+.route-body{padding:30px clamp(24px,3.1vw,44px) clamp(38px,4vw,60px)}
+.route-body>.plate-kicker{margin-bottom:10px}
+.route-body h2{margin-top:0}
+.profile .experience-intro>.section-link-status{width:100%;margin-bottom:28px;border-radius:0;border-width:0 0 1px;padding-left:0;background:transparent}
+
+@media(max-width:850px){
+  .profile{grid-template-columns:1fr;row-gap:28px}
+  .profile-side{border-left:0;border-top:1px solid #34515c;padding:26px 0 0}
+}
+@media(max-width:600px){
+  main{padding-bottom:36px}
+  .network-lab,.projects,.profile{--plate-pad:20px;width:calc(100% - 16px);margin-top:20px;padding:0 var(--plate-pad) 32px;border-radius:12px}
+  .network-lab>.section-link-status,.projects>.section-link-status,.profile>.section-link-status{margin-bottom:24px;padding-right:var(--plate-pad);font-size:9px;overflow-wrap:anywhere}
+  .plate-id{display:none}
+  .plate-kicker{font-size:10px;gap:5px 8px}
+  .network-lab h2{font-size:clamp(31px,8vw,40px)}
+  .route-section{padding:0 8px;margin-top:20px}
+  .route-window{border-radius:12px}
+  .route-body{padding:24px 20px 34px}
+  .profile .experience{margin-top:0}
+}
