@@ -1,0 +1,86 @@
+/* Subtle network-console cues from the supplied reference; the content stays editorial. */
+@import url('./style-v28.css?v=30');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&display=swap');
+
+:root{--console:#071718;--console-panel:#10292c;--console-line:#376860;--console-mint:#9cf0ce}
+.hero{
+  background:
+    linear-gradient(#83d6bc0b 1px,transparent 1px) 0 0/54px 54px,
+    linear-gradient(90deg,#83d6bc0b 1px,transparent 1px) 0 0/54px 54px,
+    radial-gradient(ellipse at 82% 27%,#1f62566b,transparent 45%),
+    linear-gradient(125deg,#071418,#0b262a 75%,#0b1d23);
+}
+.hero::before{opacity:.2}
+.hero::after{opacity:0}
+.hero .eyebrow{border-color:#5c9a8980;background:#173d3759;color:#b4f5d8}
+.hero h1{font-family:'Chakra Petch','Space Grotesk',sans-serif;letter-spacing:-.05em}
+.hero .intro{color:#d5e6de}
+.topbar{background:#071c1ded;border-color:#68a99582;box-shadow:0 16px 45px #00120fad}
+.nav-contact{border-color:#75b7a5;background:#164139}
+.nav-contact:hover{background:#22614c}
+.tech-ribbon{background:#092426;border-color:#427d6d}
+
+.projects{
+  background:
+    linear-gradient(#9bcdb80a 1px,transparent 1px) 0 0/48px 48px,
+    linear-gradient(90deg,#9bcdb80a 1px,transparent 1px) 0 0/48px 48px,
+    radial-gradient(ellipse at 83% 12%,#1b51494f,transparent 36%),
+    #071719;
+  color:#e7f8ef;
+}
+.projects::before{background:linear-gradient(90deg,transparent,#6fb9a3,transparent)}
+.projects .section-kicker{color:#90e9ca}
+.section-heading h2{color:#f2fff7;font-family:'Chakra Petch','Space Grotesk',sans-serif;letter-spacing:-.04em}
+.heading-dot{color:#84e6bc}
+.project-count{background:#12342e;border:1px solid #4e8876;border-radius:6px;color:#b7e8d4}
+.filters{gap:9px}
+.filter{border-color:#45796b;background:#102c2c;color:#c7e0d4}
+.filter:hover{background:#194038;border-color:#8cd7b8;color:#fff}
+.filter.active{background:#a5eed2;border-color:#a5eed2;color:#08221d}
+
+.project-card:not(.featured){
+  border:1px solid #3b675e;
+  border-radius:13px;
+  background:linear-gradient(150deg,#123036,#0c222b 72%);
+  box-shadow:0 18px 38px #00000032,inset 0 1px #e3fff00d;
+}
+.project-card:not(.featured):hover,
+.project-card:not(.featured):focus-within{border-color:#89d5b7;box-shadow:0 25px 46px #0000005c,0 0 25px #7bdbb221}
+.project-card:not(.featured) .card-top{
+  min-height:57px;
+  margin:-27px -27px 0;
+  padding:13px 23px;
+  border-bottom:1px solid #3a6c63;
+  background:#ffffff08;
+}
+.project-card:not(.featured) .card-number{display:inline-flex;align-items:center;gap:10px;color:#aeeacf}
+.project-card:not(.featured) .card-number::before{content:"";width:7px;height:7px;border-radius:50%;background:#87e4bc;box-shadow:0 0 11px #87e4bc77}
+.project-card:not(.featured) .card-status{background:#1c4940;border:1px solid #497d6c;color:#c7efd9}
+.project-card:not(.featured) .card-type{color:#91dfbe}
+.project-card:not(.featured) h3{color:#f3fff8;font-family:'Chakra Petch','Space Grotesk',sans-serif;letter-spacing:-.025em}
+.project-card:not(.featured) .card-desc{color:#c1d6d1}
+.project-card:not(.featured) .card-tags span{border-color:#39685d;background:#183c39;color:#d0ecdd}
+.project-card:not(.featured) .card-evidence-preview{border-color:#456e66;background:#102f31;color:#e8f9ef;box-shadow:none}
+.project-card:not(.featured) .card-evidence-preview:hover,
+.project-card:not(.featured) .card-evidence-preview:focus-visible{background:#17413a;border-color:#8acfb0}
+.project-card:not(.featured) .card-evidence-preview img{background:#e8f1ec}
+.project-card:not(.featured) .card-evidence-preview small{color:#a5dec7}
+.project-card:not(.featured) .card-evidence-preview strong{color:#f0fff6}
+.project-card:not(.featured) .card-open{border-top-color:#47766b;color:#c6f4dd}
+.project-card:not(.featured) .card-open span{color:#93eac3}
+.project-card.featured{border-color:#76b99e;background:linear-gradient(120deg,#113b3b,#0a2a32 76%);box-shadow:0 26px 52px #0000004d}
+.featured h3{font-family:'Chakra Petch','Space Grotesk',sans-serif;letter-spacing:-.025em}
+
+.profile{background:radial-gradient(ellipse at 90% 12%,#17504559,transparent 38%),#0a2228}
+.profile h2,.experience-intro h2{font-family:'Chakra Petch','Space Grotesk',sans-serif;letter-spacing:-.04em}
+.capability{border-color:#416f64;background:#123239}
+.capability:hover{border-color:#8bd3b4;background:#18413c}
+.internship-list li,.internship-list li:last-child{border-color:#47766b;background:linear-gradient(115deg,#153c3b,#0e2b32)}
+.internship-list li:first-child{border-color:#74b99a;background:linear-gradient(115deg,#1b4b42,#103138)}
+footer{background:#07191c}
+
+@media(max-width:720px){
+  .project-card:not(.featured) .card-top{margin:-21px -21px 0;padding:12px 18px}
+  .hero h1{letter-spacing:-.055em}
+}
+@media(prefers-reduced-motion:reduce){.project-card:not(.featured):hover{transform:none}}
