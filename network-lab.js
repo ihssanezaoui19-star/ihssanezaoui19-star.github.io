@@ -36,17 +36,23 @@
     return { group, path, dot };
   });
 
+  const spacing = () => 66 + Number(slider.value) * .18;
+  function geometry(i) {
+    return {x:63+(orientation-.5)*18, y:75+i*spacing(), w:365-(orientation-.5)*14,
+      depth:25+30*orientation, slope:12+7*orientation, h:53};
+  }
+
   function updateConnections() {
     if (!links.getBoundingClientRect().width) return;
     const box = panel.getBoundingClientRect();
     const view = canvas.getBoundingClientRect();
     const scale = view.width / 540;
-    const spread = 56 + Number(slider.value) * .25;
     links.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
     linkItems.forEach(({group,path,dot}, i) => {
       const card = cards[i].getBoundingClientRect();
-      const sx = view.left - box.left + (95+(orientation-.5)*22 + 300-(orientation-.5)*18 + 22+34*orientation)*scale;
-      const sy = view.top - box.top + (101+i*spread + 12+9*orientation + 18)*scale;
+      const {x,y,w,depth,slope,h}=geometry(i);
+      const sx = view.left - box.left + (x+w+depth*.65)*scale;
+      const sy = view.top - box.top + (y+slope+h*.48)*scale;
       const tx = card.left-box.left;
       const ty = card.top-box.top+card.height/2;
       const bend = sx + Math.max(16,(tx-sx)*.47);
@@ -68,41 +74,97 @@
     ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(bx,by);
     ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();
   }
+  function fan(cx,cy,r) {
+    ctx.save();ctx.translate(cx,cy);ctx.scale(1,.38);
+    ctx.fillStyle='#061c20';ctx.strokeStyle='#60ae9b';ctx.lineWidth=1.7;
+    ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.fill();ctx.stroke();
+    for(let b=0;b<8;b++) {
+      const a=b*Math.PI/4;
+      shape([[Math.cos(a)*r*.22,Math.sin(a)*r*.22],
+        [Math.cos(a+.16)*r*.9,Math.sin(a+.16)*r*.9],
+        [Math.cos(a+.54)*r*.76,Math.sin(a+.54)*r*.76]],
+        '#2b766b','#4eae96',.6);
+    }
+    ctx.beginPath();ctx.arc(0,0,r*.19,0,Math.PI*2);ctx.fillStyle='#79d6b7';ctx.fill();
+    ctx.restore();
+  }
+  function port(x,y,amber=false,w=10,h=8) {
+    ctx.lineWidth=1;ctx.strokeStyle=amber?'#dbad57':'#5cae9b';
+    ctx.strokeRect(x,y,w,h);
+    ctx.fillStyle=amber?'#99743a33':'#3cbda01c';ctx.fillRect(x+1,y+1,w-2,h-2);
+  }
+  function led(x,y,color='#38e9ac',r=2.7) {
+    ctx.save();ctx.shadowColor=color;ctx.shadowBlur=9;ctx.fillStyle=color;
+    ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();ctx.restore();
+  }
   function draw() {
     ctx.clearRect(0,0,540,510);
-    const floor = ctx.createRadialGradient(260,480,20,260,480,310);
-    floor.addColorStop(0,incident>=0?'#351b23':'#154636'); floor.addColorStop(1,'#071918');
+    const floor = ctx.createRadialGradient(270,490,20,270,490,365);
+    floor.addColorStop(0,incident>=0?'#351d24':'#164538'); floor.addColorStop(1,'#071818');
     ctx.fillStyle=floor;ctx.fillRect(0,0,540,510);
-    ctx.save();ctx.beginPath();ctx.rect(0,350,540,160);ctx.clip();
-    for(let i=-12;i<22;i++) line(270,350,i*42,510,incident>=0?'#7a333757':'#4a9b7148');
-    for(let y=380;y<550;y+=27) line(0,y,540,y,incident>=0?'#7a33374e':'#4a9b7142');
+    ctx.save();ctx.beginPath();ctx.rect(0,340,540,170);ctx.clip();
+    for(let i=-12;i<22;i++) line(270,340,i*42,510,incident>=0?'#8a424359':'#55ae8660');
+    for(let y=365;y<550;y+=25) line(0,y,540,y,incident>=0?'#8a424343':'#55ae8648');
     ctx.restore();
-    const spread = 56 + Number(slider.value)*.25;
-    const yaw = orientation;
+    // Fiber-like links remain visible between the separated teaching layers.
+    for(let i=0;i<4;i++) {
+      const a=geometry(i),b=geometry(i+1);
+      for(const [offset,color] of [[215,'#57e9bb'],[315,'#e4ad58']]) {
+        ctx.save();ctx.shadowColor=color;ctx.shadowBlur=9;
+        line(a.x+offset,a.y+a.h+8,b.x+offset,b.y-16,color+'91',2);
+        ctx.restore();
+      }
+    }
     for(let i=4;i>=0;i--) {
-      const x=95+(yaw-.5)*22, y=101+i*spread;
-      const w=300-(yaw-.5)*18, depth=22+34*yaw, slope=12+9*yaw;
-      const front=[[x,y],[x+w,y+slope],[x+w,y+slope+42],[x,y+42]];
-      const top=[[x,y],[x+w,y+slope],[x+w+depth,y+slope-24],[x+depth,y-24]];
-      const side=[[x+w,y+slope],[x+w+depth,y+slope-24],[x+w+depth,y+slope+18],[x+w,y+slope+42]];
+      const {x,y,w,depth,slope,h}=geometry(i);
+      const front=[[x,y],[x+w,y+slope],[x+w,y+slope+h],[x,y+h]];
+      const top=[[x,y],[x+w,y+slope],[x+w+depth,y+slope-28],[x+depth,y-28]];
+      const side=[[x+w,y+slope],[x+w+depth,y+slope-28],[x+w+depth,y+slope+h-28],[x+w,y+slope+h]];
       const active=selected===i, alert=incident===i;
-      const edge=alert?'#ff6570':active?'#f4bc59':'#418779';
+      const edge=alert?'#ff6570':active?'#f4bc59':'#548f83';
       ctx.save();
-      if(active||alert){ctx.shadowColor=edge;ctx.shadowBlur=22;}
-      shape(side,cutaway?'#112d2a9c':active?'#29302b':'#0a2627',edge,active?2:1.2);
-      shape(top,cutaway?'#103d377a':active?'#263a32':'#123130',edge,active?2:1.2);
-      shape(front,cutaway?'#0b2e2ab0':active?'#1e302b':'#0c2425',edge,active?2:1.2);
+      if(active||alert){ctx.shadowColor=edge;ctx.shadowBlur=21;}
+      const sideFill=ctx.createLinearGradient(x+w,y,x+w+depth,y);
+      sideFill.addColorStop(0,'#163f3d');sideFill.addColorStop(1,'#071b20');
+      shape(side,cutaway?'#112d2a9c':sideFill,edge,active?2:1.2);
+      const topFill=ctx.createLinearGradient(x,y-28,x,y+slope);
+      topFill.addColorStop(0,'#1c4240');topFill.addColorStop(1,'#0b2529');
+      shape(top,cutaway?'#103d377a':topFill,edge,active?2:1.2);
+      const faceFill=ctx.createLinearGradient(x,y,x,y+h);
+      faceFill.addColorStop(0,active?'#24504a':'#173638');
+      faceFill.addColorStop(.27,'#0b2328');faceFill.addColorStop(1,'#081a1f');
+      shape(front,cutaway?'#0b2e2ab0':faceFill,edge,active?2:1.2);
       ctx.restore();
+      // Brushed top, ventilation, and small equipment legends.
       ctx.save();ctx.beginPath();top.forEach(([px,py],j)=>j?ctx.lineTo(px,py):ctx.moveTo(px,py));ctx.closePath();ctx.clip();
-      for(let k=0;k<38;k++)line(x-30+k*9,y-25,x-30+k*9+40,y+45,cutaway?'#52d9a455':active?'#e2bc5d38':'#4ea78b32',.7);
-      if(cutaway){for(let k=0;k<7;k++){ctx.strokeStyle='#56ebb47f';ctx.strokeRect(x+55+k*32,y-6,18,9);}}
+      for(let k=-5;k<55;k++)line(x+k*9,y-39,x+k*9+18,y+31,cutaway?'#52d9a466':active?'#e2bc5d56':'#4ea78b45',.7);
+      if(i===0||i===3){fan(x+105,y-11,34);fan(x+285,y-4,34);}
+      if(cutaway){for(let k=0;k<7;k++){ctx.strokeStyle='#56ebb49c';ctx.strokeRect(x+60+k*39,y-6,20,10);}}
+      ctx.fillStyle=active?'#e1c783':'#6ab4a4';ctx.font='600 7px ui-monospace,monospace';
+      ctx.fillText([en()?'FIREWALL · SECURITY PERIMETER':'PARE-FEU · PÉRIMÈTRE DE SÉCURITÉ','ROUTEUR · BGP · MPLS','SWITCH L3 · VLAN','SERVEUR · PROXMOX · WINDOWS SERVER','SONDE SOC · WAZUH · SURICATA'][i],x+13,y-11);
       ctx.restore();
-      ctx.fillStyle=active?'#ffd38a':'#e7c371';ctx.font='700 12px ui-monospace,monospace';ctx.fillText(`0${i+1}`,x+11,y+25);
-      ctx.fillStyle='#ecfff4';ctx.font='700 14px system-ui,sans-serif';ctx.fillText(names[Number(en())][i],x+38,y+25);
-      const ports=[9,4,12,3,8][i];
-      for(let p=0;p<ports;p++){ctx.strokeStyle='#539c8e';ctx.strokeRect(x+160+p*10,y+19+(slope*.5),5,6);}
-      for(let p=0;p<3;p++){ctx.beginPath();ctx.arc(x+w-28+p*9,y+29+slope*.85,2.5,0,Math.PI*2);ctx.fillStyle=alert?'#ff5c71':'#35eab0';ctx.fill();}
-      line(x+8,y+38,x+w-10,y+slope+38,active?'#d7ab5d78':'#54aa8e42',.6);
+      // Fine vertical machining and a narrow edge shine stay inside the front face.
+      ctx.save();ctx.beginPath();front.forEach(([px,py],j)=>j?ctx.lineTo(px,py):ctx.moveTo(px,py));ctx.closePath();ctx.clip();
+      for(let k=0;k<w;k+=4)line(x+k,y-1,x+k,y+h+slope+1,k%16===0?'#7cd5b82c':'#6bd3b412',.5);
+      const shine=ctx.createLinearGradient(x+w*.72,0,x+w*.9,0);
+      shine.addColorStop(0,'#c9fff000');shine.addColorStop(.5,'#b6fff018');shine.addColorStop(1,'#c9fff000');
+      ctx.fillStyle=shine;ctx.fillRect(x+w*.72,y,w*.18,h+slope);
+      ctx.restore();
+      ctx.fillStyle=active?'#ffd38a':'#e7c371';ctx.font='700 14px ui-monospace,monospace';ctx.fillText(`0${i+1}`,x+16,y+34);
+      ctx.fillStyle='#f1fff8';ctx.font='700 16px "Chakra Petch",system-ui,sans-serif';ctx.fillText(names[Number(en())][i],x+54,y+34+slope*.12);
+      const py=(px,offset=25)=>y+offset+slope*(px-x)/w;
+      if(i===0){for(let p=0;p<7;p++)port(x+168+p*16,py(x+168+p*16),p===0||p===6);port(x+168,py(x+168,37),true);}
+      if(i===1){for(let p=0;p<5;p++)port(x+184+p*16,py(x+184+p*16),p>2);}
+      if(i===2){for(let p=0;p<8;p++)port(x+164+p*15,py(x+164+p*15,18));for(let p=0;p<6;p++)port(x+164+p*15,py(x+164+p*15,32));}
+      if(i===3){led(x+190,py(x+190,12),'#acffe4',4);for(let p=0;p<4;p++){const px=x+186+p*30;port(px,py(px,29),false,23,13);led(px+18,py(px,35),'#53e2ab',1.3);}}
+      if(i===4){const px=x+190,yy=py(px,20);ctx.fillStyle='#062322';ctx.fillRect(px,yy,68,23);ctx.strokeStyle='#54bba0';ctx.strokeRect(px,yy,68,23);for(let p=0;p<8;p++){ctx.fillStyle=p%3===0?'#9bf6c8':'#32e4ad';ctx.fillRect(px+6+p*7,yy+17-[6,12,8,18,13,21,10,15][p],4,[6,12,8,18,13,21,10,15][p]);}}
+      for(let p=0;p<3;p++)led(x+w-55+p*12,py(x+w-55+p*12,34),alert?'#ff6878':'#35eab0');
+      for(const px of [x+8,x+w-8]){led(px,py(px,8),'#a9f6d7',1.5);led(px,py(px,h-8),'#a9f6d7',1.5);}
+      line(x+10,y+h-2,x+w-10,y+slope+h-2,active?'#d7ab5d9c':'#54aa8e5c',.7);
+    }
+    ctx.strokeStyle='#bb9356';ctx.lineWidth=.7;
+    for(const [bx,by,dx,dy] of [[13,13,1,1],[527,13,-1,1],[13,497,1,-1],[527,497,-1,-1]]){
+      line(bx,by,bx+dx*12,by,'#bb9356a0',.7);line(bx,by,bx,by+dy*12,'#bb9356a0',.7);
     }
     updateConnections();
   }
@@ -141,9 +203,8 @@
       const rect=canvas.getBoundingClientRect();
       const x=(event.clientX-rect.left)*540/rect.width;
       const y=(event.clientY-rect.top)*510/rect.height;
-      const spread=56+Number(slider.value)*.25;
-      const layers=cards.map((_,i)=>({i,distance:Math.abs(y-(128+i*spread))})).sort((a,b)=>a.distance-b.distance);
-      if(x>88 && x<455 && layers[0].distance<46)choose(layers[0].i);
+      const layers=cards.map((_,i)=>({i,distance:Math.abs(y-(geometry(i).y+geometry(i).h*.6))})).sort((a,b)=>a.distance-b.distance);
+      if(x>55 && x<490 && layers[0].distance<42)choose(layers[0].i);
     }
     dragX=null;dragStart=null;
   });
