@@ -13,7 +13,7 @@
   const names = [['Pare-feu','Routeur','Switch L3','Serveur','Sonde SOC'],['Firewall','Router','Layer 3 switch','Server','SOC sensor']];
   const en = () => document.documentElement.lang === 'en';
   let selected = -1, orientation = .5, cutaway = false, spinning = false, incident = -1;
-  let dragX = null, timer = null;
+  let dragX = null, timer = null, completedStages = [];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   canvas.width = 540 * dpr;
@@ -69,6 +69,7 @@
   }
   function choose(index) {
     selected=index;
+    completedStages=[];
     cards.forEach((card,i)=>card.setAttribute('aria-pressed',String(i===index)));
     if(incident<0) log.textContent=en()?`${names[1][index]} · ${cards[index].querySelector('small').textContent}`:`${names[0][index]} · ${cards[index].querySelector('small').textContent}`;
     draw();
@@ -93,10 +94,11 @@
     ['[FIN] Scénario pédagogique terminé · aucun trafic réel','[END] Illustrative scenario complete · no real traffic']
   ];
   attack.addEventListener('click',()=>{
-    attack.disabled=true;log.textContent='';log.classList.add('is-alert');
+    attack.disabled=true;completedStages=[];log.textContent='';log.classList.add('is-alert');
     let step=0;
     function next(){
-      log.textContent+=(step?'\n':'')+stages[step][Number(en())];
+      completedStages.push(step);
+      log.textContent=completedStages.map(index=>stages[index][Number(en())]).join('\n');
       incident=step===0?0:step===1?4:-1;selected=incident;
       cards.forEach((card,i)=>card.setAttribute('aria-pressed',String(i===incident)));
       draw();step++;
@@ -109,6 +111,8 @@
     const key=en()?'en':'fr';
     document.querySelectorAll('.network-lab [data-fr], .route-section [data-fr]').forEach(el=>{el.textContent=el.dataset[key];});
     canvas.setAttribute('aria-label',en()?'Illustrative network model: firewall, router, switch, server and SOC sensor':'Maquette illustrative : pare-feu, routeur, switch, serveur et sonde SOC');
+    if(completedStages.length)log.textContent=completedStages.map(index=>stages[index][Number(en())]).join('\n');
+    else if(selected>=0)log.textContent=`${names[Number(en())][selected]} · ${cards[selected].querySelector('small').textContent}`;
     draw();
   }
   translate();
