@@ -5,34 +5,34 @@ body,.site-shell{background:#061416}
 main{
   background-color:#061416;
   background-image:
-    radial-gradient(ellipse 56% 43% at 85% 20%,#24a88925,transparent 73%),
-    radial-gradient(ellipse 48% 37% at 8% 86%,#326e9b22,transparent 75%),
-    radial-gradient(ellipse 44% 34% at 96% 88%,#a4824920,transparent 76%),
+    radial-gradient(ellipse 62% 14% at 90% 21%,#24a88925,transparent 79%),
+    radial-gradient(ellipse 52% 13% at 7% 59%,#326e9b22,transparent 80%),
+    radial-gradient(ellipse 54% 12% at 95% 87%,#a4824920,transparent 80%),
     linear-gradient(90deg,#061416b3,transparent 17%,transparent 83%,#061416b3),
     linear-gradient(#78d9b90c 1px,transparent 1px),
     linear-gradient(90deg,#78d9b90c 1px,transparent 1px),
     linear-gradient(#78d9b905 1px,transparent 1px),
     linear-gradient(90deg,#78d9b905 1px,transparent 1px);
   background-size:
-    100% 1150px,
-    100% 1250px,
-    100% 1600px,
+    100% 100%,
+    100% 100%,
+    100% 100%,
     100% 100%,
     72px 72px,
     72px 72px,
     18px 18px,
     18px 18px;
-  background-repeat:repeat-y,repeat-y,repeat-y,no-repeat,repeat,repeat,repeat,repeat;
+  background-repeat:no-repeat,no-repeat,no-repeat,no-repeat,repeat,repeat,repeat,repeat;
 }
 
 @media(max-width:600px){
   main{
     background-image:
-      radial-gradient(ellipse 95% 34% at 92% 15%,#24a8891a,transparent 76%),
-      radial-gradient(ellipse 85% 34% at 4% 86%,#326e9b18,transparent 77%),
+      radial-gradient(ellipse 110% 10% at 92% 18%,#24a8891a,transparent 79%),
+      radial-gradient(ellipse 100% 10% at 4% 75%,#326e9b18,transparent 80%),
       linear-gradient(#78d9b909 1px,transparent 1px),
       linear-gradient(90deg,#78d9b909 1px,transparent 1px);
-    background-size:100% 950px,100% 1050px,64px 64px,64px 64px;
-    background-repeat:repeat-y,repeat-y,repeat,repeat;
+    background-size:100% 100%,100% 100%,64px 64px,64px 64px;
+    background-repeat:no-repeat,no-repeat,repeat,repeat;
   }
 }
