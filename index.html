@@ -6,12 +6,12 @@
   <meta name="theme-color" content="#071521">
   <meta name="description" content="Ihssane Zaoui, ingénieure d’État en réseaux et systèmes : administration, sécurité réseau et cybersécurité défensive. Projets Proxmox, Active Directory, Wazuh et honeypot CTI.">
   <title>Ihssane Zaoui — Réseaux, systèmes & cybersécurité</title>
-  <link rel="stylesheet" href="./style-v32.css?v=1">
+  <link rel="stylesheet" href="./style-v32.css?v=2">
   <script src="./i18n.js?v=37" defer></script>
   <script src="./architecture-diagrams.js?v=15" defer></script>
   <script src="./app.js?v=32" defer></script>
   <script src="./site-experience.js?v=4" defer></script>
-  <script src="./network-lab.js?v=2" defer></script>
+  <script src="./network-lab.js?v=3" defer></script>
 </head>
 <body>
   <div class="site-shell">
@@ -38,8 +38,9 @@
       <section class="network-lab section-pad" id="competences" aria-labelledby="lab-title">
         <div class="section-kicker" data-fr="MON TERRAIN / ARCHITECTURE & DÉFENSE" data-en="MY PRACTICE / ARCHITECTURE & DEFENSE">MON TERRAIN / ARCHITECTURE & DÉFENSE</div>
         <h2 id="lab-title"><span data-fr="Le réseau que je sécurise," data-en="The network I secure,">Le réseau que je sécurise,</span> <em data-fr="équipement par équipement." data-en="layer by layer.">équipement par équipement.</em></h2>
-        <p class="lab-lead" data-fr="Explorez une maquette qui relie mes pratiques en réseaux, systèmes et détection. Sélectionnez une couche pour comprendre son rôle." data-en="Explore an illustrative model connecting my network, systems and detection practice. Select a layer to understand its role.">Explorez une maquette qui relie mes pratiques en réseaux, systèmes et détection. Sélectionnez une couche pour comprendre son rôle.</p>
+        <p class="lab-lead" data-fr="Faites tourner la maquette, éclatez-la, ouvrez-la en coupe, puis simulez une attaque : chaque couche a un rôle dans la défense." data-en="Rotate the model, separate its layers, open a cutaway and simulate an attack: each layer plays a part in the defense.">Faites tourner la maquette, éclatez-la, ouvrez-la en coupe, puis simulez une attaque : chaque couche a un rôle dans la défense.</p>
         <div class="lab-panel">
+          <svg class="lab-links" id="lab-links" aria-hidden="true"></svg>
           <div class="lab-view">
             <div class="lab-canvas-wrap"><canvas id="lab-canvas" width="540" height="510" role="img" aria-label="Maquette illustrative de cinq couches réseau : pare-feu, routeur, switch, serveur et sonde SOC"></canvas><span class="lab-drag-hint" data-fr="Glisser pour orienter" data-en="Drag to rotate">Glisser pour orienter</span></div>
             <div class="lab-controls"><label for="lab-explode" data-fr="Éclater" data-en="Explode">Éclater</label><input id="lab-explode" type="range" min="0" max="100" value="45"><button id="lab-cut" type="button" aria-pressed="false" data-fr="Coupe" data-en="Cutaway">Coupe</button><button id="lab-rotate" type="button" aria-pressed="false" data-fr="Rotation auto" data-en="Auto rotate">Rotation auto</button><button id="lab-attack" type="button" data-fr="Simuler une attaque" data-en="Simulate an attack">Simuler une attaque</button></div>

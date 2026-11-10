@@ -6,9 +6,16 @@
 .network-lab .section-kicker{color:#8ce6c2}
 .network-lab h2{max-width:1100px;margin:15px 0 18px;font:700 clamp(34px,4.1vw,61px)/1.07 'Chakra Petch','Space Grotesk',sans-serif;letter-spacing:-.046em}
 .network-lab h2 em{font-style:normal;color:#efc379}
-.lab-lead{max-width:740px;margin:0 0 34px;color:#c7ded5;font-size:clamp(16px,1.4vw,19px);line-height:1.65}
-.lab-panel{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(350px,.82fr);gap:clamp(26px,5vw,72px);align-items:start}
+.lab-lead{max-width:790px;margin:0 0 34px;color:#c7ded5;font-size:clamp(16px,1.4vw,19px);line-height:1.65}
+.lab-panel{position:relative;display:grid;grid-template-columns:minmax(0,1.18fr) minmax(350px,.82fr);gap:clamp(26px,5vw,72px);align-items:start}
 .lab-panel>.section-link-status{grid-column:1/-1;margin:0 0 -7px}
+.lab-links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;overflow:visible}
+.lab-link path{fill:none;stroke:#d4ac61;stroke-width:1;stroke-dasharray:2 5;opacity:.64;vector-effect:non-scaling-stroke}
+.lab-link circle{fill:#e4bd71;opacity:.82}
+.lab-link.is-active path{stroke:#f2c674;stroke-width:1.8;stroke-dasharray:none;opacity:1;filter:drop-shadow(0 0 5px #e9b75e)}
+.lab-link.is-active circle{fill:#ffe2a0;r:4;filter:drop-shadow(0 0 6px #f3bd69)}
+.lab-link.is-alert path{stroke:#ff737c;stroke-width:1.8;opacity:1}
+.lab-link.is-alert circle{fill:#ff6977;filter:drop-shadow(0 0 7px #ff6977)}
 .lab-view{min-width:0}
 .lab-canvas-wrap{position:relative;overflow:hidden;border:1px solid #386b60;border-radius:13px;background:radial-gradient(ellipse at 50% 90%,#174b3f66,transparent 56%),linear-gradient(160deg,#061617,#0b2222);touch-action:pan-y;cursor:grab}
 .lab-canvas-wrap:active{cursor:grabbing}
@@ -25,12 +32,12 @@
 .lab-log.is-alert{color:#ff8a91}
 .lab-devices{display:grid;gap:9px;list-style:none;margin:0;padding:0}
 .lab-devices button{display:grid;grid-template-columns:29px minmax(0,1fr);gap:12px;width:100%;min-height:105px;padding:15px;border:1px solid #345e55;border-radius:12px;background:#081a1b;color:#d5e9e0;text-align:left;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
-.lab-devices button:hover,.lab-devices button[aria-pressed="true"]{border-color:#d3a954;background:#172a28;transform:translateX(3px)}
+.lab-devices button:hover,.lab-devices button[aria-pressed="true"]{border-color:#d3a954;background:linear-gradient(110deg,#1b302b,#172a28);transform:translateX(3px);box-shadow:inset 3px 0 #d3a954,0 12px 30px #0004}
 .lab-number{display:inline-grid;place-items:center;align-self:start;width:26px;height:24px;border:1px solid #b79049;border-radius:5px;color:#e8be6d;font:700 12px var(--mono,ui-monospace,monospace)}
 .lab-devices strong{display:block;margin:0 0 4px;color:#f3fff8;font:700 17px 'Chakra Petch','Space Grotesk',sans-serif}
 .lab-devices small{display:block;margin-bottom:6px;color:#61efb6;font:700 11px var(--mono,ui-monospace,monospace)}
 .lab-devices button span span{display:block;font-size:13px;line-height:1.48}
 .lab-note{margin:23px 0 0;color:#dab76d;font:500 11px/1.5 var(--mono,ui-monospace,monospace)}
-@media(max-width:850px){.lab-panel{grid-template-columns:minmax(0,1fr)}.lab-view{max-width:680px}.lab-devices{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:850px){.lab-panel{grid-template-columns:minmax(0,1fr)}.lab-links{display:none}.lab-view{max-width:680px}.lab-devices{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.network-lab{padding-top:64px;padding-bottom:60px}.lab-panel{gap:24px}.lab-devices{grid-template-columns:1fr}.lab-devices button{min-height:0}.lab-controls{gap:8px}.lab-controls #lab-attack{flex-basis:100%;max-width:max-content}.lab-note{margin-top:18px}}
 @media(prefers-reduced-motion:reduce){.lab-devices button{transition:none}}
