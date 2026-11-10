@@ -1,0 +1,36 @@
+@import url('./style-v29.css?v=31');
+
+/* The terminal is an introduction. The portfolio itself remains readable and familiar. */
+.boot-overlay[hidden]{display:none}
+.boot-overlay{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:18px;background:radial-gradient(ellipse at 50% 110%,#145f4d77,transparent 56%),linear-gradient(135deg,#061116,#0a2223);color:#d8f6e9}
+.boot-overlay::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(#7ef3c20b 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,#7ef3c20b 1px,transparent 1px) 0 0/44px 44px}
+.boot-window{position:relative;width:min(780px,100%);border:1px solid #5c9d84;border-radius:16px;overflow:hidden;background:#06181bea;box-shadow:0 30px 100px #0009,0 0 70px #64e8ae20}
+.boot-bar{min-height:50px;display:flex;align-items:center;gap:16px;padding:10px 21px;border-bottom:1px solid #47826e;background:#12302e;color:#adebd1;font:600 12px/1.4 var(--mono,ui-monospace,monospace)}
+.window-lights{display:flex;gap:6px}.window-lights i{width:9px;height:9px;border-radius:50%;background:#f27770}.window-lights i:nth-child(2){background:#f1c665}.window-lights i:nth-child(3){background:#79d7a4}
+.boot-host{margin-left:auto;color:#7eab9d;font-size:10px;letter-spacing:.08em}
+.boot-terminal{min-height:330px;max-height:min(55vh,530px);overflow:auto;padding:22px 24px 10px;font:500 clamp(11px,2vw,13px)/1.7 var(--mono,ui-monospace,monospace);word-break:break-word;scrollbar-color:#487b6f transparent}
+.boot-terminal p{margin:0 0 5px;white-space:pre-wrap}.boot-terminal .command{color:#aaf9d2}.boot-terminal .muted{color:#96b8ae}.boot-terminal .success{color:#83e9b5}.boot-terminal .warn{color:#f5ce8c}
+.boot-foot{min-height:82px;display:flex;align-items:center;gap:20px;justify-content:space-between;padding:15px 24px 20px;border-top:1px solid #326758;background:#0c2526}
+.boot-foot p{margin:0;color:#b5f6d5;font:600 12px/1.5 var(--mono,ui-monospace,monospace)}
+.boot-foot button{border:1px solid #a8efd0;border-radius:9px;background:#a8efd0;color:#08231d;padding:11px 20px;min-width:112px;font:700 14px 'Chakra Petch',sans-serif;cursor:pointer}
+.boot-foot button:disabled{opacity:.32;cursor:wait}.boot-foot button:not(:disabled):hover{background:#e2fff1}
+body.boot-locked{overflow:hidden}
+.network-status{display:flex;align-items:center;gap:10px;white-space:nowrap;color:#a6d8c4;font:600 10px/1.4 var(--mono,ui-monospace,monospace)}
+.network-status span:not(.status-light)+span::before{content:'·';margin-right:10px;color:#6d9d8e}
+.status-light{width:7px;height:7px;border-radius:50%;background:#f1c96d;box-shadow:0 0 10px #f1c96d77;flex:none}
+.network-status[data-state="ok"] .status-light{background:#87e5b7;box-shadow:0 0 10px #87e5b7aa}
+.network-status[data-state="error"] .status-light{background:#f1a16d}
+.section-link-status{position:relative;display:flex;align-items:center;min-height:39px;width:fit-content;max-width:100%;margin:0 0 24px;padding:7px 14px;overflow:hidden;border:1px solid #649c85;border-radius:8px;background:#10322dd9;color:#b5efd2;font:600 11px/1.5 var(--mono,ui-monospace,monospace);letter-spacing:.02em;isolation:isolate}
+.section-link-status::before{content:"";width:7px;height:7px;margin-right:11px;flex:none;border-radius:50%;background:#eac677}
+.section-link-status.is-ok::before{background:#88e6b7;box-shadow:0 0 11px #88e6b7}
+.section-link-status.is-error::before{background:#eaa579}
+.section-link-status.is-scanning::after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(95deg,transparent 5%,#74eac344 50%,transparent 95%);animation:section-scan 1.15s ease-out forwards}
+@keyframes section-scan{from{transform:translateX(-110%)}to{transform:translateX(110%)}}
+.hero .section-link-status{margin-bottom:18px}
+.projects>.section-link-status{margin-bottom:28px}
+.profile-main>.section-link-status,.experience-intro>.section-link-status{margin-bottom:24px}
+@media(min-width:901px){.topbar{gap:clamp(11px,1.5vw,24px);width:max-content}.topbar nav{gap:clamp(10px,1.2vw,18px)}}
+@media(max-width:1100px) and (min-width:901px){.network-status{font-size:9px;gap:6px}.network-status span:not(.status-light)+span::before{margin-right:6px}.brand-name{display:none}}
+@media(max-width:900px){.network-status{order:4;width:100%;justify-content:center;padding-top:5px;border-top:1px solid #426c5f}.topbar{padding-bottom:9px}.boot-host{display:none}}
+@media(max-width:520px){.boot-terminal{min-height:340px;max-height:57vh;padding:18px 16px 8px}.boot-bar{padding-inline:16px}.boot-foot{padding-inline:16px;align-items:stretch;flex-direction:column;gap:10px}.boot-foot button{width:100%}.network-status{font-size:9px;gap:5px}.network-status span:not(.status-light)+span::before{margin-right:5px}}
+@media(prefers-reduced-motion:reduce){.section-link-status.is-scanning::after{animation:none;display:none}}
