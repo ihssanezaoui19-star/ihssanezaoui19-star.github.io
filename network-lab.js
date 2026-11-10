@@ -19,7 +19,7 @@
   let dragX = null, dragStart = null, timer = null, stepTimer = null, runToken = 0;
   let completedStages = [], activeScenario = -1;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const dpr = Math.min(Math.max(window.devicePixelRatio || 1, 1.5), 2);
   canvas.width = 540 * dpr;
   canvas.height = 510 * dpr;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
