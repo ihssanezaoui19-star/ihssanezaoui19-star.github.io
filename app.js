@@ -118,7 +118,7 @@ function evidenceLinks(item) {
   const base = `https://github.com/ihssanezaoui19-star/${item.repo}/blob/main/${item.path}`;
   const src = item.repo === 'ihssanezaoui19-star.github.io'
     ? `./${item.path}`
-    : `https://raw.githubusercontent.com/ihssanezaoui19-star/${item.repo}/main/${item.path}`;
+    : `./assets/evidence/${item.repo}/${item.path}`;
   return { href: base, src };
 }
 
