@@ -8,6 +8,7 @@
   const terminal = document.querySelector('#boot-terminal');
   const prompt = document.querySelector('#boot-prompt');
   const enterButton = document.querySelector('#boot-enter');
+  const bootHost = document.querySelector('.boot-host');
   const hud = document.querySelector('.network-status');
   const latencyEl = document.querySelector('#network-latency');
   const packetsEl = document.querySelector('#network-packets');
@@ -102,6 +103,7 @@
   }
 
   async function boot() {
+    bootHost.textContent = t('PORTFOLIO / RÉSEAUX & SÉCURITÉ', 'PORTFOLIO / NETWORKS & SECURITY');
     write('$ ping ihssane.zaoui', 'command');
     write(t('Sondes HTTP HEAD vers cette page (pas un ping ICMP).', 'HTTP HEAD probes to this page (not ICMP ping).'), 'muted');
     await wait(260);
