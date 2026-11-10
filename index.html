@@ -6,11 +6,12 @@
   <meta name="theme-color" content="#071521">
   <meta name="description" content="Ihssane Zaoui, ingénieure d’État en réseaux et systèmes : administration, sécurité réseau et cybersécurité défensive. Projets Proxmox, Active Directory, Wazuh et honeypot CTI.">
   <title>Ihssane Zaoui — Réseaux, systèmes & cybersécurité</title>
-  <link rel="stylesheet" href="./style-v30.css?v=32">
+  <link rel="stylesheet" href="./style-v31.css?v=33">
   <script src="./i18n.js?v=37" defer></script>
   <script src="./architecture-diagrams.js?v=15" defer></script>
   <script src="./app.js?v=32" defer></script>
-  <script src="./site-experience.js?v=2" defer></script>
+  <script src="./site-experience.js?v=3" defer></script>
+  <script src="./journey-viz.js?v=1" defer></script>
 </head>
 <body>
   <div class="site-shell">
@@ -34,10 +35,42 @@
 
       <div class="tech-ribbon" aria-label="Outils et pratiques"><span class="tech-label">OUTILS & PRATIQUES</span><div class="tech-window"><div class="tech-track"><div class="tech-set"><span>Proxmox</span><span>Active Directory</span><span>OPNsense</span><span>VPN</span><span>Wazuh</span><span>Sysmon</span><span>Wireshark</span><span>PCAP</span><span>CTI</span><span>n8n</span></div><div class="tech-set" aria-hidden="true"><span>Proxmox</span><span>Active Directory</span><span>OPNsense</span><span>VPN</span><span>Wazuh</span><span>Sysmon</span><span>Wireshark</span><span>PCAP</span><span>CTI</span><span>n8n</span></div></div></div></div>
 
+      <section class="skills-map section-pad" id="competences" aria-labelledby="skills-map-title">
+        <div class="section-kicker" data-fr="MON TERRAIN / RÉSEAUX · SYSTÈMES · DÉFENSE" data-en="MY PRACTICE / NETWORKS · SYSTEMS · DEFENSE">MON TERRAIN / RÉSEAUX · SYSTÈMES · DÉFENSE</div>
+        <div class="skills-map-head"><h2 id="skills-map-title" data-fr="Du réseau aux traces." data-en="From networks to evidence.">Du réseau aux traces.</h2><p data-fr="Une carte des outils et pratiques que j’ai mobilisés en stage ou en laboratoire. Sélectionnez un domaine pour voir ma démarche." data-en="A map of the tools and practices I have used in internships or labs. Select an area to see how I work.">Une carte des outils et pratiques que j’ai mobilisés en stage ou en laboratoire. Sélectionnez un domaine pour voir ma démarche.</p></div>
+        <div class="skills-map-panel">
+          <div class="map-caption"><span>IZ / <span data-fr="CARTE DE COMPÉTENCES" data-en="SKILLS MAP">CARTE DE COMPÉTENCES</span></span><span data-fr="STAGES + LABORATOIRES" data-en="INTERNSHIPS + LABS">STAGES + LABORATOIRES</span></div>
+          <div id="skills-graph" class="skills-graph" aria-label="Carte des compétences : détection, réseaux, systèmes et automatisation"></div>
+          <div class="skills-map-choices" role="group" aria-label="Domaines de compétences">
+            <button type="button" data-skill="detection"><strong data-fr="Détection" data-en="Detection">Détection</strong><span>Wazuh · Sysmon · Suricata · Wireshark</span></button>
+            <button type="button" data-skill="network"><strong data-fr="Réseaux" data-en="Networks">Réseaux</strong><span>VLAN · BGP · MPLS · IPsec · OpenVPN · OPNsense · FortiGate</span></button>
+            <button type="button" data-skill="systems"><strong data-fr="Systèmes" data-en="Systems">Systèmes</strong><span>Windows Server · AD/GPO · Linux · Proxmox · VMware</span></button>
+            <button type="button" data-skill="automation"><strong data-fr="Automatisation" data-en="Automation">Automatisation</strong><span>PowerShell · n8n</span></button>
+          </div>
+          <div class="skills-map-detail" id="skills-map-detail" aria-live="polite"></div>
+        </div>
+      </section>
+
       <section class="projects section-pad" id="projets" aria-labelledby="projects-title">
         <div class="section-heading"><div><div class="section-kicker"><span>01 /</span> TRAVAUX SÉLECTIONNÉS</div><h2 id="projects-title">Projets & études de cas<span class="heading-dot">.</span></h2></div><div class="project-count" id="project-count" aria-live="polite"></div></div>
         <div class="filters" role="group" aria-label="Filtrer les projets"><button class="filter active" type="button" data-filter="Tous" aria-pressed="true">Tous</button><button class="filter" type="button" data-filter="SOC" aria-pressed="false">SOC</button><button class="filter" type="button" data-filter="Blue Team" aria-pressed="false">Blue Team</button><button class="filter" type="button" data-filter="Sécurité réseau" aria-pressed="false">Sécurité réseau</button><button class="filter" type="button" data-filter="Infrastructure" aria-pressed="false">Infrastructure</button></div>
         <div class="project-grid" id="project-grid"></div>
+      </section>
+
+      <section class="route-section section-pad" id="parcours" aria-labelledby="route-title">
+        <div class="route-window">
+          <span class="route-window-id" aria-hidden="true">IZ-01B · TRACEROUTE</span>
+          <div class="route-body">
+            <div class="section-kicker" data-fr="PARCOURS / 2024 → AUJOURD’HUI" data-en="JOURNEY / 2024 → TODAY">PARCOURS / 2024 → AUJOURD’HUI</div>
+            <h2 id="route-title" data-fr="Du réseau à l’investigation, mon traceroute." data-en="From networks to investigation, my traceroute.">Du réseau à l’investigation, mon traceroute.</h2>
+            <ol class="route-hops">
+              <li><span class="route-dot" aria-hidden="true"></span><span class="route-hop-meta" data-fr="SAUT 1 · 2024" data-en="HOP 1 · 2024">SAUT 1 · 2024</span><h3 data-fr="Province de Taounate" data-en="Province of Taounate">Province de Taounate</h3><p data-fr="Postes Windows, services réseau et diagnostic des incidents de connectivité." data-en="Windows workstations, network services and connectivity incident diagnosis.">Postes Windows, services réseau et diagnostic des incidents de connectivité.</p></li>
+              <li><span class="route-dot" aria-hidden="true"></span><span class="route-hop-meta" data-fr="SAUT 2 · 2025" data-en="HOP 2 · 2025">SAUT 2 · 2025</span><h3 data-fr="IVENTEQ · audit AD" data-en="IVENTEQ · AD audit">IVENTEQ · audit AD</h3><p data-fr="Mesurer les risques avec PingCastle, observer avec Wazuh/Sysmon, puis corriger après analyse d’impact." data-en="Assess risks with PingCastle, observe with Wazuh/Sysmon, then remediate after impact analysis.">Mesurer les risques avec PingCastle, observer avec Wazuh/Sysmon, puis corriger après analyse d’impact.</p></li>
+              <li><span class="route-dot" aria-hidden="true"></span><span class="route-hop-meta" data-fr="SAUT 3 · 2026" data-en="HOP 3 · 2026">SAUT 3 · 2026</span><h3 data-fr="IVENTEQ · PFE" data-en="IVENTEQ · final-year project">IVENTEQ · PFE</h3><p data-fr="Honeypot sur mesure, analyse PCAP, interface CTI et automatisation n8n." data-en="Custom honeypot, PCAP analysis, CTI interface and n8n automation.">Honeypot sur mesure, analyse PCAP, interface CTI et automatisation n8n.</p></li>
+              <li class="route-next"><span class="route-dot" aria-hidden="true"></span><span class="route-hop-meta" data-fr="SAUT 4 · PROCHAINE ÉTAPE" data-en="HOP 4 · NEXT STEP">SAUT 4 · PROCHAINE ÉTAPE</span><h3 data-fr="Votre équipe" data-en="Your team">Votre équipe</h3><p><span data-fr="Un premier poste en réseaux, systèmes ou cyberdéfense. " data-en="A first role in networks, systems or cyber defense. ">Un premier poste en réseaux, systèmes ou cyberdéfense. </span><a href="mailto:ihssanezaoui19@gmail.com?subject=Opportunit%C3%A9%20r%C3%A9seaux%20ou%20cybers%C3%A9curit%C3%A9" data-fr="Échangeons." data-en="Let's talk.">Échangeons.</a></p></li>
+            </ol>
+          </div>
+        </div>
       </section>
 
       <section class="profile section-pad" id="profil" aria-labelledby="profile-title">
