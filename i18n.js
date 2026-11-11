@@ -132,7 +132,7 @@ window.portfolioStaticEnglish = [
     <div class="qualification-degree"><strong>Engineering degree</strong><p>Networks and Telecommunications Systems · ENSA Kénitra</p>
     </div>
     <div class="qualification-dut"><span>PREVIOUS STUDIES</span><strong>DUT · two-year technical degree</strong></div>
-    <div class="qualification-training"><span>COMPLETED COURSES & PATHS</span><ul><li>Fortinet NSE 1 and NSE 2 · courses completed</li><li>Fortinet NSE 3 · exam completed, certificate not issued</li><li>TryHackMe SOC Level 1 · path completed</li></ul></div>`],
+    <div class="qualification-training"><span>COMPLETED COURSES & PATHS</span><ul><li>Fortinet NSE 1 and NSE 2 · courses completed</li><li>Fortinet NSE 3 · certificate obtained</li><li>TryHackMe SOC Level 1 · path completed</li></ul></div>`],
   ['.profile-side .github-link', 'GitHub profile <span aria-hidden="true">→</span>'],
   ['.experience-intro .section-kicker', '<span>03 /</span> HANDS-ON EXPERIENCE'],
   ['.experience-intro h2', 'What I can contribute<span class="heading-dot">.</span>'],
